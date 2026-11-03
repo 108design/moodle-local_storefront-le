@@ -47,7 +47,7 @@ define([], function() {
         });
         document.addEventListener('submit', function(event) {
             var form = event.target;
-            if (!(form instanceof HTMLFormElement) || form.method.toLowerCase() !== 'post' || form.action !== config.endpoint) return;
+            if (!(form instanceof HTMLFormElement) || form.method.toLowerCase() !== 'post' || new URL(form.getAttribute('action') || location.href, location.href).href !== config.endpoint) return;
             // These pages must refresh their complete order review after a selection change.
             if (/\/local\/storefront\/(cart|checkout|moodle_payment)\.php$/.test(location.pathname)) return;
             event.preventDefault();
