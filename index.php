@@ -34,24 +34,8 @@ echo html_writer::div(html_writer::tag('button',get_string('search'),['type'=>'s
 echo html_writer::end_tag('form');
 foreach (catalogue_order::sections($products,$filters) as $section) {
 if ($section['name']!=='') { echo $OUTPUT->heading(format_string($section['name']),3); }
-echo html_writer::start_div('row');
-foreach ($section['products'] as $product) {
-    echo html_writer::start_div('col-12 col-md-6 col-lg-4 mb-4');
-    echo html_writer::start_div('card h-100');
-    if ($image=\local_storefront\local\product_image::url((int)$product->id)) {
-        echo html_writer::empty_tag('img',['src'=>$image->out(false),'alt'=>'','class'=>'card-img-top','style'=>'aspect-ratio:4/3;object-fit:cover']);
-    }
-    echo html_writer::start_div('card-body');
-    echo html_writer::tag('h3',html_writer::link(new moodle_url('/local/storefront/product.php',['product'=>$product->identifier]),format_string($product->name)));
-    echo \local_storefront\local\product_content::format($product,'shortdescription');
-    foreach (array_merge($product->categories,$product->tags) as $term) {
-        $colour=\local_storefront\local\color_value::normalise($term->badgecolor);
-        $foreground=\local_storefront\local\color_value::contrasting_text_colour($colour);
-        echo html_writer::span(format_string($term->name),'badge mr-2 me-2',['style'=>'background:'.$colour.';color:'.$foreground]);
-    }
-    if (!$product->offers) { echo html_writer::tag('p',get_string('coursefulfilmentunavailable','local_storefront')); }
-    echo html_writer::end_div().html_writer::end_div().html_writer::end_div();
-}
+echo html_writer::start_div('local-storefront-product-grid mb-4');
+foreach($section['products'] as $product){echo \local_storefront\output\catalogue_view::card($product);}
 echo html_writer::end_div();
 }
 if (!$products) { echo $OUTPUT->notification(get_string('noproducts','local_storefront'),'info'); }

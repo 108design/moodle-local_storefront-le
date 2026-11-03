@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="100%" height="100%" viewBox="0 0 591 591" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 591 591" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(1,0,0,1,-7061.929134,-2066.929134)">
         <g transform="matrix(1,0,0,1,4995,0)">
-            <g id="_108design-storefront" transform="matrix(0.277523,0,0,0.277523,2018.032664,1875.447096)">
+            <g id="_108design-storefront" affinity:id="108design-storefront" transform="matrix(0.277523,0,0,0.277523,2018.032664,1875.447096)">
                 <g transform="matrix(1.15152,0,0,1.15152,-221.085533,-140.277644)">
                     <path d="M1730.953,721C1985.929,721 2192.937,928.008 2192.937,1182.984L2192.937,2106.953C2192.937,2361.929 1985.929,2568.937 1730.953,2568.937L806.984,2568.937C552.008,2568.937 345,2361.929 345,2106.953L345,1182.984C345,928.008 552.008,721 806.984,721L1730.953,721Z" style="fill:rgb(39,130,76);"/>
                 </g>
-                <g id="BrandShape" transform="matrix(0,-1.069939,1.069939,0,-720.752458,3533.036472)">
+                <g id="Frontpage" transform="matrix(0,-1.069939,1.069939,0,-720.752458,3533.036472)">
                     <g transform="matrix(1,0,0,0.505966,51.78937,875.161022)">
                         <rect x="1033" y="656" width="207.157" height="1234" style="fill:white;"/>
                     </g>

@@ -12,3 +12,9 @@ $callbacks = [
     ['hook' => \core\hook\output\before_standard_footer_html_generation::class,
         'callback' => \local_storefront\local\admin_help::class.'::footer'],
 ];
+
+// Product identity on native administration and upgrade surfaces.
+$callbacks[] = ['hook'=>\core\hook\output\before_standard_head_html_generation::class,
+    'callback'=>[\local_storefront\local\admin_branding::class,'head']];
+$callbacks[] = ['hook'=>\core\hook\output\before_http_headers::class,
+    'callback'=>[\local_storefront\local\admin_branding::class,'prepare']];

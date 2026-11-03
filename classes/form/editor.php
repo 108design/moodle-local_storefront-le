@@ -19,6 +19,7 @@ final class editor extends \moodleform {
             if ($required) { $m->addRule($name,null,'required',null,'client'); }
         };
         if ($mode === 'product') {
+            $m->addElement('header','contentheader',get_string('productcontent','local_storefront'));
             $text('identifier','identifier',PARAM_ALPHANUMEXT,true);
             if (!empty($this->_customdata['existing'])) { $m->hardFreeze('identifier'); }
             $m->addHelpButton('identifier','identifier','local_storefront');
@@ -29,6 +30,7 @@ final class editor extends \moodleform {
             $m->addElement('editor','description_editor',get_string('description'),null,
                 \local_storefront\local\product_content::editor_options());
             $m->setType('description_editor',PARAM_RAW);
+            $m->addElement('header','presentationheader',get_string('productpresentation','local_storefront'));
             $m->addElement('filemanager','productimage',get_string('productimage','local_storefront'),null,
                 \local_storefront\local\product_image::options());
             $m->addHelpButton('productimage','productimage','local_storefront');
@@ -58,6 +60,7 @@ final class editor extends \moodleform {
             $m->addHelpButton('magiclinkenabled','magiclinkenabled','local_storefront');
         }
         if (in_array($mode,['product','category','tag'],true)) {
+            $m->addElement('header','publicationheader',get_string('publication','local_storefront'));
             $m->addElement('advcheckbox','visible',get_string('visible','local_storefront')); $m->setDefault('visible',0);
         }
         if ($mode !== 'settings') { $text('sortorder','sortorder',PARAM_INT); $m->setDefault('sortorder',0); $m->addHelpButton('sortorder','sortorder','local_storefront'); }

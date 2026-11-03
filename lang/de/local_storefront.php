@@ -266,3 +266,14 @@ $string['storefront:managelegal'] = 'Rechtstexte verwalten';
 $string['courseaccessunavailable'] = 'Kurszugang derzeit nicht verfügbar';
 
 $string['state_expired'] = 'Abgelaufen';
+
+$string['viewproduct'] = 'Produkt ansehen';
+$string['pricefrom'] = 'Ab {$a}';
+$string['ordertotal'] = 'Gesamtbetrag';
+$string['includedcourses'] = 'Enthaltene Kurse';
+$string['oneoffpurchase'] = 'Einmalkauf';
+$string['orderreview'] = 'Bestellübersicht';
+$string['checkoutlegal'] = 'Rechtstexte';
+$string['productcontent'] = 'Produktinhalt';
+$string['productpresentation'] = 'Bild und Kategorien';
+$string['publication'] = 'Veröffentlichung und Reihenfolge';

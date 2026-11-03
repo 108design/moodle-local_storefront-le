@@ -17,8 +17,9 @@ $table->head=[get_string('productname','local_storefront'),get_string('visible',
 foreach ($DB->get_records('local_storefront_product',null,'sortorder,name,id') as $product) {
     $actions=[];
     foreach (['product_edit'=>['edit','id'],'offers'=>['offers','productid'],'course_mapping'=>['delivery','productid']] as $route=>[$label,$param]) {
-        $actions[]=html_writer::link(new moodle_url('/local/storefront/'.$route.'.php',[$param=>$product->id]),get_string($label,'local_storefront'));
+        $icons=['product_edit'=>'t/edit','offers'=>'i/payment','course_mapping'=>'i/course'];
+        $actions[]=\local_storefront\output\ui::icon_action(new moodle_url('/local/storefront/'.$route.'.php',[$param=>$product->id]),get_string($label,'local_storefront'),$icons[$route]);
     }
-    $table->data[]=[format_string($product->name),get_string($product->visible?'yes':'no'),$product->sortorder,implode(' · ',$actions)];
+    $table->data[]=[html_writer::link(new moodle_url('/local/storefront/product_edit.php',['id'=>$product->id]),format_string($product->name)),\local_storefront\output\ui::visibility_badge(get_string($product->visible?'yes':'no'),(bool)$product->visible),$product->sortorder,\local_storefront\output\ui::table_actions($actions)];
 }
 echo html_writer::table($table); echo $OUTPUT->footer();

@@ -21,13 +21,8 @@ foreach ($unavailable as $id) {
     echo $OUTPUT->notification(get_string('selectionunavailable','local_storefront'),'warning');
     echo page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$id]);
 }
-foreach ($items as $item) {
-    echo html_writer::start_div('card card-body mb-3');
-    echo html_writer::tag('h3',format_string($item->productname));
-    echo html_writer::tag('p',page::amount((float)$item->amount,$item->currency));
-    echo page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$item->id]);
-    echo html_writer::end_div();
-}
+if($items){echo \local_storefront\output\catalogue_view::summary($items,true);
+    echo html_writer::div(\local_storefront\output\catalogue_view::totals($items),'local-storefront-cart-summary');}
 if (!$items) { echo $OUTPUT->notification(get_string('cartempty','local_storefront'),'info'); }
 else if (!$unavailable) {
     echo page::post('cart_action',get_string('clearcart','local_storefront'),['action'=>'clear']);

@@ -27,30 +27,36 @@ final class page {
         global $OUTPUT;
         echo $OUTPUT->header();
         echo self::navigation($admin);
-        if ($title!=='storefront') { echo $OUTPUT->heading(get_string($title,'local_storefront')); }
+        if ($title!=='storefront') { echo \local_storefront\output\ui::page_header(get_string($title,'local_storefront')); }
     }
     public static function navigation(bool $admin = false): string {
-        $links = ['index'=>'storefront','cart'=>'cart','my'=>'mypurchases'];
-        $context=\context_system::instance();
-        if (has_capability('local/storefront:managecatalogue',$context)) {
-            $links += ['products'=>'manageproducts','categories'=>'categories','tags'=>'tags'];
+        global $PAGE;
+        $route=basename($PAGE->url->get_path(),'.php');
+        $current=match($route){'product','selection'=>'index','checkout','moodle_payment'=>'cart',
+            'product_edit','offers','offer_edit','course_mapping','ordering'=>'products',
+            'category_edit','category_to_tag'=>'categories','tag_edit'=>'tags',
+            'legal_edit','legal_settings','legal_delete','legal_preview'=>'legal_documents',default=>$route};
+        $public=[];
+        foreach(['index'=>'storefront','cart'=>'cart','my'=>'mypurchases'] as $target=>$label){
+            $public[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),get_string($label,'local_storefront'));
         }
-        if (has_capability('local/storefront:manageorders',$context)) {
-            $links += ['orders'=>'ordersaccess','communication_rules'=>'communication'];
+        $html=\html_writer::div(print_tabs([$public],$current,null,null,true),'local-storefront-public-tabs');
+        $links=[];$context=\context_system::instance();
+        if(has_capability('local/storefront:managecatalogue',$context)){$links+=['products'=>'manageproducts','categories'=>'categories','tags'=>'tags'];}
+        if(has_capability('local/storefront:manageorders',$context)){$links+=['orders'=>'ordersaccess','communication_rules'=>'communication'];}
+        if(has_capability('local/storefront:managelegal',$context)){$links['legal_documents']='legaldocuments';}
+        if(has_capability('moodle/site:config',$context)){$links['configuration']='settings';}
+        if($links){
+            $tabs=[];foreach($links as $target=>$label){$tabs[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),get_string($label,'local_storefront'));}
+            $html.=\html_writer::div(\html_writer::div(get_string('administration'),'local-storefront-navigation-label')
+                .print_tabs([$tabs],$current,null,null,true),'local-storefront-admin-tabs');
         }
-        if (has_capability('local/storefront:managelegal',$context)) { $links['legal_documents']='legaldocuments'; }
-        if (has_capability('moodle/site:config',$context)) { $links['configuration']='settings'; }
-        $items=[];
-        foreach ($links as $route=>$label) {
-            $items[]=\html_writer::link(new \moodle_url('/local/storefront/'.$route.'.php'),
-                get_string($label,'local_storefront'),['class'=>'btn btn-link']);
-        }
-        return \html_writer::tag('nav',implode(' ',$items),['class'=>'d-flex flex-wrap mb-4','aria-label'=>get_string('pluginname','local_storefront')]);
+        return $html;
     }
-    public static function post(string $route, string $label, array $params = []): string {
+    public static function post(string $route, string $label, array $params = [], string $class = 'btn btn-secondary'): string {
         $url = new \moodle_url('/local/storefront/'.$route.'.php');
         return \html_writer::tag('form', \html_writer::input_hidden_params(new \moodle_url($url, $params+['sesskey'=>sesskey()]))
-            .\html_writer::tag('button',s($label),['type'=>'submit','class'=>'btn btn-secondary']),
+            .\html_writer::tag('button',s($label),['type'=>'submit','class'=>$class]),
             ['method'=>'post','action'=>$url->out(false),'class'=>'d-inline-block me-2 mr-2 mb-2']);
     }
     public static function amount(float $amount, string $currency): string {

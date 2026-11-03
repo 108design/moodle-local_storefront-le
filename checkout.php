@@ -40,12 +40,22 @@ $SESSION->local_storefront_checkoutfingerprint=$fingerprint;
 page::header('checkout');
 echo html_writer::tag('p',get_string('accountpurchase','local_storefront',fullname($USER)));
 echo html_writer::tag('p',get_string('durationnote','local_storefront'));
-foreach ($items as $item) {
-    echo html_writer::tag('p',format_string($item->productname).' · '.page::amount((float)$item->amount,$item->currency));
-    foreach (\local_storefront\local\course_delivery::snapshots((int)$item->productid) as $course) {
-        echo html_writer::tag('p',format_string($course['coursefullname']).' · '.s($course['enrolperiod']?format_time($course['enrolperiod']):get_string('unlimitedaccess','local_storefront')),['class'=>'small']);
+echo html_writer::start_div('local-storefront-checkout-layout');
+echo html_writer::start_div();
+echo $OUTPUT->heading(get_string('orderreview','local_storefront'),3);
+echo \local_storefront\output\catalogue_view::summary($items);
+echo html_writer::div(\local_storefront\output\catalogue_view::totals($items),'local-storefront-cart-summary');
+foreach($items as $item){
+    echo html_writer::tag('h4',format_string($item->productname),['class'=>'h6']);
+    echo html_writer::start_tag('ul',['class'=>'small']);
+    foreach(\local_storefront\local\course_delivery::snapshots((int)$item->productid) as $course){
+        echo html_writer::tag('li',format_string($course['coursefullname']).' · '.s($course['enrolperiod']?format_time($course['enrolperiod']):get_string('unlimitedaccess','local_storefront')));
     }
+    echo html_writer::end_tag('ul');
 }
+echo html_writer::end_div();
+echo html_writer::start_div('local-storefront-checkout-legal');
+echo $OUTPUT->heading(get_string('checkoutlegal','local_storefront'),3);
 echo html_writer::start_tag('form',['method'=>'post']);
 echo html_writer::input_hidden_params(new moodle_url('/local/storefront/checkout.php',['sesskey'=>sesskey(),'intent'=>$SESSION->local_storefront_checkoutintent]));
 foreach (legal_service::checkout_documents() as $document) {
@@ -59,4 +69,5 @@ foreach (legal_service::checkout_documents() as $document) {
 }
 echo html_writer::tag('button',get_string('createpayment','local_storefront'),['type'=>'submit','class'=>'btn btn-primary']);
 echo html_writer::end_tag('form');
+echo html_writer::end_div().html_writer::end_div();
 echo $OUTPUT->footer();

@@ -266,3 +266,14 @@ $string['storefront:managelegal'] = 'Manage legal texts';
 $string['courseaccessunavailable'] = 'Course access is currently unavailable';
 
 $string['state_expired'] = 'Expired';
+
+$string['viewproduct'] = 'View product';
+$string['pricefrom'] = 'From {$a}';
+$string['ordertotal'] = 'Total';
+$string['includedcourses'] = 'Included courses';
+$string['oneoffpurchase'] = 'One-time purchase';
+$string['orderreview'] = 'Order summary';
+$string['checkoutlegal'] = 'Legal documents';
+$string['productcontent'] = 'Product content';
+$string['productpresentation'] = 'Image and categories';
+$string['publication'] = 'Publication and ordering';

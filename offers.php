@@ -16,7 +16,7 @@ page::header('offers',true);
 echo html_writer::link(new moodle_url('/local/storefront/offer_edit.php',['productid'=>$productid]),get_string('addoffer','local_storefront'),['class'=>'btn btn-primary mb-4']);
 $table=new html_table(); $table->head=[get_string('offername','local_storefront'),get_string('amount','local_storefront'),get_string('enabled','local_storefront'),get_string('actions')];
 foreach ($DB->get_records('local_storefront_offer',['productid'=>$productid],'sortorder,id') as $offer) {
-    $table->data[]=[format_string($offer->displayname),page::amount((float)$offer->amount,$offer->currency),get_string($offer->enabled?'yes':'no'),
-        html_writer::link(new moodle_url('/local/storefront/offer_edit.php',['id'=>$offer->id,'productid'=>$productid]),get_string('edit'))];
+    $table->data[]=[format_string($offer->displayname),page::amount((float)$offer->amount,$offer->currency),\local_storefront\output\ui::visibility_badge(get_string($offer->enabled?'yes':'no'),(bool)$offer->enabled),
+        \local_storefront\output\ui::icon_action(new moodle_url('/local/storefront/offer_edit.php',['id'=>$offer->id,'productid'=>$productid]),get_string('edit'),'t/edit')];
 }
 echo html_writer::table($table); echo $OUTPUT->footer();
