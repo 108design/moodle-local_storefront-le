@@ -48,7 +48,7 @@ final class page {
         if(has_capability('local/storefront:managelegal',$context)){$links['legal_documents']='legaldocuments';}
         if(has_capability('moodle/site:config',$context)){$links['configuration']='settings';}
         if($links){
-            $icons=['products'=>'i/course','categories'=>'i/folder','tags'=>'i/tag','orders'=>'i/payment','communication_rules'=>'t/message','legal_documents'=>'i/permissions','configuration'=>'i/settings'];
+            $icons=['products'=>'i/course','categories'=>'i/folder','tags'=>'fa-tags','orders'=>'i/payment','communication_rules'=>'t/message','legal_documents'=>'i/permissions','configuration'=>'i/settings'];
             $tabs=[];foreach($links as $target=>$label){$tabs[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),\local_storefront\output\ui::icon($icons[$target]).get_string($label,'local_storefront'),'',true);}
             $html.=\html_writer::div(\html_writer::div(get_string('administration'),'local-storefront-navigation-label')
                 .print_tabs([$tabs],$current,null,null,true),'local-storefront-admin-tabs');

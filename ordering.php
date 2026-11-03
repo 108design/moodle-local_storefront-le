@@ -32,7 +32,7 @@ foreach ($members as $member) {
     $actions='';
     foreach (['first','up','down','last'] as $direction) {
         $actions.=page::post('ordering',get_string('move_'.$direction,'local_storefront'),[
-            'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>$direction,'expected'=>$expected],'btn btn-secondary',match($direction){'first'=>'t/top','up'=>'t/up','down'=>'t/down','last'=>'t/bottom'},true);
+            'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>$direction,'expected'=>$expected],'btn btn-secondary',match($direction){'first'=>'t/angles-up','up'=>'t/up','down'=>'t/down','last'=>'t/angles-down'},true);
     }
     if ($kind==='product' && $scope!=='global') { $actions.=page::post('ordering',get_string('resetorder','local_storefront'),[
         'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>'reset','expected'=>$expected],'btn btn-secondary','i/reload',true); }
