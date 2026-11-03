@@ -14,7 +14,7 @@ $product=$DB->get_record('local_storefront_product',['id'=>$productid],'*',MUST_
 $PAGE->navbar->add(format_string($product->name),new moodle_url('/local/storefront/product_edit.php',['id'=>$productid]));
 page::header('offers',true);
 echo \local_storefront\output\ui::toolbar([
-    \local_storefront\output\ui::button(new moodle_url('/local/storefront/product_edit.php',['id'=>$productid]),format_string($product->name),'t/left'),
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/product_edit.php',['id'=>$productid]),html_to_text(format_string($product->name),0,false),'t/left'),
     \local_storefront\output\ui::button(new moodle_url('/local/storefront/offer_edit.php',['productid'=>$productid]),get_string('addoffer','local_storefront'),'t/add','btn btn-primary')]);
 $table=new html_table(); $table->head=[get_string('offername','local_storefront'),get_string('amount','local_storefront'),get_string('enabled','local_storefront'),get_string('actions')];
 foreach ($DB->get_records('local_storefront_offer',['productid'=>$productid],'sortorder,id') as $offer) {
