@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="local/storefront/db" VERSION="2026010100" COMMENT="Storefront course commerce">
+  <TABLES>
+    <TABLE NAME="local_storefront_product" COMMENT="Storefront catalogue products">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="plugincomponent" TYPE="char" LENGTH="100" NOTNULL="false"/>
+        <FIELD NAME="autofreeclaim" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="producttype" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="course"/>
+        <FIELD NAME="presentationjson" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="shortdescription" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="shortdescriptionformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="shortdescriptiontrust" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="description" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="descriptionformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="descriptiontrust" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="pricingheading" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="pricingintro" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="licenselabel" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="imageposition" TYPE="char" LENGTH="10" NOTNULL="true" DEFAULT="center"/>
+        <FIELD NAME="imagepositionx" TYPE="char" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="imagepositiony" TYPE="char" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="catalogueshowimage" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="catalogueshowtype" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="catalogueshowdescription" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="catalogueshowoffers" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="detailshowimage" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="detailshowtype" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="detailshowdescription" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="detailshowoffers" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES>
+        <INDEX NAME="identifier_uix" UNIQUE="true" FIELDS="identifier"/>
+        <INDEX NAME="plugincomponent_uix" UNIQUE="true" FIELDS="plugincomponent"/>
+        <INDEX NAME="catalogue_type_ix" UNIQUE="false" FIELDS="visible,producttype,sortorder"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_category" COMMENT="Freely defined thematic product categories">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="badgecolor" TYPE="char" LENGTH="120" NOTNULL="true" DEFAULT="oklch(94.165% 0.00518 247.88)"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES>
+        <INDEX NAME="identifier_uix" UNIQUE="true" FIELDS="identifier"/>
+        <INDEX NAME="visible_sort_ix" UNIQUE="false" FIELDS="visible,sortorder"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_productcat" COMMENT="Many-to-many product category assignments">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="productid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="categoryid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="product_fk" TYPE="foreign" FIELDS="productid" REFTABLE="local_storefront_product" REFFIELDS="id"/>
+        <KEY NAME="category_fk" TYPE="foreign" FIELDS="categoryid" REFTABLE="local_storefront_category" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="product_category_uix" UNIQUE="true" FIELDS="productid,categoryid"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_offer" COMMENT="Sellable product price and entitlement options">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="productid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="displayname" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="marketinglabel" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="shortdescription" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="featuresjson" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="buttonlabel" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="trialbuttonlabel" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="highlighted" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="presentationicon" TYPE="char" LENGTH="40" NOTNULL="true" DEFAULT="auto"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="channel" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="direct"/>
+        <FIELD NAME="billingtype" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="oneoff"/>
+        <FIELD NAME="currency" TYPE="char" LENGTH="3" NOTNULL="true" DEFAULT="EUR"/>
+        <FIELD NAME="amount" TYPE="number" LENGTH="20" DECIMALS="6" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="stripesourcemode" TYPE="char" LENGTH="10" NOTNULL="true" DEFAULT="moodle"/>
+        <FIELD NAME="stripepriceid" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="stripeproductid" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="stripeactive" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="stripesyncedat" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="billinginterval" TYPE="char" LENGTH="20" NOTNULL="false"/>
+        <FIELD NAME="billingintervalcount" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="licensetermmonths" TYPE="int" LENGTH="3" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="licensekind" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="regular"/>
+        <FIELD NAME="extensionallowed" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="entitlementsjson" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="activationlimit" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="productionslots" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="developmentslots" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="trialenabled" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="trialpolicycode" TYPE="char" LENGTH="100" NOTNULL="true" DEFAULT="standard-1-live-1-dev"/>
+        <FIELD NAME="trialdurationdays" TYPE="int" LENGTH="3" NOTNULL="true" DEFAULT="14"/>
+        <FIELD NAME="enabled" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="product_fk" TYPE="foreign" FIELDS="productid" REFTABLE="local_storefront_product" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="product_identifier_uix" UNIQUE="true" FIELDS="productid,identifier"/>
+        <INDEX NAME="catalogue_offer_ix" UNIQUE="false" FIELDS="productid,channel,enabled,trialenabled"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_offercurrency" COMMENT="Stripe currency-option snapshots for direct offers">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="offerid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="currency" TYPE="char" LENGTH="3" NOTNULL="true"/>
+        <FIELD NAME="amount" TYPE="number" LENGTH="20" DECIMALS="6" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="unitamountdecimal" TYPE="char" LENGTH="50" NOTNULL="true"/>
+        <FIELD NAME="isdefault" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="taxbehavior" TYPE="char" LENGTH="20" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="offer_fk" TYPE="foreign" FIELDS="offerid" REFTABLE="local_storefront_offer" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="offer_currency_uix" UNIQUE="true" FIELDS="offerid,currency"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_order" COMMENT="Orders created before payment and fulfilled by verified provider events">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="orderkey" TYPE="char" LENGTH="36" NOTNULL="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="email" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="customerlang" TYPE="char" LENGTH="20" NOTNULL="false"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="channel" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="direct"/>
+        <FIELD NAME="paymentenvironment" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="unknown"/>
+        <FIELD NAME="currency" TYPE="char" LENGTH="3" NOTNULL="true" DEFAULT="EUR"/>
+        <FIELD NAME="total" TYPE="number" LENGTH="20" DECIMALS="6" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="providercheckoutid" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="providerpaymentid" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="providersubscriptionid" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="provideraccountid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="accessstatus" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="active"/>
+        <FIELD NAME="accessreason" TYPE="char" LENGTH="50" NOTNULL="false"/>
+        <FIELD NAME="accesssuspendat" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="claimtokenhash" TYPE="char" LENGTH="64" NOTNULL="false"/>
+        <FIELD NAME="recoverytokenhash" TYPE="char" LENGTH="64" NOTNULL="false"/>
+        <FIELD NAME="activationemailsent" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timecompleted" TYPE="int" LENGTH="10" NOTNULL="false"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES>
+        <INDEX NAME="orderkey_uix" UNIQUE="true" FIELDS="orderkey"/>
+        <INDEX NAME="user_ix" UNIQUE="false" FIELDS="userid"/>
+        <INDEX NAME="providercheckout_uix" UNIQUE="true" FIELDS="providercheckoutid"/>
+        <INDEX NAME="providersubscription_ix" UNIQUE="false" FIELDS="providersubscriptionid"/>
+        <INDEX NAME="accessdeadline_ix" UNIQUE="false" FIELDS="accessstatus,accesssuspendat"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_orderline" COMMENT="Immutable purchased offer snapshot">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="orderid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="offerid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="productname" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="offeringjson" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="snapshotversion" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="snapshothash" TYPE="char" LENGTH="64" NOTNULL="true"/>
+        <FIELD NAME="amount" TYPE="number" LENGTH="20" DECIMALS="6" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="order_fk" TYPE="foreign" FIELDS="orderid" REFTABLE="local_storefront_order" REFFIELDS="id"/>
+        <KEY NAME="offer_fk" TYPE="foreign" FIELDS="offerid" REFTABLE="local_storefront_offer" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_storefront_line_state" COMMENT="Mutable payment fulfilment and access state for one immutable order line">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="orderlineid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="paymentstatus" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="fulfilmentstatus" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="accessstatus" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="accessreason" TYPE="char" LENGTH="100" NOTNULL="false"/>
+        <FIELD NAME="accesssuspendat" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="currentperiodstart" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="currentperiodend" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="cancelatperiodend" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecancelled" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="lastproviderstate" TYPE="char" LENGTH="50" NOTNULL="false"/>
+        <FIELD NAME="timelastproviderevent" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="reviewreason" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="pendingeffects" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="orderline_fk" TYPE="foreign-unique" FIELDS="orderlineid" REFTABLE="local_storefront_orderline" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="accessdeadline_ix" UNIQUE="false" FIELDS="accessstatus,accesssuspendat"/>
+        <INDEX NAME="payment_fulfilment_ix" UNIQUE="false" FIELDS="paymentstatus,fulfilmentstatus"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_legaldoc" COMMENT="Stable identities and checkout rules for Storefront legal documents">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="defaultlang" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="und"/>
+        <FIELD NAME="editversion" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="currentrevisionid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="showincheckout" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="requireconfirmation" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES>
+        <INDEX NAME="identifier_uix" UNIQUE="true" FIELDS="identifier"/>
+        <INDEX NAME="checkout_ix" UNIQUE="false" FIELDS="visible,showincheckout,sortorder"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_legalrev" COMMENT="Immutable Storefront legal document revisions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="documentid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="revisionnumber" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="content" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="contentformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="lang" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="und"/>
+        <FIELD NAME="renderedcontent" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="timepublished" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="contenthash" TYPE="char" LENGTH="64" NOTNULL="true"/>
+        <FIELD NAME="createdby" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="document_fk" TYPE="foreign" FIELDS="documentid" REFTABLE="local_storefront_legaldoc" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES><INDEX NAME="document_revision_uix" UNIQUE="true" FIELDS="documentid,revisionnumber"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_legallang" COMMENT="Current explicitly published language versions per legal document">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="documentid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="lang" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="und"/>
+        <FIELD NAME="currentrevisionid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="draftrevisionid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="published" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="document_fk" TYPE="foreign" FIELDS="documentid" REFTABLE="local_storefront_legaldoc" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES><INDEX NAME="document_lang_uix" UNIQUE="true" FIELDS="documentid,lang"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_orderlegal" COMMENT="Legal document revisions presented or accepted with an order">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="orderid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="source" TYPE="char" LENGTH="30" NOTNULL="true"/>
+        <FIELD NAME="sourceid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="revisionid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="lang" TYPE="char" LENGTH="30" NOTNULL="true" DEFAULT="und"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="contenthash" TYPE="char" LENGTH="64" NOTNULL="true"/>
+        <FIELD NAME="required" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timeaccepted" TYPE="int" LENGTH="10" NOTNULL="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="order_fk" TYPE="foreign" FIELDS="orderid" REFTABLE="local_storefront_order" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES><INDEX NAME="order_source_uix" UNIQUE="true" FIELDS="orderid,source,sourceid"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_tag" COMMENT="Store-owned editorial product tags">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="identifier" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true"/>
+        <FIELD NAME="badgecolor" TYPE="char" LENGTH="120" NOTNULL="true" DEFAULT="oklch(94.165% 0.00518 247.88)"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES><INDEX NAME="identifier_uix" UNIQUE="true" FIELDS="identifier"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_producttag" COMMENT="Many-to-many product tag assignments">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="productid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="tagid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="product_fk" TYPE="foreign" FIELDS="productid" REFTABLE="local_storefront_product" REFFIELDS="id"/>
+        <KEY NAME="tag_fk" TYPE="foreign" FIELDS="tagid" REFTABLE="local_storefront_tag" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES><INDEX NAME="product_tag_uix" UNIQUE="true" FIELDS="productid,tagid"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_sort" COMMENT="Optional product order within editorial groups">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="scope" TYPE="char" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="groupid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="productid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="product_fk" TYPE="foreign" FIELDS="productid" REFTABLE="local_storefront_product" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES><INDEX NAME="scope_product_uix" UNIQUE="true" FIELDS="scope,groupid,productid"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_comrule" COMMENT="Language-specific presentation rules for the fixed transactional communication catalogue">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="eventtype" TYPE="char" LENGTH="50" NOTNULL="true"/>
+        <FIELD NAME="language" TYPE="char" LENGTH="20" NOTNULL="true"/>
+        <FIELD NAME="delayminutes" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="subject" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="body" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="adminemails" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="modifiedby" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES><INDEX NAME="event_language_uix" UNIQUE="true" FIELDS="eventtype,language"/></INDEXES>
+    </TABLE>
+    <TABLE NAME="local_storefront_comqueue" COMMENT="Retryable per-recipient transactional communication outbox and delivery ledger">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="eventtype" TYPE="char" LENGTH="50" NOTNULL="true"/>
+        <FIELD NAME="dedupekey" TYPE="char" LENGTH="64" NOTNULL="true"/>
+        <FIELD NAME="orderid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="orderlineid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="licenseid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="recipienttype" TYPE="char" LENGTH="20" NOTNULL="true"/>
+        <FIELD NAME="recipientuserid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="recipientemail" TYPE="char" LENGTH="255" NOTNULL="false"/>
+        <FIELD NAME="recipienthash" TYPE="char" LENGTH="64" NOTNULL="true"/>
+        <FIELD NAME="language" TYPE="char" LENGTH="20" NOTNULL="true"/>
+        <FIELD NAME="payload" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="attempts" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="availableat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="processinguntil" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="timesent" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="lasterror" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS><KEY NAME="primary" TYPE="primary" FIELDS="id"/></KEYS>
+      <INDEXES>
+        <INDEX NAME="license_ix" UNIQUE="false" FIELDS="licenseid"/>
+        <INDEX NAME="dedupe_uix" UNIQUE="true" FIELDS="dedupekey"/>
+        <INDEX NAME="status_available_ix" UNIQUE="false" FIELDS="status,availableat"/>
+        <INDEX NAME="order_ix" UNIQUE="false" FIELDS="orderid,orderlineid"/>
+        <INDEX NAME="recipient_user_ix" UNIQUE="false" FIELDS="recipientuserid,status"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

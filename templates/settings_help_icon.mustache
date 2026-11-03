@@ -1,0 +1,26 @@
+{{!
+This file is part of a 108design source-available software product.
+
+Use and modification are permitted only under the Software License included
+with this distribution. See LICENSE.md for the full terms.
+
+File documentation for templates/settings_help_icon.mustache.
+
+@package   local_storefront
+@copyright 2026 Andreas Giesen <andreas@108design.com>
+@license   See LICENSE.md for the full terms.
+}}
+{{!
+    @template local_storefront/settings_help_icon
+    Native Moodle information popover with a link to the matching settings-help topic.
+}}
+<button type="button" class="btn btn-link p-0 me-2 icon-no-margin help-icon text-info local-storefront-context-help-icon"
+{{^legacy}}data-bs-container="body" data-bs-toggle="popover" data-bs-custom-class="help-popover"
+    data-bs-placement="{{#ltr}}right{{/ltr}}{{^ltr}}left{{/ltr}}"
+    data-bs-content="{{text}} {{completedoclink}}" data-bs-html="true"
+{{/legacy}}{{#legacy}}data-container="body" data-toggle="popover"
+    data-placement="{{#ltr}}right{{/ltr}}{{^ltr}}left{{/ltr}}"
+    data-content="{{text}} {{completedoclink}}" data-html="true" data-trigger="focus"
+{{/legacy}}tabindex="0" aria-label="{{title}}">
+    {{#pix}}{{infoicon}}, core, {{{alt}}}{{/pix}}
+</button>

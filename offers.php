@@ -1,0 +1,22 @@
+<?php
+/**
+ * @package local_storefront
+ * @copyright 2026 Andreas Giesen <andreas@108design.com>
+ * @license 108design source-available software license; see LICENSE.md
+ */
+// Copyright (C) 2026 Andreas Giesen. Use and modification under LICENSE.md.
+require_once(__DIR__.'/../../config.php');
+use local_storefront\local\{page,product_service,category_service,tag_service,course_delivery};
+
+$productid=required_param('productid',PARAM_INT);
+page::setup('offers','offers','local/storefront:managecatalogue',['productid'=>$productid]);
+$product=$DB->get_record('local_storefront_product',['id'=>$productid],'*',MUST_EXIST);
+$PAGE->navbar->add(format_string($product->name),new moodle_url('/local/storefront/product_edit.php',['id'=>$productid]));
+page::header('offers',true);
+echo html_writer::link(new moodle_url('/local/storefront/offer_edit.php',['productid'=>$productid]),get_string('addoffer','local_storefront'),['class'=>'btn btn-primary mb-4']);
+$table=new html_table(); $table->head=[get_string('offername','local_storefront'),get_string('amount','local_storefront'),get_string('enabled','local_storefront'),get_string('actions')];
+foreach ($DB->get_records('local_storefront_offer',['productid'=>$productid],'sortorder,id') as $offer) {
+    $table->data[]=[format_string($offer->displayname),page::amount((float)$offer->amount,$offer->currency),get_string($offer->enabled?'yes':'no'),
+        html_writer::link(new moodle_url('/local/storefront/offer_edit.php',['id'=>$offer->id,'productid'=>$productid]),get_string('edit'))];
+}
+echo html_writer::table($table); echo $OUTPUT->footer();

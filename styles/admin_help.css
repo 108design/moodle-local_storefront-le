@@ -1,0 +1,151 @@
+/* Contextual help scoped to this plugin's registered pages and native course-mapping form. */
+body.local-storefront-admin-help-page {
+    --local-storefront-help-width: 24rem;
+    --local-storefront-help-top: 4rem;
+}
+body.local-storefront-admin-help-page #page.drawers { transition: none; }
+.local-storefront-context-help[hidden] { display: none !important; }
+.local-storefront-context-help {
+    position: fixed;
+    inset-block-start: var(--local-storefront-help-top, 4rem);
+    inset-block-end: 1rem;
+    inset-inline-end: 1rem;
+    width: var(--local-storefront-help-width, 24rem);
+    max-width: calc(100vw - 2rem);
+    display: flex;
+    flex-direction: column;
+    background: var(--bs-body-bg, #fff);
+    color: var(--bs-body-color, #212529);
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    border-radius: var(--bs-border-radius, .5rem);
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, .12);
+    /* Above page/editor action bars (1025/1026), below the navbar and modals. */
+    z-index: 1027;
+}
+.local-storefront-help-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+    flex: 0 0 auto;
+}
+.local-storefront-help-header > h2 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.local-storefront-help-close {
+    flex: 0 0 auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.local-storefront-help-choices { padding: 1rem; flex: 0 0 auto; }
+.local-storefront-help-content {
+    padding: 0 1rem 1rem;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+@media (min-width: 992px) {
+    body.local-storefront-admin-help-page.local-storefront-help-open #page.drawers {
+        margin-inline-end: calc(var(--local-storefront-help-width) + 2rem);
+    }
+}
+@media (max-width: 991.98px) {
+    .local-storefront-context-help { width: calc(100vw - 2rem); inset-block-end: .5rem; }
+}
+
+/* Context entry is registered by the current page before its header is rendered. */
+.local-storefront-help-navbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    min-height: 2.75rem;
+    border: 0;
+    margin-inline: 0;
+    background: transparent;
+}
+.local-storefront-help-navbar .icon { margin: 0; width: 1rem; height: 1rem; }
+/* Older Core has no exclusive drawer API. Mask only while help is open; preserve native drawer state/preferences. */
+body.local-storefront-help-legacy-drawers.local-storefront-help-open .drawer.drawer-right { visibility: hidden; pointer-events: none; }
+
+/* Keep Moodle's native flex/block field layout and intrinsic control widths.
+   Reserve only the small space occupied by linked help, including on wide widgets. */
+.mform .local-storefront-form-help-field > :not(.local-storefront-form-help):not(.form-control-feedback):not(.form-check) {
+    max-width: calc(100% - 2rem);
+}
+.mform .local-storefront-form-help-field > .local-storefront-form-help,
+.mform .local-storefront-form-help-field > .form-check > .local-storefront-form-help {
+    flex: none;
+    margin: 0 !important;
+    margin-inline-start: .5rem !important;
+    padding-top: .45rem;
+}
+.mform .local-storefront-form-help-field > .form-check > .local-storefront-form-help { padding-top: 0; }
+
+/* Keep native labels, aligning only short help to the label-column edge. */
+.mform .local-storefront-form-help-label > .form-label-addon { margin-inline-start: auto; }
+
+/* Shared topic-first help header; the title below belongs to the selected article. */
+
+.local-storefront-help-header { align-items: flex-start; }
+.local-storefront-help-header > h2 { margin: 0; }
+.local-storefront-help-choices { padding: 0; flex: 1 1 auto; min-width: 0; }
+.local-storefront-help-choices .form-label {
+    display: block; font-size: .75rem; font-weight: 600; line-height: 1.4;
+    color: var(--bs-secondary-color, #6c757d); margin: 0 0 .35rem;
+}
+.local-storefront-help-choices select { width: 100%; max-width: 100%; }
+.local-storefront-help-close {
+    flex: 0 0 auto; width: 2.25rem; height: 2.25rem; padding: 0;
+    font-size: 1.5rem; line-height: 1; margin: 0;
+}
+.local-storefront-help-content { padding-block-start: 1rem; }
+.local-storefront-help-content article > h3 {
+    font-size: 1rem; font-weight: 600; line-height: 1.4; margin: 0 0 .75rem;
+}
+
+/* Shared help identity: original 24px SVG above close, close beside the topic selector. */
+.local-storefront-help-header-branded {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2.25rem;
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+    row-gap: .35rem;
+    align-items: center;
+}
+.local-storefront-help-header-branded .local-storefront-help-choices { display: contents; }
+.local-storefront-help-header-branded .local-storefront-help-choices > label {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+}
+.local-storefront-help-header-branded .local-storefront-help-choices > select {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+}
+.local-storefront-help-brand {
+    grid-column: 2;
+    grid-row: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 1.5625rem;
+    height: 1.5rem;
+    cursor: default;
+}
+.local-storefront-help-brand img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.local-storefront-help-header-branded .local-storefront-help-close {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+}
