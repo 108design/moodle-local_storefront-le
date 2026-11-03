@@ -278,7 +278,7 @@ $string['productcontent'] = 'Product content';
 $string['productpresentation'] = 'Image and categories';
 $string['publication'] = 'Publication and ordering';
 
-$string['viewcartcount'] = 'View cart ({$a} items)';
+$string['viewcartcount'] = 'View cart ({$a})';
 $string['viewcart'] = 'View cart';
 $string['logincheckout'] = 'Sign in to checkout';
 $string['cartupdatefailed'] = 'The cart could not be updated. Please try again.';

@@ -278,7 +278,7 @@ $string['productcontent'] = 'Produktinhalt';
 $string['productpresentation'] = 'Bild und Kategorien';
 $string['publication'] = 'Veröffentlichung und Reihenfolge';
 
-$string['viewcartcount'] = 'Warenkorb ansehen ({$a} Positionen)';
+$string['viewcartcount'] = 'Warenkorb ansehen ({$a})';
 $string['viewcart'] = 'Warenkorb ansehen';
 $string['logincheckout'] = 'Zur Kasse anmelden';
 $string['cartupdatefailed'] = 'Der Warenkorb konnte nicht aktualisiert werden. Bitte versuche es erneut.';
