@@ -12,7 +12,7 @@ page::setup('configuration','settings','moodle/site:config');
 $data=(object)['storevisibility'=>\local_storefront\local\store_access::mode(),
     'moodlepaymentaccountid'=>\local_storefront\local\moodle_payment_config::account_id(),
     'magiclinkenabled'=>get_config('local_storefront','magiclinkenabled')];
-$form=new \local_storefront\form\editor($PAGE->url,['mode'=>'settings']); $form->set_data($data);
+$form=new \local_storefront\form\editor($PAGE->url,['mode'=>'settings','paymentaccounts'=>\core_payment\helper::get_payment_accounts_menu(context_system::instance())]); $form->set_data($data);
 if ($form->is_cancelled()) { redirect(new moodle_url('/local/storefront/products.php')); }
 if ($submitted=$form->get_data()) {
     if (!in_array($submitted->storevisibility,['public','authenticated','editors'],true)

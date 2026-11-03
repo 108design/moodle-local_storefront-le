@@ -282,3 +282,9 @@ $string['viewcartcount'] = 'Warenkorb ansehen ({$a})';
 $string['viewcart'] = 'Warenkorb ansehen';
 $string['logincheckout'] = 'Zur Kasse anmelden';
 $string['cartupdatefailed'] = 'Der Warenkorb konnte nicht aktualisiert werden. Bitte versuche es erneut.';
+
+$string['ordernumber'] = 'Bestellung';
+
+$string['orderheading'] = 'Bestellung #{$a}';
+
+$string['moodlepaymentnoaccounts'] = 'Lege unter Website-Administration → Zahlungen → Zahlungskonten ein aktives Moodle-Zahlungskonto an und wähle es anschließend hier aus.';

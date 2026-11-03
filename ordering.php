@@ -16,6 +16,7 @@ if (data_submitted()) {
 $members=catalogue_order::members($kind,$scope,$groupid);$expected=catalogue_order::fingerprint($members);
 page::header('ordering',true);
 echo html_writer::tag('p',get_string('orderingintro','local_storefront'));
+echo html_writer::start_div('local-storefront-toolbar mb-4');
 echo html_writer::link(new moodle_url('/local/storefront/ordering.php',['kind'=>$kind]),get_string('globalorder','local_storefront'),['class'=>'btn btn-link']);
 if ($kind==='product') {
     foreach (['category'=>category_service::all(),'tag'=>tag_service::all()] as $type=>$groups) {
@@ -25,15 +26,16 @@ if ($kind==='product') {
         }
     }
 }
+echo html_writer::end_div();
 $table=new html_table();$table->head=[get_string('name','local_storefront'),get_string('actions')];
 foreach ($members as $member) {
     $actions='';
     foreach (['first','up','down','last'] as $direction) {
         $actions.=page::post('ordering',get_string('move_'.$direction,'local_storefront'),[
-            'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>$direction,'expected'=>$expected]);
+            'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>$direction,'expected'=>$expected],'btn btn-secondary',match($direction){'first'=>'t/top','up'=>'t/up','down'=>'t/down','last'=>'t/bottom'},true);
     }
     if ($kind==='product' && $scope!=='global') { $actions.=page::post('ordering',get_string('resetorder','local_storefront'),[
-        'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>'reset','expected'=>$expected]); }
-    $table->data[]=[format_string($member->name),$actions];
+        'kind'=>$kind,'scope'=>$scope,'groupid'=>$groupid,'id'=>$member->id,'direction'=>'reset','expected'=>$expected],'btn btn-secondary','i/reload',true); }
+    $table->data[]=[format_string($member->name),html_writer::div($actions,'local-storefront-table-actions')];
 }
-echo html_writer::table($table);echo $OUTPUT->footer();
+echo html_writer::div(html_writer::table($table),'table-responsive');echo $OUTPUT->footer();

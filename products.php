@@ -10,8 +10,9 @@ use local_storefront\local\{page,product_service,category_service,tag_service,co
 
 page::setup('products','manageproducts','local/storefront:managecatalogue');
 page::header('manageproducts',true);
-echo html_writer::link(new moodle_url('/local/storefront/product_edit.php'),get_string('addproduct','local_storefront'),['class'=>'btn btn-primary mb-4']);
-echo html_writer::link(new moodle_url('/local/storefront/ordering.php'),get_string('ordering','local_storefront'),['class'=>'btn btn-secondary mb-4 ml-2 ms-2']);
+echo \local_storefront\output\ui::toolbar([
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/product_edit.php'),get_string('addproduct','local_storefront'),'t/add','btn btn-primary'),
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/ordering.php'),get_string('ordering','local_storefront'),'t/sort')]);
 $table=new html_table(); $table->attributes['class']='generaltable mb-4';
 $table->head=[get_string('productname','local_storefront'),get_string('visible','local_storefront'),get_string('sortorder','local_storefront'),get_string('actions')];
 foreach ($DB->get_records('local_storefront_product',null,'sortorder,name,id') as $product) {
@@ -22,4 +23,4 @@ foreach ($DB->get_records('local_storefront_product',null,'sortorder,name,id') a
     }
     $table->data[]=[html_writer::link(new moodle_url('/local/storefront/product_edit.php',['id'=>$product->id]),format_string($product->name)),\local_storefront\output\ui::visibility_badge(get_string($product->visible?'yes':'no'),(bool)$product->visible),$product->sortorder,\local_storefront\output\ui::table_actions($actions)];
 }
-echo html_writer::table($table); echo $OUTPUT->footer();
+echo html_writer::div(html_writer::table($table),'table-responsive'); echo $OUTPUT->footer();

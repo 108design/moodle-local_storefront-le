@@ -377,3 +377,14 @@ a.local-storefront-category-badge:focus {
 .local-storefront-selection-dialog [data-storefront-cart-status]:not(:empty) {padding-block:1rem;color:var(--bs-danger,#b02a37);}
 .local-storefront-selection-dialog :is(a,button):focus-visible {outline:3px solid var(--bs-primary,#0f6cbf);outline-offset:3px;}
 .local-storefront-selection-open {overflow:hidden;}
+
+/* Existing management controls share one wrapping and spacing contract. */
+.local-storefront-toolbar,.local-storefront-filterbar {display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;}
+.local-storefront-toolbar .btn {display:inline-flex;align-items:center;gap:.4rem;}
+.local-storefront-toolbar .icon {margin:0;}
+.local-storefront-filterbar {align-items:flex-end;}
+.local-storefront-filter-field {display:flex;flex-direction:column;gap:.25rem;min-width:min(15rem,100%);max-width:100%;}
+.local-storefront-filter-field select {width:100%;}
+.local-storefront-post-form {display:inline-flex;margin:0 .5rem .5rem 0;}
+.local-storefront-admin-tabs .icon {margin-inline-end:.45rem;}
+@media(max-width:575.98px){.local-storefront-filter-field{flex:1 1 100%;}.local-storefront-toolbar{align-items:stretch;}.local-storefront-toolbar>.btn{justify-content:center;}}

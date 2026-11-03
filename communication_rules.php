@@ -35,9 +35,9 @@ page::header('communication',true);
 echo html_writer::tag('p',get_string('communicationintro','local_storefront'));
 echo html_writer::link(new moodle_url($PAGE->url,['language'=>$language==='en'?'de':'en']),$language==='en'?'Deutsch':'English',['class'=>'btn btn-link mb-3']);
 $form->display();
-$table=new html_table(); $table->head=[get_string('orderstatus','local_storefront'),get_string('mailstatus','local_storefront'),get_string('attempts','local_storefront'),get_string('actions')];
+$table=new html_table(); $table->head=[get_string('ordernumber','local_storefront'),get_string('mailstatus','local_storefront'),get_string('attempts','local_storefront'),get_string('actions')];
 foreach ($DB->get_records('local_storefront_comqueue',null,'id DESC','*',0,50) as $row) {
-    $table->data[]=[(int)$row->orderid,s($row->status),(int)$row->attempts,
-        $row->status==='failed'?page::post('communication_rules',get_string('retrymail','local_storefront'),['retry'=>$row->id]):''];
+    $table->data[]=[(int)$row->orderid,\local_storefront\output\ui::status_badge(get_string('state_'.$row->status,'local_storefront'),$row->status==='failed'?'danger':($row->status==='sent'?'success':'warning')),(int)$row->attempts,
+        $row->status==='failed'?page::post('communication_rules',get_string('retrymail','local_storefront'),['retry'=>$row->id],'btn btn-secondary','i/reload',true):''];
 }
-echo html_writer::table($table); echo $OUTPUT->footer();
+echo html_writer::div(html_writer::table($table),'table-responsive'); echo $OUTPUT->footer();

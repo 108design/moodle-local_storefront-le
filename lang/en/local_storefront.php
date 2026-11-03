@@ -159,7 +159,7 @@ $string['storevisibility_help'] = 'Choose who may browse the catalogue. Buyers m
 $string['audiencepublic'] = 'Public';
 $string['audienceauthenticated'] = 'Signed-in Users';
 $string['audienceeditors'] = 'Store Editors';
-$string['paymentaccount'] = 'Moodle Payment Account ID';
+$string['paymentaccount'] = 'Moodle payment account';
 $string['paymentaccount_help'] = 'Select an enabled account from Moodle payment accounts. Configure its gateway and test its sandbox before accepting payments.';
 $string['magiclinkenabled'] = 'Offer Magic Link Sign-in';
 $string['magiclinkenabled_help'] = 'Shows the optional sign-in route when auth_magiclink is installed and enabled. Its account-creation, administrator and MFA policies apply. The selection returns to the cart after sign-in.';
@@ -282,3 +282,9 @@ $string['viewcartcount'] = 'View cart ({$a})';
 $string['viewcart'] = 'View cart';
 $string['logincheckout'] = 'Sign in to checkout';
 $string['cartupdatefailed'] = 'The cart could not be updated. Please try again.';
+
+$string['ordernumber'] = 'Order';
+
+$string['orderheading'] = 'Order #{$a}';
+
+$string['moodlepaymentnoaccounts'] = 'Create and enable a Moodle payment account under Site administration → Payments → Payment accounts, then select it here.';

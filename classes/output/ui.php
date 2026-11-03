@@ -10,7 +10,7 @@ defined('MOODLE_INTERNAL') || die();
 final class ui {
     public const ICON_LEGAL = 'fa-scale-balanced';
     /** Render either a Moodle pix icon or an explicitly requested Font Awesome icon. */
-    private static function icon(string $icon): string {
+    public static function icon(string $icon): string {
         global $OUTPUT;
 
         if (str_starts_with($icon, 'fa-')) {
@@ -39,6 +39,13 @@ final class ui {
             ] + $attributes);
     }
 
+
+    public static function button(\moodle_url $url,string $label,string $icon,string $class='btn btn-outline-secondary'): string {
+        return \html_writer::link($url,self::icon($icon).\html_writer::span(s($label)),['class'=>$class]);
+    }
+    public static function toolbar(array $actions): string {
+        return \html_writer::div(implode('',array_filter($actions)),'local-storefront-toolbar mb-4');
+    }
 
     public static function page_header(string $title, array $actions=[]): string {
         return \html_writer::div(\html_writer::tag('h2',$title,['class'=>'mb-0']).($actions?self::actionbar($actions):''),

@@ -55,7 +55,10 @@ final class editor extends \moodleform {
                 'public'=>get_string('audiencepublic','local_storefront'),'authenticated'=>get_string('audienceauthenticated','local_storefront'),
                 'editors'=>get_string('audienceeditors','local_storefront')]);
             $m->addHelpButton('storevisibility','storevisibility','local_storefront');
-            $text('moodlepaymentaccountid','paymentaccount',PARAM_INT,true); $m->addHelpButton('moodlepaymentaccountid','paymentaccount','local_storefront');
+            $accounts=(array)($this->_customdata['paymentaccounts']??[]);
+            $m->addElement('select','moodlepaymentaccountid',get_string('paymentaccount','local_storefront'),[0=>get_string('choosedots')]+$accounts);
+            $m->setType('moodlepaymentaccountid',PARAM_INT);
+            if(!$accounts){$m->addElement('static','paymentaccountnotice','',get_string('moodlepaymentnoaccounts','local_storefront'));} $m->addHelpButton('moodlepaymentaccountid','paymentaccount','local_storefront');
             $m->addElement('advcheckbox','magiclinkenabled',get_string('magiclinkenabled','local_storefront'));
             $m->addHelpButton('magiclinkenabled','magiclinkenabled','local_storefront');
         }

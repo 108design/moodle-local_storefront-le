@@ -22,5 +22,7 @@ $form=new \local_storefront\form\editor($PAGE->url,['mode'=>'product','existing'
 if ($form->is_cancelled()) { redirect(new moodle_url('/local/storefront/products.php')); }
 if ($submitted=$form->get_data()) { $id=product_service::save($submitted); redirect(new moodle_url('/local/storefront/product_edit.php',['id'=>$id])); }
 page::header('editproduct',true);
-if ($id) { foreach (['offers'=>'offers','course_mapping'=>'delivery'] as $route=>$label) { echo html_writer::link(new moodle_url('/local/storefront/'.$route.'.php',['productid'=>$id]),get_string($label,'local_storefront'),['class'=>'btn btn-secondary mr-2 me-2 mb-3']); } }
+if ($id) { echo \local_storefront\output\ui::toolbar([
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/offers.php',['productid'=>$id]),get_string('offers','local_storefront'),'i/payment'),
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/course_mapping.php',['productid'=>$id]),get_string('delivery','local_storefront'),'i/course')]); }
 $form->display(); echo $OUTPUT->footer();
