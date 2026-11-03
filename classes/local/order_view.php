@@ -12,6 +12,7 @@ final class order_view {
         global $DB, $USER;
         $html='';
         foreach ($orders as $order) {
+            $buyer = $DB->get_record('user', ['id' => $order->userid, 'deleted' => 0, 'suspended' => 0, 'confirmed' => 1]);
             $html.=\html_writer::start_div('card card-body mb-4');
             $html.=\html_writer::tag('h3',s($order->orderkey),['class'=>'h5']);
             $html.=\html_writer::tag('p',get_string('orderstatus','local_storefront').': '.self::state($order->status)
@@ -28,8 +29,17 @@ final class order_view {
                     foreach ($DB->get_records('enrol_storefront_purchase',['orderlineid'=>$line->id,'userid'=>$order->userid]) as $purchase) {
                         $course=$DB->get_record('course',['id'=>$purchase->courseid]);
                         $end=$purchase->timeend?userdate($purchase->timeend):get_string('unlimitedaccess','local_storefront');
-                        $label=format_string($course->fullname??$line->productname).' · '.self::state($purchase->status).' · '.s($end);
-                        $access[]=($course && $course->visible)?\html_writer::link(new \moodle_url('/course/view.php',['id'=>$course->id]),$label):$label;
+                        $purchasestatus = $purchase->status;
+                        if ($purchasestatus === 'active' && $purchase->timeend > 0 && $purchase->timeend <= time()) {
+                            $purchasestatus = 'expired';
+                        }
+                        $canaccess = $course && $course->visible && $buyer
+                            && can_access_course($course, (int)$buyer->id, '', true);
+                        $label=format_string($course->fullname??$line->productname).' · '.self::state($purchasestatus).' · '.s($end);
+                        if ($purchasestatus === 'active' && !$canaccess) {
+                            $label .= ' · '.get_string('courseaccessunavailable', 'local_storefront');
+                        }
+                        $access[]=$canaccess?\html_writer::link(new \moodle_url('/course/view.php',['id'=>$course->id]),$label):$label;
                     }
                 }
                 $table->data[]=[format_string($line->productname),self::state($state->paymentstatus),self::state($state->fulfilmentstatus),implode('<br>',$access)];

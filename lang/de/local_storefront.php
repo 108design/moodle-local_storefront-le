@@ -262,3 +262,7 @@ $string['storefront:viewownorders'] = 'Eigene Käufe ansehen';
 $string['storefront:managecatalogue'] = 'Kursprodukte verwalten';
 $string['storefront:manageorders'] = 'Bestellungen und Mails verwalten';
 $string['storefront:managelegal'] = 'Rechtstexte verwalten';
+
+$string['courseaccessunavailable'] = 'Kurszugang derzeit nicht verfügbar';
+
+$string['state_expired'] = 'Abgelaufen';

@@ -262,3 +262,7 @@ $string['storefront:viewownorders'] = 'View own purchases';
 $string['storefront:managecatalogue'] = 'Manage course products';
 $string['storefront:manageorders'] = 'Manage orders and mail';
 $string['storefront:managelegal'] = 'Manage legal texts';
+
+$string['courseaccessunavailable'] = 'Course access is currently unavailable';
+
+$string['state_expired'] = 'Expired';

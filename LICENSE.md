@@ -2,7 +2,7 @@
 
 Copyright © 2026 Andreas Giesen <andreas@108design.com>. All rights reserved.
 
-This license is a source-available commercial software license. It is not an
+This license is a source-available software license. It is not an
 open-source license. The Software is licensed, not sold.
 
 ## 1. Definitions
@@ -10,29 +10,20 @@ open-source license. The Software is licensed, not sold.
 “Software” means this Storefront plugin distribution and its documentation,
 excluding Third-Party Components identified below. “Author” means Andreas
 Giesen. “Licensee” means the person or legal entity exercising rights under
-this license. “Free Features” and “Pro Features” mean features designated as
-such by the Author in the Software, product documentation, or applicable order.
-“Internal Use” means use for the Licensee's own operations and does not include
+this license. “Internal Use” means use for the Licensee's own operations and does not include
 providing the Software itself as a product or service to third parties.
 
 ## 2. License grant
 
 Subject to these terms, the Author grants the Licensee a limited, non-exclusive,
 non-transferable and non-sublicensable right to install, run and use the
-Software for Internal Use. Free Features may be used without payment. Pro
-Features require a valid entitlement unless the Author expressly makes them
-available without charge, including during beta testing, evaluation periods,
-promotions or development. Temporary availability without charge does not grant
-a permanent right to use Pro Features without a valid entitlement.
-
-The number and type of permitted production, development, test or staging
-installations are determined by the applicable entitlement or written agreement.
+Software for Internal Use without payment or activation. All functionality
+included in this distribution is covered by this grant.
 
 ## 3. Beta and pre-release versions
 
 This distribution is an early beta. Beta and other pre-release versions may be
-incomplete, experimental, unstable or unsupported. Features, data formats,
-interfaces and entitlement rules may change or be removed before a stable
+incomplete, experimental, unstable or unsupported. Features, data formats and interfaces may change or be removed before a stable
 release. No commitment is made that a particular feature will remain available.
 
 ## 4. Modification and contractors
@@ -51,10 +42,8 @@ provides otherwise, the Licensee may not:
   otherwise make the Software or a modified version available to third parties;
 - use the Software to create or offer a competing software product;
 - remove or obscure copyright, authorship or license notices;
-- remove, disable, bypass, falsify or circumvent mechanisms that identify,
-  validate or restrict access to Pro Features or licensed installations; or
-- use one entitlement for more installations, customers or environments than it
-  permits.
+- use the Software in a way that exceeds the rights expressly granted by this
+  license.
 
 Reasonable backup and disaster-recovery copies are permitted and remain subject
 to this license. A separately executed written agreement may grant additional
@@ -68,6 +57,57 @@ rights in the Author's names, logos or trademarks. The Licensee retains rights i
 its own data and in independently created material that does not contain or
 derive from the Software.
 
+## 6a. Limited permission for Moodle Marketplace
+
+This section applies only to versions of the Software and related listing
+materials submitted to Moodle Marketplace by the Author or with the Author's
+authorisation. "Moodle" means Moodle Pty Ltd, the operator identified in the
+Moodle Marketplace Provider Terms of Use.
+
+To the extent that the Author owns or is authorised to grant the relevant
+rights, the Author grants Moodle a limited, worldwide, revocable, non-exclusive,
+royalty-free licence to:
+
+(a) host, store, reproduce, display, distribute, translate, adapt and create
+derivative works of the submitted Software and its listing materials, including
+language strings and metadata, as necessary for the operation of Moodle
+Marketplace;
+
+(b) use the submitted Software's name, descriptions, logos and related media for
+Moodle Marketplace display, promotional activity, search results and
+recommendation features; and
+
+(c) install, run, test, review, evaluate and analyse the submitted Software for
+approval, compliance checks, security assessment and technical verification.
+
+These permissions exist solely for Moodle Marketplace operation and promotional
+purposes. Moodle's contractors and authorised service providers may exercise
+them on Moodle's behalf for those same purposes, as permitted by the Provider
+Terms separately accepted by the Author.
+
+These permissions take precedence over conflicting restrictions elsewhere in
+this licence, including restrictions concerning Internal Use, modification,
+distribution, disclosure to contractors and use of names, logos or trademarks,
+but only to the extent required to exercise the permissions expressly granted
+in this section.
+
+Distribution through Moodle Marketplace does not give recipients Moodle's
+special permissions under this section. Recipients receive their rights
+directly from the Author under this licence and any applicable entitlement or
+separate agreement. This section does not authorise Moodle to relicense the
+Software for recipients or exploit it independently outside the stated
+Marketplace purposes.
+
+The exercise, duration and revocation of these permissions, and any rights that
+survive termination, are subject to the Provider Terms separately accepted by
+the Author. Termination under Section 9 does not override rights that continue
+under those Terms.
+
+This section transfers no ownership of the Author's Software or listing
+materials. It does not change the licences applicable to Third-Party Components
+or grant any person rights that the Author does not own or have authority to
+grant. All rights not expressly granted remain reserved.
+
 ## 7. Third-Party Components and Moodle
 
 The Software is designed to operate with Moodle and calls Moodle APIs. Moodle
@@ -77,12 +117,11 @@ restricted by this license. No Moodle core source code or separately distributed
 third-party library is included in this distribution unless it is expressly
 identified with its applicable copyright and license notice.
 
-## 8. Entitlement services
+## 8. Technical services
 
-Where a feature uses a license or activation service, the Software may exchange
-the minimum technical information described in the applicable documentation to
-issue, activate, validate, refresh, release or revoke an entitlement. Interfering
-with that process does not create a right to use the affected feature.
+The Software uses Moodle Payment and the configured payment gateways for payments.
+Purchasers sign in through Moodle. Gateway services remain subject to their own terms.
+This distribution requires no 108design account or activation.
 
 ## 9. Term and termination
 
@@ -100,8 +139,7 @@ are provided without contractual guarantees and without a promise of fitness for
 a particular purpose. Nothing in this license excludes or limits liability that
 cannot legally be excluded or limited, including liability for intent, gross
 negligence, injury to life, body or health, fraud, or mandatory product-liability
-law. Any further warranty, remedies and liability for a paid entitlement are
-governed by the applicable order, terms of sale and mandatory law.
+law.
 
 ## 11. Governing law and severability
 
@@ -113,5 +151,5 @@ invalid or unenforceable, the remaining provisions continue in effect.
 
 ## 12. Contact
 
-Questions, permissions and commercial arrangements:
+Questions and permissions:
 Andreas Giesen — andreas@108design.com

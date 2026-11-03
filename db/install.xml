@@ -74,7 +74,7 @@
         <INDEX NAME="product_category_uix" UNIQUE="true" FIELDS="productid,categoryid"/>
       </INDEXES>
     </TABLE>
-    <TABLE NAME="local_storefront_offer" COMMENT="Sellable product price and entitlement options">
+    <TABLE NAME="local_storefront_offer" COMMENT="Sellable product course product offers and prices">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="productid" TYPE="int" LENGTH="10" NOTNULL="true"/>
