@@ -388,3 +388,6 @@ a.local-storefront-category-badge:focus {
 .local-storefront-post-form {display:inline-flex;margin:0 .5rem .5rem 0;}
 .local-storefront-admin-tabs .icon {margin-inline-end:.45rem;}
 @media(max-width:575.98px){.local-storefront-filter-field{flex:1 1 100%;}.local-storefront-toolbar{align-items:stretch;}.local-storefront-toolbar>.btn{justify-content:center;}}
+
+/* Keep hidden action labels inside their scrolling table cell. */
+.local-storefront-icon-button {position:relative;}
