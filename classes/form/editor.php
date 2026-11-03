@@ -71,6 +71,9 @@ final class editor extends \moodleform {
     }
     public function validation($data,$files): array {
         $errors=parent::validation($data,$files);
+        if ($this->_customdata['mode']==='settings' && !array_key_exists((int)($data['moodlepaymentaccountid']??0),(array)($this->_customdata['paymentaccounts']??[]))) {
+            $errors['moodlepaymentaccountid']=get_string('paymentaccountrequired','local_storefront');
+        }
         if ($this->_customdata['mode']==='offer' && (!preg_match('/^\d{1,13}(?:\.\d{1,6})?$/D',$data['amount']) || (float)$data['amount']<=0)) {
             $errors['amount']=get_string('invalidoffer','local_storefront');
         }

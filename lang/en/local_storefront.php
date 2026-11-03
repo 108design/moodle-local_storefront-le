@@ -288,3 +288,5 @@ $string['ordernumber'] = 'Order';
 $string['orderheading'] = 'Order #{$a}';
 
 $string['moodlepaymentnoaccounts'] = 'Create and enable a Moodle payment account under Site administration → Payments → Payment accounts, then select it here.';
+
+$string['paymentaccountrequired'] = 'Choose an enabled Moodle payment account.';

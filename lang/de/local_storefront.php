@@ -288,3 +288,5 @@ $string['ordernumber'] = 'Bestellung';
 $string['orderheading'] = 'Bestellung #{$a}';
 
 $string['moodlepaymentnoaccounts'] = 'Lege unter Website-Administration → Zahlungen → Zahlungskonten ein aktives Moodle-Zahlungskonto an und wähle es anschließend hier aus.';
+
+$string['paymentaccountrequired'] = 'Wähle ein aktives Moodle-Zahlungskonto aus.';
