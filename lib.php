@@ -7,7 +7,8 @@
 // Copyright (C) 2026 Andreas Giesen. Use and modification under LICENSE.md.
 defined('MOODLE_INTERNAL') || die();
 function local_storefront_render_navbar_output(\renderer_base $renderer): string {
-    return \local_storefront\local\admin_help::navbar($renderer);
+    return \local_storefront\local\admin_help::navbar($renderer)
+        . \local_storefront\output\cart_drawer::navbar();
 }
 
 /** Product files follow the same audience and publication checks as catalogue pages. */

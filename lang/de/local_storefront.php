@@ -232,7 +232,7 @@ $string['adminhelp_taxonomy'] = 'Kategorien und Tags';
 $string['adminhelp_delivery'] = 'Kursauslieferung';
 $string['adminhelp_operations'] = 'Bestellungen und Wiederaufnahme';
 $string['adminhelp_settings'] = 'Shop-Einstellungen';
-$string['adminhelp_shopping_article'] = '<p>Wähle ein Kursprodukt und ein Angebot. Ein anderes Angebot für dasselbe Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse enthalten.</p><p>Melde Dich vor der Bestellung an. Die Zahlung erfolgt über die vom Betreiber eingerichteten Gateways. Bewahre die Bestellkennung für Rückfragen auf. Offene Zahlungen findest Du unter Meine Käufe.</p>';
+$string['adminhelp_shopping_article'] = '<p>Wähle ein Kursprodukt und ein Angebot. Ein anderes Angebot für dasselbe Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse enthalten.</p><p>Melde Dich vor der Bestellung an. Die Zahlung erfolgt über die vom Betreiber eingerichteten Gateways. Bewahre die Bestellkennung für Rückfragen auf. Offene Zahlungen findest Du unter Meine Käufe.</p><p>Das Warenkorb-Icon neben dem Nutzermenü öffnet die Seitenleiste mit Deiner Auswahl und den Gesamtbeträgen. Dort kannst Du Positionen entfernen oder zum vollständigen Warenkorb und zur Kasse wechseln. Ohne JavaScript öffnet das Icon die Warenkorbseite.</p>';
 $string['adminhelp_purchases_article'] = '<p>Meine Käufe zeigt Deine eigenen Bestellungen mit getrenntem Zahlungs- und Auslieferungsstatus. Auf eine erfasste Zahlung kann noch eine ausstehende Kursauslieferung folgen. Kursauslieferung wiederholen verwendet die erfasste Zahlung und bucht nicht erneut ab.</p><p>Jeder Kurskauf behält seinen ursprünglichen Zeitraum. Andere aktive Käufe können Deinen Zugang nach dem Ende eines Kaufs erhalten. Wende Dich bei Erstattungen oder Streitfällen an die Shop-Verwaltung.</p>';
 $string['adminhelp_legal_article'] = '<p>Bis zu zwei frei benennbare Dokumente können Sprachfassungen und Revisionen enthalten. Ein bearbeiteter Entwurf lässt die veröffentlichte Fassung bestehen, bis Du den neuen Stand veröffentlichst.</p><p>Die Dokumenteinstellungen legen Sichtbarkeit, Standardsprache und erforderliche Bestätigung an der Kasse fest. Die Bestellung hält die angezeigte Fassung und eine geforderte Bestätigung fest. Frühere Nachweise bleiben erhalten. Leser können die Dokumentsprache unabhängig von der Moodle-Oberfläche wählen.</p>';
 $string['adminhelp_products_article'] = '<p>Lege ein Kursprodukt an und speichere es. Unter Kursauslieferung wählst Du seine Kurse, unter Angebote die Preise. Aktiviere ein Angebot und mache das Produkt sichtbar, wenn Kurse und Zahlungskonto bereit sind.</p><p>Die Kennung bleibt nach dem ersten Speichern fest. Ausblenden verhindert neue Käufe; frühere Bestellungen behalten ihre gespeicherten Produkt- und Kursangaben.</p>';
@@ -277,3 +277,8 @@ $string['checkoutlegal'] = 'Rechtstexte';
 $string['productcontent'] = 'Produktinhalt';
 $string['productpresentation'] = 'Bild und Kategorien';
 $string['publication'] = 'Veröffentlichung und Reihenfolge';
+
+$string['viewcartcount'] = 'Warenkorb ansehen ({$a} Positionen)';
+$string['viewcart'] = 'Warenkorb ansehen';
+$string['logincheckout'] = 'Zur Kasse anmelden';
+$string['cartupdatefailed'] = 'Der Warenkorb konnte nicht aktualisiert werden. Bitte versuche es erneut.';

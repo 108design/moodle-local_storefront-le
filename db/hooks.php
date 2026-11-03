@@ -18,3 +18,6 @@ $callbacks[] = ['hook'=>\core\hook\output\before_standard_head_html_generation::
     'callback'=>[\local_storefront\local\admin_branding::class,'head']];
 $callbacks[] = ['hook'=>\core\hook\output\before_http_headers::class,
     'callback'=>[\local_storefront\local\admin_branding::class,'prepare']];
+
+$callbacks[] = ['hook'=>\core\hook\output\before_standard_footer_html_generation::class,
+    'callback'=>[\local_storefront\output\cart_drawer::class,'footer']];

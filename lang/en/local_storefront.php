@@ -232,7 +232,7 @@ $string['adminhelp_taxonomy'] = 'Categories and Tags';
 $string['adminhelp_delivery'] = 'Course Delivery';
 $string['adminhelp_operations'] = 'Orders and Recovery';
 $string['adminhelp_settings'] = 'Shop Settings';
-$string['adminhelp_shopping_article'] = '<p>Choose a course product and one offer. Adding another offer for the same product replaces the choice in your cart. A product can include several courses.</p><p>Sign in before checkout. Payment uses the gateways configured by the site operator. Keep the order reference if you need help. You can resume a pending payment under My Purchases.</p>';
+$string['adminhelp_shopping_article'] = '<p>Choose a course product and one offer. Adding another offer for the same product replaces the choice in your cart. A product can include several courses.</p><p>Sign in before checkout. Payment uses the gateways configured by the site operator. Keep the order reference if you need help. You can resume a pending payment under My Purchases.</p><p>The cart icon beside the user menu opens the side panel with your selection and totals. You can remove items there or continue to the full cart and checkout. Without JavaScript, the icon opens the cart page.</p>';
 $string['adminhelp_purchases_article'] = '<p>My Purchases shows your own orders with separate payment and course-delivery states. A recorded payment may still be waiting for course delivery. Retry Course Delivery uses the recorded payment and does not charge again.</p><p>Each course purchase retains its original access period. Other active purchases may keep your access available after one purchase ends. Contact the shop administrator for refund or dispute questions.</p>';
 $string['adminhelp_legal_article'] = '<p>Up to two documents can be maintained with freely chosen names. Each document can have language versions and revisions. Editing a draft leaves its published version available until the new version is published.</p><p>The document settings choose visibility, default language and whether checkout requires confirmation. Checkout records the displayed revision and required confirmation. Earlier order evidence is retained. The reader can choose a published language without changing the Moodle interface language.</p>';
 $string['adminhelp_products_article'] = '<p>Create a course product, save it, then open Course Delivery to select its courses. Offers contains the price choices. Enable an offer and make the product visible when the courses and payment account are ready.</p><p>The identifier stays fixed after the first save. Hiding a product prevents new purchases while earlier orders retain their original product and mapping snapshots.</p>';
@@ -277,3 +277,8 @@ $string['checkoutlegal'] = 'Legal documents';
 $string['productcontent'] = 'Product content';
 $string['productpresentation'] = 'Image and categories';
 $string['publication'] = 'Publication and ordering';
+
+$string['viewcartcount'] = 'View cart ({$a} items)';
+$string['viewcart'] = 'View cart';
+$string['logincheckout'] = 'Sign in to checkout';
+$string['cartupdatefailed'] = 'The cart could not be updated. Please try again.';

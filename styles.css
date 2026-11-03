@@ -334,3 +334,46 @@ a.local-storefront-category-badge:focus {
 .path-local-storefront .generaltable {width:100%;}
 .path-local-storefront .generaltable th {white-space:nowrap;}
 @media(max-width:767.98px){.local-storefront-checkout-layout {grid-template-columns:minmax(0,1fr);}}
+
+.local-storefront-selection-dialog { color-scheme:light; --selection-bg:#fff; --selection-ink:#302b40; --selection-line:#d4cfdc;
+    color:var(--selection-ink); background:var(--selection-bg); border:0; border-left:1px solid var(--selection-line);
+    margin:0 0 0 auto; padding:clamp(1.25rem, 3vw, 2.5rem); width:min(36rem, 100vw); max-width:100vw;
+    height:100dvh; max-height:100dvh; overflow-y:auto; overscroll-behavior:contain; }
+.local-storefront-selection-dialog[data-theme="dark"] { --selection-bg:#1c1824; --selection-ink:#f4eef9;
+    --selection-line:#51465e; color-scheme:dark; }
+.local-storefront-selection-dialog::backdrop { background:rgb(14 10 22 / 45%); backdrop-filter:blur(4px); }
+.local-storefront-selection-heading { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.local-storefront-selection-heading h2 { margin:0; font-size:1.8rem; color:inherit; }
+.local-storefront-selection-heading button { border:0; color:inherit; background:transparent; width:2.75rem; height:2.75rem; }
+.local-storefront-selection-row { position:relative; border-top:1px solid var(--selection-line,#d4cfdc); padding:1.5rem 0; }
+.local-storefront-selection-row h3 { padding-right:6rem; font-size:1.3rem; color:inherit; }
+.local-storefront-selection-row .local-storefront-selection-remove { position:absolute; right:0; top:1rem; }
+.local-storefront-selection-row select { width:100%; max-width:100%; margin:.5rem 0 1rem; }
+.local-storefront-selection-row label { display:block; }
+.local-storefront-selection-options { border:0; padding:0; margin:0; min-width:0; }
+.local-storefront-selection-options legend { font-size:1rem; margin-bottom:.5rem; }
+.local-storefront-selection-options .local-storefront-selection-option { display:flex; align-items:center;
+    gap:.65rem; padding:.65rem .75rem; margin:0 0 .5rem; min-height:2.75rem;
+    border:1px solid var(--selection-line,#d4cfdc); border-radius:.5rem; cursor:pointer; }
+.local-storefront-selection-option input { flex:0 0 auto; margin:0; width:1.05rem; height:1.05rem;
+    accent-color:#8c3980; }
+.local-storefront-selection-option:has(input:checked) { border-color:currentColor; box-shadow:inset 0 0 0 1px currentColor; }
+.local-storefront-selection-option:has(input:focus-visible) { outline:3px solid #b07ccc; outline-offset:2px; }
+.local-storefront-selection-options .local-storefront-selection-note { font-size:.875rem; margin:.75rem 0 0; }
+.local-storefront-selection-row form + p, .local-storefront-selection-row form + form { margin-top:1rem; }
+.local-storefront-selection-download { display:block; margin-top:.75rem; }
+.local-storefront-selection-footer { border-top:1px solid var(--selection-line,#d4cfdc); padding-top:1.5rem; }
+.local-storefront-selection-total { font-weight:700; }
+.local-storefront-selection-cost { font-weight:650; margin:.35rem 0 1rem; }
+.local-storefront-selection-picker .local-storefront-selection-cost { margin:0; font-size:.85rem; }
+
+.local-storefront-cart-nav {height:100%;align-self:stretch;}
+.local-storefront-cart-link {display:flex;align-items:center;justify-content:center;min-width:2.75rem;height:100%;font-size:1.15rem;}
+.local-storefront-cart-badge {position:absolute;top:.3rem;inset-inline-end:0;min-width:1.1rem;padding:.08rem .2rem;border-radius:1rem;background:var(--bs-primary,#0f6cbf);color:#fff;font-size:.65rem;font-weight:700;line-height:1.2;}
+.local-storefront-selection-footer {display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.local-storefront-selection-footer .local-storefront-cart-total {flex:1 0 100%;}
+.local-storefront-selection-dialog a {color:inherit;}
+.local-storefront-selection-dialog .btn-primary {color:#fff;}
+.local-storefront-selection-dialog [data-storefront-cart-status]:not(:empty) {padding-block:1rem;color:var(--bs-danger,#b02a37);}
+.local-storefront-selection-dialog :is(a,button):focus-visible {outline:3px solid var(--bs-primary,#0f6cbf);outline-offset:3px;}
+.local-storefront-selection-open {overflow:hidden;}
