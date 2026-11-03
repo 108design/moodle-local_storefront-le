@@ -14,7 +14,7 @@ define([], function() {
         var opener, queue = Promise.resolve();
         var status = dialog.querySelector('[data-storefront-cart-status]');
         var open = function(source) {
-            opener = source || document.activeElement;
+            if (!dialog.open) opener = source || document.activeElement;
             var mode = document.documentElement.dataset.bsTheme || document.body.dataset.bsTheme;
             dialog.dataset.theme = mode === 'dark' ? 'dark' : 'light';
             if (!dialog.open) dialog.showModal();
