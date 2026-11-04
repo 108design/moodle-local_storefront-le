@@ -42,7 +42,7 @@ final class catalogue_view {
         foreach($items as $item){
             $row=[html_writer::link(new moodle_url('/local/storefront/product.php',['product'=>$item->productidentifier]),format_string($item->productname)),
                 format_string($item->displayname?:$item->productname),page::amount((float)$item->amount,$item->currency)];
-            if($remove){$row[]=page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$item->id],'btn btn-outline-secondary btn-sm');}
+            if($remove){$row[]=page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$item->id],'btn btn-outline-secondary btn-sm','t/delete',true);}
             $table->data[]=$row;
         }
         return html_writer::div(html_writer::table($table),'table-responsive');

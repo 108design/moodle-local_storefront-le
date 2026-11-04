@@ -19,13 +19,13 @@ foreach (product_selection::snapshot() as $id) {
 page::header('cart');
 foreach ($unavailable as $id) {
     echo $OUTPUT->notification(get_string('selectionunavailable','local_storefront'),'warning');
-    echo page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$id]);
+    echo page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$id],'btn btn-secondary','t/delete');
 }
 if($items){echo \local_storefront\output\catalogue_view::summary($items,true);
     echo html_writer::div(\local_storefront\output\catalogue_view::totals($items),'local-storefront-cart-summary');}
 if (!$items) { echo $OUTPUT->notification(get_string('cartempty','local_storefront'),'info'); }
 else if (!$unavailable) {
-    echo page::post('cart_action',get_string('clearcart','local_storefront'),['action'=>'clear']);
+    echo page::post('cart_action',get_string('clearcart','local_storefront'),['action'=>'clear'],'btn btn-secondary','t/delete');
     if (isloggedin() && !isguestuser()) {
         echo html_writer::link(new moodle_url('/local/storefront/checkout.php'),get_string('checkout','local_storefront'),['class'=>'btn btn-primary']);
     } else {

@@ -23,6 +23,6 @@ if ($form->is_cancelled()) { redirect(new moodle_url('/local/storefront/products
 if ($submitted=$form->get_data()) { $id=product_service::save($submitted); redirect(new moodle_url('/local/storefront/product_edit.php',['id'=>$id])); }
 page::header('editproduct',true);
 if ($id) { echo \local_storefront\output\ui::toolbar([
-    \local_storefront\output\ui::button(new moodle_url('/local/storefront/offers.php',['productid'=>$id]),get_string('offers','local_storefront'),'i/payment'),
-    \local_storefront\output\ui::button(new moodle_url('/local/storefront/course_mapping.php',['productid'=>$id]),get_string('delivery','local_storefront'),'i/course')]); }
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/offers.php',['productid'=>$id]),get_string('offers','local_storefront'),'fa-tags'),
+    \local_storefront\output\ui::button(new moodle_url('/local/storefront/course_mapping.php',['productid'=>$id]),get_string('delivery','local_storefront'),'fa-box-open')]); }
 $form->display(); echo $OUTPUT->footer();

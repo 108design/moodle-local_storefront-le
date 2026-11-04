@@ -39,7 +39,7 @@ final class cart_drawer {
                 $content.=h::tag('p',format_string($item->displayname?:$item->productname),['class'=>'small']);
                 $content.=h::tag('p',page::amount((float)$item->amount,$item->currency),['class'=>'local-storefront-selection-cost']);
             }catch(\moodle_exception $e){$content=h::tag('p',get_string('selectionunavailable','local_storefront'));}
-            $content.=page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$id],'btn btn-outline-secondary btn-sm');
+            $content.=page::post('cart_action',get_string('remove'),['action'=>'remove','offerid'=>$id],'btn btn-outline-secondary btn-sm','t/delete');
             $html.=h::div($content,'local-storefront-selection-row');
         }
         if(!$html){return h::tag('p',get_string('cartempty','local_storefront'),['class'=>'my-4']);}

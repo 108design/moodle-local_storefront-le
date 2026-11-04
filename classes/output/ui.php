@@ -63,7 +63,7 @@ final class ui {
             'badge rounded-pill local-storefront-semantic-badge local-storefront-status-badge badge-'.$tone);
     }
     public static function status_badge(string $label,string $tone='secondary'): string {
-        return self::badge($label,$tone,match($tone){'success'=>'fa-circle-check','warning'=>'fa-clock',
+        return self::badge($label,$tone,match($tone){'success'=>'fa-circle-check','warning'=>'fa-triangle-exclamation',
             'danger'=>'fa-circle-xmark','info','primary'=>'fa-circle-info',default=>'fa-circle-minus'});
     }
     public static function visibility_badge(string $label,bool $visible): string {

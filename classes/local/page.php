@@ -37,9 +37,10 @@ final class page {
             'ordering'=>match($PAGE->url->get_param('kind')){'category'=>'categories','tag'=>'tags',default=>'products'},
             'category_edit','category_to_tag'=>'categories','tag_edit'=>'tags',
             'legal_edit','legal_settings','legal_delete','legal_preview'=>'legal_documents',default=>$route};
+        $publicicons=['index'=>'fa-shop','cart'=>'fa-shopping-cart','my'=>'fa-cubes'];
         $public=[];
         foreach(['index'=>'storefront','cart'=>'cart','my'=>'mypurchases'] as $target=>$label){
-            $public[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),get_string($label,'local_storefront'),'',true);
+            $public[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),\local_storefront\output\ui::icon($publicicons[$target]).get_string($label,'local_storefront'),get_string($label,'local_storefront'),true);
         }
         $html=\html_writer::div(print_tabs([$public],$current,null,null,true),'local-storefront-public-tabs');
         $links=[];$context=\context_system::instance();
@@ -48,7 +49,7 @@ final class page {
         if(has_capability('local/storefront:managelegal',$context)){$links['legal_documents']='legaldocuments';}
         if(has_capability('moodle/site:config',$context)){$links['configuration']='settings';}
         if($links){
-            $icons=['products'=>'i/course','categories'=>'i/folder','tags'=>'fa-tags','orders'=>'i/payment','communication_rules'=>'t/message','legal_documents'=>\local_storefront\output\ui::ICON_LEGAL,'configuration'=>'i/settings'];
+            $icons=['products'=>'fa-cubes','categories'=>'fa-folder-open','tags'=>'fa-tags','orders'=>'i/payment','communication_rules'=>'fa-envelope','legal_documents'=>\local_storefront\output\ui::ICON_LEGAL,'configuration'=>'i/settings'];
             $tabs=[];foreach($links as $target=>$label){$tabs[]=new \tabobject($target,new \moodle_url('/local/storefront/'.$target.'.php'),\local_storefront\output\ui::icon($icons[$target]).get_string($label,'local_storefront'),get_string($label,'local_storefront'),true);}
             $html.=\html_writer::div(\html_writer::div(get_string('administration'),'local-storefront-navigation-label')
                 .print_tabs([$tabs],$current,null,null,true),'local-storefront-admin-tabs');
