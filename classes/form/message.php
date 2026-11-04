@@ -10,7 +10,7 @@ final class message extends \moodleform {
     protected function definition(): void {
         $m=$this->_form;
         $m->addElement('select','language',get_string('language','local_storefront'),['en'=>'English','de'=>'Deutsch']);
-        $m->addElement('text','subject',get_string('subject','local_storefront')); $m->setType('subject',PARAM_TEXT);
+        $m->addElement('text','subject',get_string('subject','local_storefront'),['size'=>70,'class'=>'w-100']); $m->setType('subject',PARAM_TEXT);
         $m->addRule('subject',null,'required',null,'client');
         $m->addElement('textarea','body',get_string('body','local_storefront'),['rows'=>12,'cols'=>80]); $m->setType('body',PARAM_RAW);
         $m->addRule('body',null,'required',null,'client');
