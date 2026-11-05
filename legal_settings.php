@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for legal_settings.php.
+ * Native legal settings entry point for Storefront.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -48,8 +49,12 @@ if ($form->is_cancelled()) {
 }
 if ($data = $form->get_data()) {
     legal_service::save_settings($data);
-    redirect($returnurl, get_string('legalsettingssaved', 'local_storefront'), null,
-        \core\output\notification::NOTIFY_SUCCESS);
+    redirect(
+        $returnurl,
+        get_string('legalsettingssaved', 'local_storefront'),
+        null,
+        \core\output\notification::NOTIFY_SUCCESS
+    );
 }
 $PAGE->requires->css(new moodle_url('/local/storefront/styles/legal_editor.css'));
 echo $OUTPUT->header();

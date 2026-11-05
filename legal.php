@@ -1,17 +1,20 @@
 <?php
 /**
- * File documentation for legal.php.
+ * Display the selected published legal document.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
+// Central store_access enforces the configured public or authenticated audience.
+// phpcs:ignore moodle.Files.RequireLogin.Missing
 require_once(__DIR__ . '/../../config.php');
 
 use local_storefront\local\legal_service;
@@ -49,12 +52,19 @@ echo html_writer::start_div('local-storefront-content-reading');
 echo $OUTPUT->heading(format_string($revision->title));
 echo \local_storefront\output\legal_language_menu::reader($document, (string) $revision->lang);
 if ($revisionid) {
-    echo html_writer::div(get_string('legalrevisionnotice', 'local_storefront', $revision->revisionnumber),
-        'small text-muted mb-3');
-} else if ((string) $revision->lang !== $preferred
-        && (string) $revision->lang !== explode('_', $preferred)[0]) {
-    echo html_writer::div(get_string('legallanguagefallback', 'local_storefront',
-        s(legal_service::language_name((string) $revision->lang))), 'small text-muted mb-3');
+    echo html_writer::div(
+        get_string('legalrevisionnotice', 'local_storefront', $revision->revisionnumber),
+        'small text-muted mb-3'
+    );
+} else if (
+    (string) $revision->lang !== $preferred
+        && (string) $revision->lang !== explode('_', $preferred)[0]
+) {
+    echo html_writer::div(get_string(
+        'legallanguagefallback',
+        'local_storefront',
+        s(legal_service::language_name((string) $revision->lang))
+    ), 'small text-muted mb-3');
 }
 echo html_writer::div(legal_service::render_revision($revision), 'local-storefront-legal-content', [
     'lang' => str_replace('_', '-', (string) ($revision->lang ?: current_language())),

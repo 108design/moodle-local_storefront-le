@@ -1,18 +1,21 @@
 <?php
 /**
- * File documentation for classes/local/position_lock.php.
+ * Serialises every state transition and side effect for one or more immutable order lines.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 namespace local_storefront\local;
 
 defined('MOODLE_INTERNAL') || die();
 
-/** Serialises every state transition and side effect for one or more immutable order lines. */
+/**
+ * Serialises every state transition and side effect for one or more immutable order lines.
+ */
 final class position_lock {
     /** @var array<int, int> Re-entrant lock depth within the current PHP request. */
     private static array $held = [];
@@ -20,14 +23,15 @@ final class position_lock {
     /**
      * Run an operation while holding all requested line locks in deterministic order.
      *
-     * @template T
      * @param int[] $orderlineids
-     * @param callable():T $operation
-     * @return T
+     * @param callable():mixed $operation
+     * @return mixed Value returned by the operation.
      */
     public static function with_lines(array $orderlineids, callable $operation): mixed {
-        $orderlineids = array_values(array_unique(array_filter(array_map('intval', $orderlineids),
-            static fn(int $id): bool => $id > 0)));
+        $orderlineids = array_values(array_unique(array_filter(
+            array_map('intval', $orderlineids),
+            static fn(int $id): bool => $id > 0
+        )));
         sort($orderlineids, SORT_NUMERIC);
         if ($orderlineids === []) {
             return $operation();

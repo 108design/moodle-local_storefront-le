@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for classes/local/legal_service.php.
+ * Published document revisions and immutable checkout evidence.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -16,18 +17,38 @@ namespace local_storefront\local;
 
 defined('MOODLE_INTERNAL') || die();
 
-/** Published document revisions and immutable checkout evidence. */
+/**
+ * Published document revisions and immutable checkout evidence.
+ */
 final class legal_service {
+    /**
+     * Return the configured legal document identities.
+     *
+     * @return array
+     */
     public static function documents(): array {
         global $DB;
         return $DB->get_records('local_storefront_legaldoc', null, 'sortorder ASC, title ASC, id ASC');
     }
 
+    /**
+     * Load the requested legal document.
+     *
+     * @param int $id Record ID.
+     * @return \stdClass
+     */
     public static function get(int $id): \stdClass {
         global $DB;
         return $DB->get_record('local_storefront_legaldoc', ['id' => $id], '*', MUST_EXIST);
     }
 
+    /**
+     * Load the legal document using its stable identifier.
+     *
+     * @param string $identifier Stable identifier.
+     * @param bool $visibleonly Whether to omit entries hidden from the viewer.
+     * @return \stdClass|null
+     */
     public static function get_by_identifier(string $identifier, bool $visibleonly = true): ?\stdClass {
         global $DB;
         $conditions = ['identifier' => $identifier];
@@ -37,25 +58,54 @@ final class legal_service {
         return $DB->get_record('local_storefront_legaldoc', $conditions) ?: null;
     }
 
-    /** Pinned links keep their stable document identity even after an identifier is renamed. */
+    /**
+     * Pinned links keep their stable document identity even after an identifier is renamed.
+     *
+     * @param string $identifier Stable identifier.
+     * @param int $documentid Legal document ID.
+     * @param int $revisionid Revision ID.
+     * @return \stdClass|null
+     */
     public static function public_document(string $identifier, int $documentid = 0, int $revisionid = 0): ?\stdClass {
         global $DB, $USER;
         if ($documentid > 0 && $revisionid > 0) {
-            $document=$DB->get_record('local_storefront_legaldoc', ['id' => $documentid]);
-            if (!$document) { return null; }
-            if (!empty($document->visible)) { return $document; }
-            if (isloggedin() && !isguestuser() && (has_capability('local/storefront:managelegal',\context_system::instance())
-                    || has_capability('local/storefront:manageorders',\context_system::instance())
-                    || $DB->record_exists_sql("SELECT ol.id FROM {local_storefront_orderlegal} ol
+            $document = $DB->get_record('local_storefront_legaldoc', ['id' => $documentid]);
+            if (!$document) {
+                return null;
+            }
+            if (!empty($document->visible)) {
+                return $document;
+            }
+            if (
+                isloggedin() && !isguestuser()
+                && (
+                has_capability('local/storefront:managelegal', \context_system::instance())
+                    || has_capability('local/storefront:manageorders', \context_system::instance())
+                    || $DB->record_exists_sql(
+                        "SELECT ol.id FROM {local_storefront_orderlegal} ol
                         JOIN {local_storefront_order} o ON o.id=ol.orderid
                         WHERE o.userid=:userid AND ol.source=:source AND ol.sourceid=:documentid AND ol.revisionid=:revisionid",
-                        ['userid'=>$USER->id,'source'=>'storefront','documentid'=>$documentid,'revisionid'=>$revisionid]))) { return $document; }
+                        [
+                        'userid' => $USER->id,
+                        'source' => 'storefront',
+                        'documentid' => $documentid,
+                        'revisionid' => $revisionid,
+                        ]
+                    )
+                )
+            ) {
+                return $document;
+            }
             return null;
         }
         return self::get_by_identifier($identifier);
     }
 
-    /** Authored languages do not require the corresponding Moodle UI pack. */
+    /**
+     * Authored languages do not require the corresponding Moodle UI pack.
+     *
+     * @return array
+     */
     public static function languages(): array {
         $manager = get_string_manager();
         $languages = $manager->get_list_of_languages();
@@ -66,11 +116,24 @@ final class legal_service {
         return $languages;
     }
 
+    /**
+     * Return the native display name of the language.
+     *
+     * @param string $language Language code.
+     * @return string
+     */
     public static function language_name(string $language): string {
         return in_array($language, ['', 'und'], true) ? get_string('legallanguageunassigned', 'local_storefront')
             : (self::languages()[$language] ?? $language);
     }
 
+    /**
+     * Return the document's stored language versions.
+     *
+     * @param int $documentid Legal document ID.
+     * @param bool $publishedonly Publishedonly.
+     * @return array
+     */
     public static function translations(int $documentid, bool $publishedonly = false): array {
         global $DB;
         $conditions = ['documentid' => $documentid];
@@ -84,7 +147,11 @@ final class legal_service {
         return $result;
     }
 
-    /** Remember an explicit legal-language choice without changing Moodle's UI language. */
+    /**
+     * Remember an explicit legal-language choice without changing Moodle's UI language.
+     *
+     * @return string
+     */
     public static function preferred_language(): string {
         global $SESSION;
         $choice = optional_param('doclang', '', PARAM_SAFEDIR);
@@ -96,6 +163,13 @@ final class legal_service {
         return (string) ($SESSION->storefrontlegallang ?? current_language());
     }
 
+    /**
+     * Choose an available document language using the configured policy.
+     *
+     * @param \stdClass $document Validated document data.
+     * @param string|null $preferred Preferred.
+     * @return \stdClass|null
+     */
     public static function resolve_language(\stdClass $document, ?string $preferred = null): ?\stdClass {
         $translations = self::translations((int) $document->id, true);
         $language = $preferred ?? self::preferred_language();
@@ -117,6 +191,12 @@ final class legal_service {
         return null;
     }
 
+    /**
+     * Return the current legal-text revision for the requested language.
+     *
+     * @param \stdClass $document Validated document data.
+     * @return \stdClass
+     */
     public static function current_revision(\stdClass $document): \stdClass {
         global $DB;
         $translation = self::resolve_language($document);
@@ -128,20 +208,42 @@ final class legal_service {
         ], '*', MUST_EXIST);
     }
 
-    /** Draft revisions cannot be exposed through a guessed historical URL. */
+    /**
+     * Draft revisions cannot be exposed through a guessed historical URL.
+     *
+     * @param \stdClass $document Validated document data.
+     * @param int $revisionid Revision ID.
+     * @return \stdClass
+     */
     public static function public_revision(\stdClass $document, int $revisionid = 0): \stdClass {
         global $DB;
         if (!$revisionid) {
             return self::current_revision($document);
         }
-        return $DB->get_record_select('local_storefront_legalrev',
+        return $DB->get_record_select(
+            'local_storefront_legalrev',
             'id = :id AND documentid = :documentid AND timepublished IS NOT NULL',
-            ['id' => $revisionid, 'documentid' => $document->id], '*', MUST_EXIST);
+            ['id' => $revisionid, 'documentid' => $document->id],
+            '*',
+            MUST_EXIST
+        );
     }
 
-    /** Unsaved preview and saved output use exactly the same local renderer. */
+    /**
+     * Unsaved preview and saved output use exactly the same local renderer.
+     *
+     * @param string $content Content to process.
+     * @param int $format Format.
+     * @return string
+     */
     public static function render_content(string $content, int $format): string {
-        if (!in_array($format, [(int) FORMAT_HTML, (int) FORMAT_MARKDOWN, (int) FORMAT_PLAIN, (int) FORMAT_MOODLE], true)) {
+        if (
+            !in_array(
+                $format,
+                [ (int) FORMAT_HTML, (int) FORMAT_MARKDOWN, (int) FORMAT_PLAIN, (int) FORMAT_MOODLE ],
+                true
+            )
+        ) {
             throw new \moodle_exception('invalidparameter');
         }
         return format_text($content, $format, [
@@ -149,6 +251,12 @@ final class legal_service {
         ]);
     }
 
+    /**
+     * Render the legal-text revision for display or preview.
+     *
+     * @param \stdClass $revision Stored revision.
+     * @return string
+     */
     public static function render_revision(\stdClass $revision): string {
         return $revision->renderedcontent !== null ? (string) $revision->renderedcontent
             : format_text((string) $revision->content, (int) $revision->contentformat, [
@@ -156,6 +264,13 @@ final class legal_service {
             ]);
     }
 
+    /**
+     * Prepare the current document values for the native editor.
+     *
+     * @param int $id Record ID.
+     * @param string|null $language Language code.
+     * @return \stdClass
+     */
     public static function edit_data(int $id, ?string $language = null): \stdClass {
         global $DB;
         $document = $id ? self::get($id) : (object) [
@@ -185,6 +300,13 @@ final class legal_service {
         return $document;
     }
 
+    /**
+     * Save a legal document revision while retaining existing order evidence.
+     *
+     * @param \stdClass $data Submitted or stored data.
+     * @param int $userid User ID.
+     * @return int
+     */
     public static function save(\stdClass $data, int $userid): int {
         global $DB;
         $id = (int) ($data->id ?? 0);
@@ -214,7 +336,13 @@ final class legal_service {
             $ismarkdown = (int) $data->contentformat === (int) FORMAT_MARKDOWN;
             $format = $ismarkdown ? (int) FORMAT_MARKDOWN
                 : (int) ($data->content_editor['format'] ?? $data->contentformat);
-            if (!in_array($format, [(int) FORMAT_HTML, (int) FORMAT_MARKDOWN, (int) FORMAT_PLAIN, (int) FORMAT_MOODLE], true)) {
+            if (
+                !in_array(
+                    $format,
+                    [ (int) FORMAT_HTML, (int) FORMAT_MARKDOWN, (int) FORMAT_PLAIN, (int) FORMAT_MOODLE ],
+                    true
+                )
+            ) {
                 throw new \moodle_exception('invalidparameter');
             }
             $text = $ismarkdown ? (string) $data->content_markdown
@@ -223,11 +351,14 @@ final class legal_service {
             if ($title === '' || trim($text) === '') {
                 throw new \moodle_exception('required');
             }
-            $default = !$document || (string) $document->defaultlang === $origin ? $language : (string) $document->defaultlang;
+            $default = !$document
+            || (string) $document->defaultlang === $origin ? $language : (string) $document->defaultlang;
             $published = !empty($data->published);
             $visible = $document ? !empty($document->visible) : !empty($data->visible);
-            if ($visible && (($default === $language && !$published && empty($translations[$origin]->published))
-                    || ($default !== $language && empty($translations[$default]->published)))) {
+            if (
+                $visible && (($default === $language && !$published && empty($translations[$origin]->published))
+                    || ($default !== $language && empty($translations[$default]->published)))
+            ) {
                 throw new \moodle_exception('legaldefaultrequired', 'local_storefront');
             }
             $now = time();
@@ -252,7 +383,9 @@ final class legal_service {
                 $id = (int) $DB->insert_record('local_storefront_legaldoc', $record);
             }
             $revisionnumber = (int) $DB->get_field_sql(
-                'SELECT COALESCE(MAX(revisionnumber), 0) FROM {local_storefront_legalrev} WHERE documentid = ?', [$id]) + 1;
+                'SELECT COALESCE(MAX(revisionnumber), 0) FROM {local_storefront_legalrev} WHERE documentid = ?',
+                [$id]
+            ) + 1;
             $revisionid = (int) $DB->insert_record('local_storefront_legalrev', (object) [
                 'documentid' => $id, 'revisionnumber' => $revisionnumber, 'title' => $title,
                 'lang' => $language, 'content' => $text, 'contentformat' => $format,
@@ -271,7 +404,12 @@ final class legal_service {
                 $DB->insert_record('local_storefront_legallang', $row);
             }
             if ($default === $language && $row->published) {
-                $DB->set_field('local_storefront_legaldoc', 'currentrevisionid', $row->currentrevisionid, ['id' => $id]);
+                $DB->set_field(
+                    'local_storefront_legaldoc',
+                    'currentrevisionid',
+                    $row->currentrevisionid,
+                    [ 'id' => $id ]
+                );
             }
             $transaction->allow_commit();
             return $id;
@@ -285,7 +423,12 @@ final class legal_service {
         }
     }
 
-    /** Save document-wide settings without creating or changing a language revision. */
+    /**
+     * Save document-wide settings without creating or changing a language revision.
+     *
+     * @param \stdClass $data Submitted or stored data.
+     * @return void
+     */
     public static function save_settings(\stdClass $data): void {
         global $DB;
         $id = (int) $data->id;
@@ -304,8 +447,13 @@ final class legal_service {
             if ($identifier === '') {
                 throw new \moodle_exception('required');
             }
-            if ($DB->record_exists_select('local_storefront_legaldoc', 'identifier = :identifier AND id <> :id',
-                    ['identifier' => $identifier, 'id' => $id])) {
+            if (
+                $DB->record_exists_select(
+                    'local_storefront_legaldoc',
+                    'identifier = :identifier AND id <> :id',
+                    ['identifier' => $identifier, 'id' => $id]
+                )
+            ) {
                 throw new \moodle_exception('legalidentifierexists', 'local_storefront');
             }
             $translations = self::translations($id);
@@ -325,8 +473,12 @@ final class legal_service {
                 'editversion' => (int) $document->editversion + 1, 'timemodified' => time(),
             ];
             if (!empty($translation->published)) {
-                $revision = $DB->get_record('local_storefront_legalrev',
-                    ['id' => $translation->currentrevisionid, 'documentid' => $id], '*', MUST_EXIST);
+                $revision = $DB->get_record(
+                    'local_storefront_legalrev',
+                    ['id' => $translation->currentrevisionid, 'documentid' => $id],
+                    '*',
+                    MUST_EXIST
+                );
                 $record->title = $revision->title;
                 $record->currentrevisionid = $revision->id;
             }
@@ -342,6 +494,12 @@ final class legal_service {
         }
     }
 
+    /**
+     * Delete the record subject to its retained references.
+     *
+     * @param int $id Record ID.
+     * @return void
+     */
     public static function delete(int $id): void {
         global $DB;
         self::get($id);
@@ -355,7 +513,11 @@ final class legal_service {
         $transaction->allow_commit();
     }
 
-    /** Checkout uses one selected translation per document. */
+    /**
+     * Checkout uses one selected translation per document.
+     *
+     * @return array
+     */
     public static function checkout_documents(): array {
         $result = [];
         foreach (self::documents() as $document) {
@@ -387,7 +549,14 @@ final class legal_service {
         return $result;
     }
 
-    /** Recheck the displayed set, including linked documents without confirmation boxes. */
+    /**
+     * Recheck the displayed set, including linked documents without confirmation boxes.
+     *
+     * @param int $orderid Order ID.
+     * @param array $acceptedtokens Acceptedtokens.
+     * @param array|null $presented Values presented to the customer.
+     * @return void
+     */
     public static function record_order_documents(int $orderid, array $acceptedtokens, ?array $presented = null): void {
         global $DB;
         $DB->get_record('local_storefront_order', ['id' => $orderid], 'id', MUST_EXIST);
@@ -423,6 +592,12 @@ final class legal_service {
         $transaction->allow_commit();
     }
 
+    /**
+     * Return the token binding checkout to the displayed legal revisions.
+     *
+     * @param \stdClass $document Validated document data.
+     * @return string
+     */
     private static function confirmation_token(\stdClass $document): string {
         return implode(':', [$document->source, (int) $document->sourceid, (int) $document->revisionid]);
     }

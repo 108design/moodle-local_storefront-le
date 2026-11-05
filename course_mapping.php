@@ -1,13 +1,14 @@
 <?php
 /**
- * File documentation for course_mapping.php.
+ * Native course mapping entry point for Storefront.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
@@ -60,8 +61,15 @@ foreach ($mappings as $mapping) {
     }
 }
 $courses = [];
-foreach ($DB->get_records_select('course', 'id <> :siteid', ['siteid' => SITEID], 'fullname ASC',
-        'id,fullname,shortname,visible') as $course) {
+foreach (
+    $DB->get_records_select(
+        'course',
+        'id <> :siteid',
+        ['siteid' => SITEID],
+        'fullname ASC',
+        'id,fullname,shortname,visible'
+    ) as $course
+) {
     $label = format_string($course->fullname) . ' · ' . format_string($course->shortname);
     if (empty($course->visible)) {
         $label .= ' (' . get_string('hidden') . ')';
@@ -70,8 +78,10 @@ foreach ($DB->get_records_select('course', 'id <> :siteid', ['siteid' => SITEID]
 }
 $roles = get_default_enrol_roles($systemcontext);
 foreach ($mappings as $mapping) {
-    $existingroles=get_default_enrol_roles($systemcontext,(int)$mapping->roleid);
-    if (isset($existingroles[$mapping->roleid])) { $roles[$mapping->roleid]=$existingroles[$mapping->roleid]; }
+    $existingroles = get_default_enrol_roles($systemcontext, (int)$mapping->roleid);
+    if (isset($existingroles[$mapping->roleid])) {
+        $roles[$mapping->roleid] = $existingroles[$mapping->roleid];
+    }
 }
 $studentroles = get_archetype_roles('student');
 $studentrole = $studentroles ? (int) reset($studentroles)->id : 0;
@@ -102,8 +112,10 @@ if ($submitted = $form->get_data()) {
         require_capability('moodle/course:enrolconfig', $coursecontext);
         require_capability('enrol/storefront:config', $coursecontext);
     }
-    $selectedcourseids = array_values(array_unique(array_filter(array_map('intval',
-        (array) ($submitted->courseids ?? [])))));
+    $selectedcourseids = array_values(array_unique(array_filter(array_map(
+        'intval',
+        (array) ($submitted->courseids ?? [])
+    ))));
     $transaction = $DB->start_delegated_transaction();
     foreach ($mappings as $mapping) {
         $instance = $DB->get_record('enrol', ['id' => $mapping->enrolid], '*', MUST_EXIST);
@@ -129,21 +141,29 @@ if ($submitted = $form->get_data()) {
         ]);
     }
     $transaction->allow_commit();
-    redirect(new moodle_url('/local/storefront/offers.php', ['productid' => $productid]),
-        get_string('coursemappingsaved', 'local_storefront'), null,
-        \core\output\notification::NOTIFY_SUCCESS);
+    redirect(
+        new moodle_url('/local/storefront/offers.php', ['productid' => $productid]),
+        get_string('coursemappingsaved', 'local_storefront'),
+        null,
+        \core\output\notification::NOTIFY_SUCCESS
+    );
 }
 
 echo $OUTPUT->header();
 echo admin_navigation::render('products');
 echo html_writer::start_div('local-storefront-content-narrow');
 echo ui::page_header($terminal, [
-    $firstmapping ? ui::icon_action(new moodle_url('/enrol/instances.php', ['id' => $firstmapping->courseid]),
-        get_string('moodleenrolmentmethods', 'local_storefront'), 'fa-user-graduate') : '',
+    $firstmapping ? ui::icon_action(
+        new moodle_url('/enrol/instances.php', ['id' => $firstmapping->courseid]),
+        get_string('moodleenrolmentmethods', 'local_storefront'),
+        'fa-user-graduate'
+    ) : '',
 ]);
 echo html_writer::div(
-    ui::status_badge(get_string(enrol_is_enabled('storefront') ? 'coursepluginenabled' : 'courseplugindisabled',
-        'local_storefront'), enrol_is_enabled('storefront') ? 'success' : 'warning'),
+    ui::status_badge(get_string(
+        enrol_is_enabled('storefront') ? 'coursepluginenabled' : 'courseplugindisabled',
+        'local_storefront'
+    ), enrol_is_enabled('storefront') ? 'success' : 'warning'),
     'local-storefront-badge-list mb-3'
 );
 if (!enrol_is_enabled('storefront')) {

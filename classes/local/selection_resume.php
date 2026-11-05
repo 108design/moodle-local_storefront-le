@@ -1,23 +1,27 @@
 <?php
 /**
- * This file is part of a 108design source-available software product.
- *
- * Use and modification are permitted only under the Software License included
- * with this distribution. See LICENSE.md for the full terms.
- *
- * File documentation for classes/local/selection_resume.php.
+ * Short-lived, single-use continuation for a public product selection across login devices.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // Copyright (C) 2026 Andreas Giesen. See LICENSE.md.
 namespace local_storefront\local;
 
 defined('MOODLE_INTERNAL') || die();
 
-/** Short-lived, single-use continuation for a public product selection across login devices. */
+/**
+ * Short-lived, single-use continuation for a public product selection across login devices.
+ */
 final class selection_resume {
+    /**
+     * Validate the local destination allowed by selection resumption.
+     *
+     * @param string $url Local or validated destination URL.
+     * @return string
+     */
     public static function local_return(string $url): string {
         $url = clean_param($url, PARAM_LOCALURL);
         if ($url === '' || str_contains($url, '\\')) {
@@ -36,6 +40,12 @@ final class selection_resume {
         return $url->out_as_local_url(false);
     }
 
+    /**
+     * Store a one-use cart-resumption token for a validated local return.
+     *
+     * @param string $returnurl Local URL to return to.
+     * @return string
+     */
     public static function create(string $returnurl): string {
         global $SESSION;
         $cache = \cache::make('local_storefront', 'selection_resume');
@@ -50,6 +60,12 @@ final class selection_resume {
         return $token;
     }
 
+    /**
+     * Consume the stored request and return its validated destination.
+     *
+     * @param string $token Token.
+     * @return string
+     */
     public static function consume(string $token): string {
         if (!isloggedin() || isguestuser() || !preg_match('/^[a-f0-9]{64}$/D', $token)) {
             throw new \moodle_exception('selectionexpired', 'local_storefront');

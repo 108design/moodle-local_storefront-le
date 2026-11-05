@@ -1,9 +1,12 @@
 <?php
 /**
+ * English language strings for Storefront.
+ *
  * @package local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license 108design source-available software license; see LICENSE.md
  */
+
 // Copyright (C) 2026 Andreas Giesen. Use and modification under LICENSE.md.
 defined('MOODLE_INTERNAL') || die();
 
@@ -16,14 +19,16 @@ $string['managecoursemappingfor'] = 'Delivery for {$a}';
 $string['moodlecourses'] = 'Included Moodle courses';
 $string['coursebundlerequired'] = 'A course product must contain at least one visible Moodle course.';
 $string['moodleenrolmentmethods'] = 'Moodle enrolment methods';
-$string['coursemappinglocked'] = 'Course mappings with delivered purchases cannot be removed. Further courses may be added; status, role and future access duration may still be adjusted.';
+$string['coursemappinglocked'] = ('Course mappings with delivered purchases cannot be removed. Further courses '
+    . 'may be added; status, role and future access duration may still be adjusted.');
 $string['coursemappingnopermission'] = 'You cannot configure enrolment methods in this course.';
 $string['coursemissing'] = 'Select an available Moodle course.';
 $string['courseroleinvalid'] = 'Select a role that may be assigned through this course enrolment method.';
 $string['coursemappingsaved'] = 'The course delivery mapping was saved.';
 $string['coursepluginenabled'] = 'Course delivery active';
 $string['courseplugindisabled'] = 'Course delivery disabled';
-$string['coursepluginenablehelp'] = 'Enable Storefront course purchase under Site administration → Plugins → Enrolments before publishing the product.';
+$string['coursepluginenablehelp'] = ('Enable Storefront course purchase under Site administration → Plugins → '
+    . 'Enrolments before publishing the product.');
 $string['coursepluginmissing'] = 'Install the Storefront course purchase enrolment companion before linking course products.';
 $string['actions'] = 'Actions';
 $string['moodlepaymenttitle'] = 'Payment method';
@@ -35,7 +40,8 @@ $string['moodlepaymentdescription'] = 'Storefront order {$a}';
 $string['moodlepaymentinvalid'] = 'This Moodle payment order is unavailable or belongs to another account.';
 $string['legaldocuments'] = 'Legal documents';
 $string['legaldocument'] = 'Legal document';
-$string['legaldocumentsintro'] = 'Freely named, versioned documents for legal Store information. The revision used at checkout can later be referenced by the order.';
+$string['legaldocumentsintro'] = ('Freely named, versioned documents for legal Store information. The revision '
+    . 'used at checkout can later be referenced by the order.');
 $string['addlegaldocument'] = 'Add legal document';
 $string['editlegaldocument'] = 'Edit legal document';
 $string['deletelegaldocument'] = 'Delete legal document';
@@ -43,7 +49,10 @@ $string['deletelegaldocumentconfirm'] = 'Really delete the legal document “{$a
 $string['legaldocumenttitle'] = 'Title';
 $string['legaldocumentcontent'] = 'Content';
 $string['legalidentifier'] = 'Shared identifier';
-$string['legalidentifier_help'] = 'This identifier applies to every language version of the document, for example terms or privacy. Edit it under “Shared settings”. A change applies to the entire document and may invalidate existing links that use the old identifier.';
+$string['legalidentifier_help'] = ('This identifier applies to every language version of the document, for '
+    . 'example terms or privacy. Edit it under “Shared settings”. A change '
+    . 'applies to the entire document and may invalidate existing links that use the '
+    . 'old identifier.');
 $string['showincheckout'] = 'Show in checkout';
 $string['requireconfirmation'] = 'Require confirmation';
 $string['legalconfirmationmissing'] = 'At least one required legal document was not confirmed in the revision that was presented.';
@@ -63,18 +72,26 @@ $string['remove'] = 'Remove';
 $string['legallanguage'] = 'Language';
 $string['legallanguages'] = 'Language Versions';
 $string['legallanguageunassigned'] = 'Language not yet assigned';
-$string['legallanguage_help'] = 'The language applies to this version. Assign the actual language to existing texts. Add translations under the same legal document.';
+$string['legallanguage_help'] = ('The language applies to this version. Assign the actual language to existing '
+    . 'texts. Add translations under the same legal document.');
 $string['legalinputformat'] = 'Input Format';
 $string['legaleditorformat'] = 'Visual Editor';
-$string['legalinputformat_help'] = 'Choose the visual editor or Markdown. Markdown source is retained. Edit and Preview share one area. Changing the format does not convert existing content; enter the text in the selected format.';
+$string['legalinputformat_help'] = ('Choose the visual editor or Markdown. Markdown source is retained. Edit and '
+    . 'Preview share one area. Changing the format does not convert existing '
+    . 'content; enter the text in the selected format.');
 $string['legalpublished'] = 'Publish Language Version';
-$string['legalpublished_help'] = 'Saving makes this version available to readers and checkout. Leave unchecked to save a draft; an existing published version remains available. Previously published revisions remain available through their fixed links.';
+$string['legalpublished_help'] = ('Saving makes this version available to readers and checkout. Leave unchecked '
+    . 'to save a draft; an existing published version remains available. Previously '
+    . 'published revisions remain available through their fixed links.');
 $string['legalisdefault'] = 'Use as Default Language';
-$string['legalisdefault_help'] = 'This version is shown when the requested language is unavailable. A visible legal document needs a published default version.';
+$string['legalisdefault_help'] = ('This version is shown when the requested language is unavailable. A visible '
+    . 'legal document needs a published default version.');
 $string['legalvisible'] = 'Legal Document Visibility';
-$string['legalvisible_help'] = 'Applies to the entire document and all its languages. Hidden documents are also excluded from checkout.';
+$string['legalvisible_help'] = ('Applies to the entire document and all its languages. Hidden documents are '
+    . 'also excluded from checkout.');
 $string['showincheckout_help'] = 'Links the document in checkout. Each document appears once in the appropriate available language.';
-$string['requireconfirmation_help'] = 'Requires confirmation of the displayed version before ordering. A changed language or revision requires another review and confirmation.';
+$string['requireconfirmation_help'] = ('Requires confirmation of the displayed version before ordering. A changed '
+    . 'language or revision requires another review and confirmation.');
 $string['legalsortorder'] = 'Legal Document Order';
 $string['legalsortorder_help'] = 'Lower values appear first in checkout. The order applies to all language versions of this document.';
 $string['legaleditmode'] = 'Edit';
@@ -83,7 +100,8 @@ $string['legalpreviewfailed'] = 'The preview could not be loaded. Your source is
 $string['legalautomaticlanguage'] = 'Automatic, using Moodle language';
 $string['legaladdlanguage'] = 'Add or Open Language Version';
 $string['legaldefaultlabel'] = 'Default';
-$string['legaleditingintro'] = 'Edit the title, content and publication of this language version here. The identifier and other document-wide options are under “Shared settings”.';
+$string['legaleditingintro'] = ('Edit the title, content and publication of this language version here. The '
+    . 'identifier and other document-wide options are under “Shared settings”.');
 $string['legaldefaultrequired'] = 'A visible legal document needs a published default version.';
 $string['legaleditconflict'] = 'This document has changed. Open the current version and reapply your edits.';
 $string['legaltranslationunavailable'] = 'No published default version is available for this document.';
@@ -94,22 +112,40 @@ $string['legaldraft'] = 'Draft';
 $string['legalidentifierexists'] = 'This legal document identifier is already in use.';
 $string['legalsettings'] = 'Shared settings';
 $string['legalsettingssaved'] = 'The shared settings have been saved.';
-$string['legalsettingsintro'] = 'The identifier, default language, visibility, order and checkout rules apply to every language version of this document. Use the language links to edit translated titles and content.';
+$string['legalsettingsintro'] = ('The identifier, default language, visibility, order and checkout rules apply '
+    . 'to every language version of this document. Use the language links to edit '
+    . 'translated titles and content.');
 $string['legaldefaultlanguage'] = 'Default language';
-$string['legaldefaultlanguage_help'] = 'Choose the version shown when a translation is unavailable. A visible document requires a published default version.';
-$string['legalcreatingintro'] = 'Create the first language version and the shared document settings. Add further languages afterwards. The first version becomes the default language.';
+$string['legaldefaultlanguage_help'] = ('Choose the version shown when a translation is unavailable. A visible '
+    . 'document requires a published default version.');
+$string['legalcreatingintro'] = ('Create the first language version and the shared document settings. Add '
+    . 'further languages afterwards. The first version becomes the default language.');
 $string['legaldocumenttitle_help'] = 'This title belongs to the selected language version. Each language can have its own title.';
-$string['legaldocumentcontent_help'] = 'Content of the selected language version in the chosen input format. With Markdown, Edit and Preview share the same area.';
+$string['legaldocumentcontent_help'] = ('Content of the selected language version in the chosen input format. With '
+    . 'Markdown, Edit and Preview share the same area.');
 $string['courseduration'] = 'Course Access Duration';
-$string['courseduration_help'] = 'Leave disabled for access without a scheduled end date. A timed period starts when course access is delivered. Changes apply to future orders; saved orders retain their original duration.';
-$string['adminhelp_legal_customer_article'] = '<p>Checkout links to the legal documents that apply to your order. Read them before confirming. You can choose another published document language without changing the Moodle interface language.</p><p>My Purchases links to the revisions recorded with your order, including required confirmations. Later changes to a document do not replace this order evidence.</p>';
+$string['courseduration_help'] = ('Leave disabled for access without a scheduled end date. A timed period starts '
+    . 'when course access is delivered. Changes apply to future orders; saved orders '
+    . 'retain their original duration.');
+$string['adminhelp_legal_customer_article'] = (
+        '<p>Checkout links to the legal documents that apply to your order. Read them '
+    . 'before confirming. You can choose another published document language without '
+    . 'changing the Moodle interface language.</p><p>My Purchases links to the '
+    . 'revisions recorded with your order, including required confirmations. Later '
+    . 'changes to a document do not replace this order evidence.</p>'
+    );
 $string['choosetags'] = 'Choose Tags';
 $string['productimage'] = 'Product Image';
-$string['productimage_help'] = 'One image for the catalogue card and product details. Images and embedded description files follow the shop visibility and product publication settings.';
+$string['productimage_help'] = ('One image for the catalogue card and product details. Images and embedded '
+    . 'description files follow the shop visibility and product publication settings.');
 $string['producttypecourse'] = 'Course Access';
 $string['producttype_help'] = 'Course access supplies the courses configured for this product.';
-$string['moodlecourses_help'] = 'Choose all courses supplied by this product. Editing requires the native enrolment-configuration permissions in every affected course. Mappings referenced by purchases cannot be removed.';
-$string['coursemappingnote'] = 'All selected courses belong to one product and order position. Course access is delivered to the signed-in buyer after verified Moodle payment. Saved orders retain their original role and duration.';
+$string['moodlecourses_help'] = ('Choose all courses supplied by this product. Editing requires the native '
+    . 'enrolment-configuration permissions in every affected course. Mappings '
+    . 'referenced by purchases cannot be removed.');
+$string['coursemappingnote'] = ('All selected courses belong to one product and order position. Course access '
+    . 'is delivered to the signed-in buyer after verified Moodle payment. Saved '
+    . 'orders retain their original role and duration.');
 $string['grouping'] = 'Group By';
 $string['sorting'] = 'Sort By';
 $string['ordering'] = 'Ordering';
@@ -120,20 +156,25 @@ $string['move_up'] = 'Up';
 $string['move_down'] = 'Down';
 $string['move_last'] = 'Last';
 $string['converttotag'] = 'Convert to Tag';
-$string['orderingintro'] = 'Move entries in the global order or in a selected category or tag. Hidden products remain part of the order. A group order can be reset to the global order.';
-$string['conversionintro'] = 'Convert {$a} to a tag. Product assignments move to the matching tag; the category is removed. Existing unrelated assignments remain.';
+$string['orderingintro'] = ('Move entries in the global order or in a selected category or tag. Hidden '
+    . 'products remain part of the order. A group order can be reset to the global '
+    . 'order.');
+$string['conversionintro'] = ('Convert {$a} to a tag. Product assignments move to the matching tag; the '
+    . 'category is removed. Existing unrelated assignments remain.');
 $string['pluginname'] = 'Storefront';
 $string['storefront'] = 'Storefront';
 $string['product'] = 'Course Product';
 $string['name'] = 'Name';
 $string['identifier'] = 'Identifier';
-$string['identifier_help'] = 'A unique product identifier. Once a product has been saved, its identifier stays fixed so course mappings and saved orders retain their meaning.';
+$string['identifier_help'] = ('A unique product identifier. Once a product has been saved, its identifier '
+    . 'stays fixed so course mappings and saved orders retain their meaning.');
 $string['productname'] = 'Product';
 $string['summary'] = 'Summary';
 $string['visible'] = 'Visible';
 $string['enabled'] = 'Enabled';
 $string['sortorder'] = 'Sort Order';
-$string['sortorder_help'] = 'Lower values appear first. Categories and tags have their own order. Hiding a product prevents new purchases and preserves previous orders.';
+$string['sortorder_help'] = ('Lower values appear first. Categories and tags have their own order. Hiding a '
+    . 'product prevents new purchases and preserves previous orders.');
 $string['manageproducts'] = 'Products';
 $string['addproduct'] = 'Add Product';
 $string['editproduct'] = 'Edit Product';
@@ -144,25 +185,33 @@ $string['addoffer'] = 'Add Offer';
 $string['editoffer'] = 'Edit Offer';
 $string['amount'] = 'Price';
 $string['currency'] = 'Currency';
-$string['amount_help'] = 'The one-time price for this course product. Use a positive amount with a decimal point. The course mapping determines access duration for all price options.';
-$string['currency_help'] = 'Use a three-letter currency supported by an enabled gateway on the selected Moodle payment account. Products in one order must use the same currency.';
+$string['amount_help'] = ('The one-time price for this course product. Use a positive amount with a '
+    . 'decimal point. The course mapping determines access duration for all price '
+    . 'options.');
+$string['currency_help'] = ('Use a three-letter currency supported by an enabled gateway on the selected '
+    . 'Moodle payment account. Products in one order must use the same currency.');
 $string['invalidoffer'] = 'Enter a valid positive price, currency and identifier.';
 $string['categories'] = 'Categories';
 $string['tags'] = 'Tags';
 $string['addtaxonomy'] = 'Add Entry';
 $string['badgecolor'] = 'Badge Colour';
-$string['badgecolor_help'] = 'Use a six-digit hexadecimal colour or a supported OKLCH colour. An invalid value uses the neutral default.';
+$string['badgecolor_help'] = ('Use a six-digit hexadecimal colour or a supported OKLCH colour. An invalid '
+    . 'value uses the neutral default.');
 $string['delivery'] = 'Course Delivery';
 $string['settings'] = 'Settings';
 $string['storevisibility'] = 'Shop Visibility';
-$string['storevisibility_help'] = 'Choose who may browse the catalogue. Buyers must sign in before creating a payment. Order and course-access views remain restricted to their owner.';
+$string['storevisibility_help'] = ('Choose who may browse the catalogue. Buyers must sign in before creating a '
+    . 'payment. Order and course-access views remain restricted to their owner.');
 $string['audiencepublic'] = 'Public';
 $string['audienceauthenticated'] = 'Signed-in Users';
 $string['audienceeditors'] = 'Store Editors';
 $string['paymentaccount'] = 'Moodle payment account';
-$string['paymentaccount_help'] = 'Select an enabled account from Moodle payment accounts. Configure its gateway and test its sandbox before accepting payments.';
+$string['paymentaccount_help'] = ('Select an enabled account from Moodle payment accounts. Configure its gateway '
+    . 'and test its sandbox before accepting payments.');
 $string['magiclinkenabled'] = 'Offer Magic Link Sign-in';
-$string['magiclinkenabled_help'] = 'Shows the optional sign-in route when auth_magiclink is installed and enabled. Its account-creation, administrator and MFA policies apply. The selection returns to the cart after sign-in.';
+$string['magiclinkenabled_help'] = ('Shows the optional sign-in route when auth_magiclink is installed and '
+    . 'enabled. Its account-creation, administrator and MFA policies apply. The '
+    . 'selection returns to the cart after sign-in.');
 $string['magiclinklogin'] = 'Sign in with Email Link';
 $string['cart'] = 'Cart';
 $string['cartempty'] = 'Your cart is empty.';
@@ -178,19 +227,22 @@ $string['deliverystatus'] = 'Delivery';
 $string['courseaccess'] = 'Course Access';
 $string['account'] = 'Account';
 $string['unlimitedaccess'] = 'No scheduled end date';
-$string['durationnote'] = 'Timed access begins when course access is delivered. Each purchase keeps its own period; buying again does not add the purchased periods together.';
+$string['durationnote'] = ('Timed access begins when course access is delivered. Each purchase keeps its '
+    . 'own period; buying again does not add the purchased periods together.');
 $string['accountpurchase'] = 'This purchase supplies course access to {$a}.';
 $string['acceptdocument'] = 'I accept {$a}.';
 $string['createpayment'] = 'Continue to Payment';
 $string['selectionchanged'] = 'Your selection or its price changed. Review the cart and checkout again.';
-$string['selectionexpired'] = 'This selection link has expired or has already been used. Return to the catalogue and select your courses again.';
+$string['selectionexpired'] = ('This selection link has expired or has already been used. Return to the '
+    . 'catalogue and select your courses again.');
 $string['selectionunavailable'] = 'A selected offer is currently unavailable. Remove it before checkout.';
 $string['coursefulfilmentunavailable'] = 'Course access is currently unavailable. Please contact the shop administrator.';
 $string['noproducts'] = 'No courses match your selection.';
 $string['checkoutmixedcurrency'] = 'Use the same currency for every product in an order.';
 $string['resumepayment'] = 'Resume Payment';
 $string['retrydelivery'] = 'Retry Course Delivery';
-$string['deliverypending'] = 'Payment is recorded. Course delivery is waiting or needs another attempt. You can retry here; contact the shop administrator if access remains unavailable.';
+$string['deliverypending'] = ('Payment is recorded. Course delivery is waiting or needs another attempt. You '
+    . 'can retry here; contact the shop administrator if access remains unavailable.');
 $string['state_pending'] = 'Pending';
 $string['state_paid'] = 'Paid';
 $string['state_partial'] = 'Delivery Incomplete';
@@ -204,19 +256,25 @@ $string['state_sent'] = 'Sent';
 $string['state_cancelled'] = 'Cancelled';
 $string['revision'] = 'Revision';
 $string['acceptedat'] = 'Confirmed';
-$string['legaldocumentlimit'] = 'You can create up to two legal documents. Add a language version or revision to an existing document.';
-$string['distributionmismatch'] = 'This installation cannot use this package. Restore the package matching the installed distribution before continuing.';
+$string['legaldocumentlimit'] = ('You can create up to two legal documents. Add a language version or revision '
+    . 'to an existing document.');
+$string['distributionmismatch'] = ('This installation cannot use this package. Restore the package matching the '
+    . 'installed distribution before continuing.');
 $string['communication'] = 'Communication';
 $string['orderreadysubject'] = 'Your course access is ready';
-$string['orderreadybody'] = '<p>Your order {order_reference} is ready.</p><p><a href="{manage_url}">View your purchases and course access</a></p>';
+$string['orderreadybody'] = ('<p>Your order {order_reference} is ready.</p><p><a href="{manage_url}">View '
+    . 'your purchases and course access</a></p>');
 $string['processorders'] = 'Retry course delivery and transactional mail';
 $string['language'] = 'Language';
 $string['subject'] = 'Subject';
 $string['body'] = 'Message (HTML)';
 $string['adminemails'] = 'Internal Copies';
 $string['delayminutes'] = 'Delay (minutes)';
-$string['communicationintro'] = 'This message is queued after all positions have been delivered. Failed delivery remains available for retry. Subject and body are saved with each queued message.';
-$string['mailplaceholders'] = 'Use {order_reference} for the order reference and {manage_url} for My Purchases. Content is saved when queued; later edits apply to new messages.';
+$string['communicationintro'] = ('This message is queued after all positions have been delivered. Failed '
+    . 'delivery remains available for retry. Subject and body are saved with each '
+    . 'queued message.');
+$string['mailplaceholders'] = ('Use {order_reference} for the order reference and {manage_url} for My '
+    . 'Purchases. Content is saved when queued; later edits apply to new messages.');
 $string['retrymail'] = 'Retry Mail';
 $string['mailstatus'] = 'Mail Status';
 $string['attempts'] = 'Attempts';
@@ -232,19 +290,67 @@ $string['adminhelp_taxonomy'] = 'Categories and Tags';
 $string['adminhelp_delivery'] = 'Course Delivery';
 $string['adminhelp_operations'] = 'Orders and Recovery';
 $string['adminhelp_settings'] = 'Shop Settings';
-$string['adminhelp_shopping_article'] = '<p>Choose a course product and one offer. Adding another offer for the same product replaces the choice in your cart. A product can include several courses.</p><p>Sign in before checkout. Payment uses the gateways configured by the site operator. Keep the order reference if you need help. You can resume a pending payment under My Purchases.</p><p>The cart icon beside the user menu opens the side panel with your selection and totals. You can remove items there or continue to the full cart and checkout. Without JavaScript, the icon opens the cart page.</p>';
-$string['adminhelp_purchases_article'] = '<p>My Purchases shows your own orders with separate payment and course-delivery states. A recorded payment may still be waiting for course delivery. Retry Course Delivery uses the recorded payment and does not charge again.</p><p>Each course purchase retains its original access period. Other active purchases may keep your access available after one purchase ends. Contact the shop administrator for refund or dispute questions.</p>';
-$string['adminhelp_legal_article'] = '<p>Up to two documents can be maintained with freely chosen names. Each document can have language versions and revisions. Editing a draft leaves its published version available until the new version is published.</p><p>The document settings choose visibility, default language and whether checkout requires confirmation. Checkout records the displayed revision and required confirmation. Earlier order evidence is retained. The reader can choose a published language without changing the Moodle interface language.</p>';
-$string['adminhelp_products_article'] = '<p>Create a course product, save it, then open Course Delivery to select its courses. Offers contains the price choices. Enable an offer and make the product visible when the courses and payment account are ready.</p><p>The identifier stays fixed after the first save. Hiding a product prevents new purchases while earlier orders retain their original product and mapping snapshots.</p>';
-$string['adminhelp_offers_article'] = '<p>Each offer is a one-time price in a single currency. Configure a Moodle payment account and an enabled gateway supporting that currency. A cart containing several currencies cannot be paid as one order.</p><p>The course mapping controls role and access duration. Price choices do not define separate access periods. Changing an offer affects new orders.</p>';
-$string['adminhelp_taxonomy_article'] = '<p>Use categories for broad catalogue sections and tags for overlapping topics. Assign both in the product editor. Visitors can combine a search, category and tags; selected tags match any of those tags.</p><p>Lower sort-order values appear first. Hidden categories and tags remain assigned but are omitted from customer filters.</p>';
-$string['adminhelp_delivery_article'] = '<p>Enable Storefront Enrolment in Moodle. Course Delivery maps a product to one or more courses, with a role and duration. Editing mappings requires the native enrolment-configuration permissions in each affected course.</p><p>Orders retain the saved role and duration. Timed access starts at actual delivery. Retrying a position preserves earlier deliveries. Another active purchase protects the access it supplies. Course restore keeps a disabled product hint and requires deliberate remapping.</p>';
-$string['adminhelp_operations_article'] = '<p>Orders and Access separates payment from position delivery and course access. Pending payments can be resumed by their buyer. Retry Course Delivery requires a recorded verified payment and uses the original snapshots.</p><p>Repair a disabled or missing course mapping before retrying delivery. A return from a payment page does not mark an order paid. Agree the refund and dispute procedure with the operator of the chosen gateway.</p>';
-$string['adminhelp_settings_article'] = '<p>Shop Visibility controls catalogue access. Payment requires a confirmed signed-in Moodle account, an enabled Moodle payment account and a suitable gateway.</p><p>Optional Magic Link sign-in uses the installed authentication provider, including its account-creation and MFA rules. Selection links return to the cart and expire after one hour or use. Signing in creates neither a payment nor an enrolment.</p>';
+$string['adminhelp_shopping_article'] = ('<p>Choose a course product and one offer. Adding another offer for the same '
+    . 'product replaces the choice in your cart. A product can include several '
+    . 'courses.</p><p>Sign in before checkout. Payment uses the gateways configured '
+    . 'by the site operator. Keep the order reference if you need help. You can '
+    . 'resume a pending payment under My Purchases.</p><p>The cart icon beside the '
+    . 'user menu opens the side panel with your selection and totals. You can remove '
+    . 'items there or continue to the full cart and checkout. Without JavaScript, '
+    . 'the icon opens the cart page.</p>');
+$string['adminhelp_purchases_article'] = ('<p>My Purchases shows your own orders with separate payment and '
+    . 'course-delivery states. A recorded payment may still be waiting for course '
+    . 'delivery. Retry Course Delivery uses the recorded payment and does not charge '
+    . 'again.</p><p>Each course purchase retains its original access period. Other '
+    . 'active purchases may keep your access available after one purchase ends. '
+    . 'Contact the shop administrator for refund or dispute questions.</p>');
+$string['adminhelp_legal_article'] = ('<p>Up to two documents can be maintained with freely chosen names. Each '
+    . 'document can have language versions and revisions. Editing a draft leaves its '
+    . 'published version available until the new version is published.</p><p>The '
+    . 'document settings choose visibility, default language and whether checkout '
+    . 'requires confirmation. Checkout records the displayed revision and required '
+    . 'confirmation. Earlier order evidence is retained. The reader can choose a '
+    . 'published language without changing the Moodle interface language.</p>');
+$string['adminhelp_products_article'] = ('<p>Create a course product, save it, then open Course Delivery to select its '
+    . 'courses. Offers contains the price choices. Enable an offer and make the '
+    . 'product visible when the courses and payment account are ready.</p><p>The '
+    . 'identifier stays fixed after the first save. Hiding a product prevents new '
+    . 'purchases while earlier orders retain their original product and mapping '
+    . 'snapshots.</p>');
+$string['adminhelp_offers_article'] = ('<p>Each offer is a one-time price in a single currency. Configure a Moodle '
+    . 'payment account and an enabled gateway supporting that currency. A cart '
+    . 'containing several currencies cannot be paid as one order.</p><p>The course '
+    . 'mapping controls role and access duration. Price choices do not define '
+    . 'separate access periods. Changing an offer affects new orders.</p>');
+$string['adminhelp_taxonomy_article'] = ('<p>Use categories for broad catalogue sections and tags for overlapping '
+    . 'topics. Assign both in the product editor. Visitors can combine a search, '
+    . 'category and tags; selected tags match any of those tags.</p><p>Lower '
+    . 'sort-order values appear first. Hidden categories and tags remain assigned '
+    . 'but are omitted from customer filters.</p>');
+$string['adminhelp_delivery_article'] = ('<p>Enable Storefront Enrolment in Moodle. Course Delivery maps a product to '
+    . 'one or more courses, with a role and duration. Editing mappings requires the '
+    . 'native enrolment-configuration permissions in each affected '
+    . 'course.</p><p>Orders retain the saved role and duration. Timed access starts '
+    . 'at actual delivery. Retrying a position preserves earlier deliveries. Another '
+    . 'active purchase protects the access it supplies. Course restore keeps a '
+    . 'disabled product hint and requires deliberate remapping.</p>');
+$string['adminhelp_operations_article'] = ('<p>Orders and Access separates payment from position delivery and course '
+    . 'access. Pending payments can be resumed by their buyer. Retry Course Delivery '
+    . 'requires a recorded verified payment and uses the original '
+    . 'snapshots.</p><p>Repair a disabled or missing course mapping before retrying '
+    . 'delivery. A return from a payment page does not mark an order paid. Agree the '
+    . 'refund and dispute procedure with the operator of the chosen gateway.</p>');
+$string['adminhelp_settings_article'] = ('<p>Shop Visibility controls catalogue access. Payment requires a confirmed '
+    . 'signed-in Moodle account, an enabled Moodle payment account and a suitable '
+    . 'gateway.</p><p>Optional Magic Link sign-in uses the installed authentication '
+    . 'provider, including its account-creation and MFA rules. Selection links '
+    . 'return to the cart and expire after one hour or use. Signing in creates '
+    . 'neither a payment nor an enrolment.</p>');
 $string['shopping'] = 'Choosing and Paying';
 $string['shopping_help'] = 'Choose courses in the catalogue, review your cart and sign in before payment.';
 $string['delayminutes_help'] = 'Delay this order-ready message by 0 to 1440 minutes. The customer message remains required.';
-$string['adminemails_help'] = 'Optional internal copies of the order-ready message. Separate valid email addresses with commas, semicolons or spaces.';
+$string['adminemails_help'] = ('Optional internal copies of the order-ready message. Separate valid email '
+    . 'addresses with commas, semicolons or spaces.');
 $string['privacy:userid'] = 'Moodle account identifier';
 $string['privacy:email'] = 'Recipient or purchase email address';
 $string['privacy:language'] = 'Purchase language';
@@ -287,6 +393,7 @@ $string['ordernumber'] = 'Order';
 
 $string['orderheading'] = 'Order #{$a}';
 
-$string['moodlepaymentnoaccounts'] = 'Create and enable a Moodle payment account under Site administration → Payments → Payment accounts, then select it here.';
+$string['moodlepaymentnoaccounts'] = ('Create and enable a Moodle payment account under Site administration → '
+    . 'Payments → Payment accounts, then select it here.');
 
 $string['paymentaccountrequired'] = 'Choose an enabled Moodle payment account.';

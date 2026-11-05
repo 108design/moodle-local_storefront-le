@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for classes/form/legal_document_settings_form.php.
+ * Settings shared by every language version of an existing document.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -19,8 +20,15 @@ require_once($CFG->libdir . '/formslib.php');
 
 use local_storefront\local\legal_service;
 
-/** Settings shared by every language version of an existing document. */
+/**
+ * Settings shared by every language version of an existing document.
+ */
 final class legal_document_settings_form extends \moodleform {
+    /**
+     * Define the native form fields and their defaults.
+     *
+     * @return void
+     */
     protected function definition(): void {
         $mform = $this->_form;
         foreach (['id', 'expectedversion'] as $name) {
@@ -31,13 +39,22 @@ final class legal_document_settings_form extends \moodleform {
         $mform->setType('identifier', PARAM_ALPHANUMEXT);
         $mform->addRule('identifier', null, 'required', null, 'client');
         $mform->addHelpButton('identifier', 'legalidentifier', 'local_storefront');
-        $mform->addElement('select', 'defaultlang', get_string('legaldefaultlanguage', 'local_storefront'),
-            $this->_customdata['languages']);
+        $mform->addElement(
+            'select',
+            'defaultlang',
+            get_string('legaldefaultlanguage', 'local_storefront'),
+            $this->_customdata['languages']
+        );
         $mform->addHelpButton('defaultlang', 'legaldefaultlanguage', 'local_storefront');
-        foreach (['visible' => 'legalvisible', 'showincheckout' => 'showincheckout',
-            'requireconfirmation' => 'requireconfirmation'] as $name => $key) {
-            $mform->addElement('advcheckbox', $name,
-                get_string($name === 'visible' ? 'visible' : $key, $name === 'visible' ? 'moodle' : 'local_storefront'));
+        foreach (
+            ['visible' => 'legalvisible', 'showincheckout' => 'showincheckout',
+            'requireconfirmation' => 'requireconfirmation'] as $name => $key
+        ) {
+            $mform->addElement(
+                'advcheckbox',
+                $name,
+                get_string($name === 'visible' ? 'visible' : $key, $name === 'visible' ? 'moodle' : 'local_storefront')
+            );
             $mform->addHelpButton($name, $key, 'local_storefront');
         }
         $mform->hideIf('requireconfirmation', 'showincheckout', 'notchecked');
@@ -47,11 +64,23 @@ final class legal_document_settings_form extends \moodleform {
         $this->add_action_buttons(true);
     }
 
+    /**
+     * Validate submitted values and return errors keyed by field name.
+     *
+     * @param mixed $data Submitted or stored data.
+     * @param mixed $files Submitted file data.
+     * @return array
+     */
     public function validation($data, $files): array {
         global $DB;
         $errors = parent::validation($data, $files);
-        if ($DB->record_exists_select('local_storefront_legaldoc', 'identifier = :identifier AND id <> :id',
-                ['identifier' => $data['identifier'], 'id' => (int) $data['id']])) {
+        if (
+            $DB->record_exists_select(
+                'local_storefront_legaldoc',
+                'identifier = :identifier AND id <> :id',
+                ['identifier' => $data['identifier'], 'id' => (int) $data['id']]
+            )
+        ) {
             $errors['identifier'] = get_string('legalidentifierexists', 'local_storefront');
         }
         $translations = legal_service::translations((int) $data['id']);

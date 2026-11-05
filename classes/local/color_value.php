@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for classes/local/color_value.php.
+ * Safe editable colour values shared by Storefront presentation surfaces.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -16,12 +17,29 @@ namespace local_storefront\local;
 
 use invalid_parameter_exception;
 
-/** Safe editable colour values shared by Storefront presentation surfaces. */
+/**
+ * Safe editable colour values shared by Storefront presentation surfaces.
+ */
 final class color_value {
+    /**
+     * Default neutral.
+     */
     public const DEFAULT_NEUTRAL = 'oklch(94.165% 0.00518 247.88)';
+    /**
+     * Text dark.
+     */
     public const TEXT_DARK = 'oklch(26.209% 0.00949 248.19)';
+    /**
+     * Text light.
+     */
     public const TEXT_LIGHT = 'oklch(100% 0 0)';
 
+    /**
+     * Validate and normalise a supported CSS colour value.
+     *
+     * @param string $value Input value to process.
+     * @return string
+     */
     public static function normalise(string $value): string {
         $value = strtolower(trim($value));
         if (preg_match('/^#[0-9a-f]{3}$/', $value)) {
@@ -30,14 +48,22 @@ final class color_value {
         $number = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
         $oklch = '/^oklch\(\s*' . $number . '%?\s+' . $number . '\s+' . $number
             . '(?:deg|grad|rad|turn)?(?:\s*\/\s*' . $number . '%?)?\s*\)$/';
-        if ($value === '' || strlen($value) > 120
-                || (!preg_match('/^#[0-9a-f]{6}$/', $value) && !preg_match($oklch, $value))) {
+        if (
+            $value === '' || strlen($value) > 120
+                || (!preg_match('/^#[0-9a-f]{6}$/', $value) && !preg_match($oklch, $value))
+        ) {
             throw new invalid_parameter_exception('Enter a six-digit hexadecimal or OKLCH colour value.');
         }
         $value = preg_replace('/\s+/', ' ', $value);
         return str_starts_with($value, '#') ? strtoupper($value) : $value;
     }
 
+    /**
+     * Choose a readable text colour for the validated background colour.
+     *
+     * @param string $value Input value to process.
+     * @return string
+     */
     public static function contrasting_text_colour(string $value): string {
         $value = self::normalise($value);
         if (str_starts_with($value, '#')) {

@@ -1,31 +1,49 @@
 <?php
 /**
- * File documentation for classes/form/course_mapping_form.php.
+ * Storefront-side convenience form for the Moodle enrolment instance.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 
 namespace local_storefront\form;
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/formslib.php');
 
-/** Storefront-side convenience form for the Moodle enrolment instance. */
+/**
+ * Storefront-side convenience form for the Moodle enrolment instance.
+ */
 final class course_mapping_form extends \moodleform {
+    /**
+     * Define the native form fields and their defaults.
+     *
+     * @return void
+     */
     protected function definition(): void {
         $mform = $this->_form;
         $mform->addElement('hidden', 'productid');
         $mform->setType('productid', PARAM_INT);
-        $mform->addElement('autocomplete', 'courseids', get_string('moodlecourses', 'local_storefront'),
-            $this->_customdata['courses'], ['multiple' => true]);
+        $mform->addElement(
+            'autocomplete',
+            'courseids',
+            get_string('moodlecourses', 'local_storefront'),
+            $this->_customdata['courses'],
+            ['multiple' => true]
+        );
         $mform->setType('courseids', PARAM_INT);
-        $mform->addHelpButton('courseids','moodlecourses','local_storefront');
+        $mform->addHelpButton('courseids', 'moodlecourses', 'local_storefront');
         if (!empty($this->_customdata['lockedcourseids'])) {
-            $mform->addElement('static', 'mappinglockednote', '', get_string('coursemappinglocked', 'local_storefront'));
+            $mform->addElement(
+                'static',
+                'mappinglockednote',
+                '',
+                get_string('coursemappinglocked', 'local_storefront')
+            );
         }
         $mform->addElement('select', 'status', get_string('coursepluginenabled', 'local_storefront'), [
             ENROL_INSTANCE_ENABLED => get_string('yes'),
@@ -40,6 +58,13 @@ final class course_mapping_form extends \moodleform {
         $this->add_action_buttons(true);
     }
 
+    /**
+     * Validate submitted values and return errors keyed by field name.
+     *
+     * @param mixed $data Submitted or stored data.
+     * @param mixed $files Submitted file data.
+     * @return array
+     */
     public function validation($data, $files): array {
         global $DB;
         $errors = parent::validation($data, $files);
@@ -50,23 +75,27 @@ final class course_mapping_form extends \moodleform {
             $errors['courseids'] = get_string('coursemappinglocked', 'local_storefront');
         }
         foreach ($courseids as $courseid) {
-            if (!$DB->record_exists_select('course', 'id = :id AND id <> :siteid', [
+            if (
+                !$DB->record_exists_select('course', 'id = :id AND id <> :siteid', [
                     'id' => $courseid, 'siteid' => SITEID,
-                ])) {
+                ])
+            ) {
                 $errors['courseids'] = get_string('coursemissing', 'local_storefront');
                 break;
             }
             $context = \context_course::instance($courseid);
-            if (!has_capability('moodle/course:enrolconfig', $context)
-                    || !has_capability('enrol/storefront:config', $context)) {
+            if (
+                !has_capability('moodle/course:enrolconfig', $context)
+                    || !has_capability('enrol/storefront:config', $context)
+            ) {
                 $errors['courseids'] = get_string('coursemappingnopermission', 'local_storefront');
                 break;
             }
             // Only a real saved mapping may retain a legacy role outside the native course-role list.
-            $existingrole=(int)$DB->get_field('enrol','roleid',[
-                'enrol'=>'storefront','courseid'=>$courseid,'customint1'=>$productid,
+            $existingrole = (int)$DB->get_field('enrol', 'roleid', [
+                'enrol' => 'storefront', 'courseid' => $courseid, 'customint1' => $productid,
             ]);
-            if (!array_key_exists((int) ($data['roleid'] ?? 0),get_default_enrol_roles($context,$existingrole))) {
+            if (!array_key_exists((int) ($data['roleid'] ?? 0), get_default_enrol_roles($context, $existingrole))) {
                 $errors['roleid'] = get_string('courseroleinvalid', 'local_storefront');
                 break;
             }

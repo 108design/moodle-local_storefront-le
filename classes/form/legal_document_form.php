@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for classes/form/legal_document_form.php.
+ * Document rules are shared; title, format and content belong to one language.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -19,8 +20,15 @@ require_once($CFG->libdir . '/formslib.php');
 
 use local_storefront\local\legal_service;
 
-/** Document rules are shared; title, format and content belong to one language. */
+/**
+ * Document rules are shared; title, format and content belong to one language.
+ */
 final class legal_document_form extends \moodleform {
+    /**
+     * Define the native form fields and their defaults.
+     *
+     * @return void
+     */
     protected function definition(): void {
         $mform = $this->_form;
         foreach (['id', 'expectedversion'] as $name) {
@@ -29,8 +37,12 @@ final class legal_document_form extends \moodleform {
         }
         $mform->addElement('hidden', 'originlang', $this->_customdata['language'] ?? '');
         $mform->setType('originlang', PARAM_SAFEDIR);
-        $mform->addElement('select', 'documentlanguage', get_string('legallanguage', 'local_storefront'),
-            ['' => get_string('choosedots')] + legal_service::languages());
+        $mform->addElement(
+            'select',
+            'documentlanguage',
+            get_string('legallanguage', 'local_storefront'),
+            ['' => get_string('choosedots')] + legal_service::languages()
+        );
         $mform->addHelpButton('documentlanguage', 'legallanguage', 'local_storefront');
         if (!empty($this->_customdata['language']) && $this->_customdata['language'] !== 'und') {
             $mform->setDefault('documentlanguage', $this->_customdata['language']);
@@ -49,12 +61,21 @@ final class legal_document_form extends \moodleform {
         }
         $mform->addElement('select', 'contentformat', get_string('legalinputformat', 'local_storefront'), $formats);
         $mform->addHelpButton('contentformat', 'legalinputformat', 'local_storefront');
-        $mform->addElement('editor', 'content_editor', get_string('legaldocumentcontent', 'local_storefront'),
-            ['rows' => 18], ['maxfiles' => 0, 'maxbytes' => 0, 'trusttext' => false]);
+        $mform->addElement(
+            'editor',
+            'content_editor',
+            get_string('legaldocumentcontent', 'local_storefront'),
+            ['rows' => 18],
+            ['maxfiles' => 0, 'maxbytes' => 0, 'trusttext' => false]
+        );
         $mform->addHelpButton('content_editor', 'legaldocumentcontent', 'local_storefront');
         $mform->hideIf('content_editor', 'contentformat', 'eq', FORMAT_MARKDOWN);
-        $mform->addElement('textarea', 'content_markdown', get_string('legaldocumentcontent', 'local_storefront'),
-            ['rows' => 24, 'cols' => 80, 'class' => 'local-storefront-markdown-source', 'spellcheck' => 'true']);
+        $mform->addElement(
+            'textarea',
+            'content_markdown',
+            get_string('legaldocumentcontent', 'local_storefront'),
+            ['rows' => 24, 'cols' => 80, 'class' => 'local-storefront-markdown-source', 'spellcheck' => 'true']
+        );
         $mform->setType('content_markdown', PARAM_RAW);
         $mform->addHelpButton('content_markdown', 'legaldocumentcontent', 'local_storefront');
         $mform->hideIf('content_markdown', 'contentformat', 'neq', FORMAT_MARKDOWN);
@@ -68,10 +89,18 @@ final class legal_document_form extends \moodleform {
             $mform->setType('identifier', PARAM_ALPHANUMEXT);
             $mform->addRule('identifier', null, 'required', null, 'client');
             $mform->addHelpButton('identifier', 'legalidentifier', 'local_storefront');
-            foreach (['visible' => 'legalvisible', 'showincheckout' => 'showincheckout',
-                'requireconfirmation' => 'requireconfirmation'] as $name => $key) {
-                $mform->addElement('advcheckbox', $name,
-                    get_string($name === 'visible' ? 'visible' : $key, $name === 'visible' ? 'moodle' : 'local_storefront'));
+            foreach (
+                ['visible' => 'legalvisible', 'showincheckout' => 'showincheckout',
+                'requireconfirmation' => 'requireconfirmation'] as $name => $key
+            ) {
+                $mform->addElement(
+                    'advcheckbox',
+                    $name,
+                    get_string(
+                        $name === 'visible' ? 'visible' : $key,
+                        $name === 'visible' ? 'moodle' : 'local_storefront'
+                    )
+                );
                 $mform->addHelpButton($name, $key, 'local_storefront');
             }
             $mform->setDefault('visible', 1);
@@ -84,12 +113,24 @@ final class legal_document_form extends \moodleform {
         $this->add_action_buttons(true);
     }
 
+    /**
+     * Validate submitted values and return errors keyed by field name.
+     *
+     * @param mixed $data Submitted or stored data.
+     * @param mixed $files Submitted file data.
+     * @return array
+     */
     public function validation($data, $files): array {
         global $DB;
         $errors = parent::validation($data, $files);
-        if (empty($data['id']) && $DB->record_exists_select('local_storefront_legaldoc', 'identifier = :identifier AND id <> :id', [
-            'identifier' => $data['identifier'], 'id' => (int) ($data['id'] ?? 0),
-        ])) {
+        if (
+            empty($data['id'])
+            && $DB->record_exists_select(
+                'local_storefront_legaldoc',
+                'identifier = :identifier AND id <> :id',
+                [ 'identifier' => $data['identifier'], 'id' => (int) ($data['id'] ?? 0) ]
+            )
+        ) {
             $errors['identifier'] = get_string('legalidentifierexists', 'local_storefront');
         }
         if (!isset(legal_service::languages()[$data['documentlanguage']])) {

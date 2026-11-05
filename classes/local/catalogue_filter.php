@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for classes/local/catalogue_filter.php.
+ * Canonical catalogue-filter vocabulary for course products.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -16,12 +17,24 @@ namespace local_storefront\local;
 
 defined('MOODLE_INTERNAL') || die();
 
-/** Canonical catalogue-filter vocabulary for course products. */
+/**
+ * Canonical catalogue-filter vocabulary for course products.
+ */
 final class catalogue_filter {
+    /**
+     * Product types.
+     */
     public const PRODUCT_TYPES = ['course'];
+    /**
+     * Availability.
+     */
     public const AVAILABILITY = ['bundle', 'paid'];
 
-    /** Read and normalise filter values from the current request. */
+    /**
+     * Read and normalise filter values from the current request.
+     *
+     * @return array
+     */
     public static function from_request(): array {
         return self::normalise([
             'q' => optional_param('q', '', PARAM_NOTAGS),
@@ -35,7 +48,12 @@ final class catalogue_filter {
         ]);
     }
 
-    /** Return only supported, trimmed filter values. */
+    /**
+     * Return only supported, trimmed filter values.
+     *
+     * @param array $filters Filtering criteria.
+     * @return array
+     */
     public static function normalise(array $filters): array {
         $query = trim((string) ($filters['q'] ?? ''));
         $type = (string) ($filters['type'] ?? '');
@@ -43,8 +61,10 @@ final class catalogue_filter {
         $availability = (string) ($filters['availability'] ?? '');
         $tags = $filters['tags'] ?? [];
         $tags = is_array($tags) ? $tags : explode(',', (string)$tags);
-        $tags = array_slice(array_values(array_unique(array_filter(array_map('trim', $tags),
-            static fn($t) => preg_match('/^[a-zA-Z0-9_-]{1,100}$/', $t)))), 0, 50);
+        $tags = array_slice(array_values(array_unique(array_filter(
+            array_map('trim', $tags),
+            static fn($t) => preg_match('/^[a-zA-Z0-9_-]{1,100}$/', $t)
+        ))), 0, 50);
         return [
             'q' => \core_text::substr($query, 0, 255),
             'type' => in_array($type, self::PRODUCT_TYPES, true) ? $type : '',
@@ -56,13 +76,23 @@ final class catalogue_filter {
         ];
     }
 
+    /**
+     * Report whether this component currently owns its module.
+     *
+     * @param array $filters Filtering criteria.
+     * @return bool
+     */
     public static function active(array $filters): bool {
         $filters = self::normalise($filters);
         return $filters['q'] !== '' || $filters['type'] !== '' || $filters['category'] !== ''
             || $filters['availability'] !== '' || $filters['tags'] !== [];
     }
 
-    /** @return array<string, string> */
+    /**
+     * Return the product types supported by the catalogue filter.
+     *
+     * @return array<string, string>
+     */
     public static function product_type_choices(): array {
         $choices = [];
         foreach (self::PRODUCT_TYPES as $type) {
@@ -71,7 +101,11 @@ final class catalogue_filter {
         return $choices;
     }
 
-    /** @return array<string, string> */
+    /**
+     * Return the supported catalogue availability filters.
+     *
+     * @return array<string, string>
+     */
     public static function availability_choices(): array {
         $choices = [];
         foreach (self::AVAILABILITY as $availability) {

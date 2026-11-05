@@ -1,14 +1,15 @@
 <?php
 /**
- * File documentation for legal_edit.php.
+ * Native legal edit entry point for Storefront.
  *
  * @package   local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>
  * @license   108design source-available software license; see LICENSE.md
  */
+
 // This file is part of a 108design source-available software product.
 //
-// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>
+// Copyright (C) 2026 Andreas Giesen <andreas@108design.com>.
 //
 // Use and modification are permitted only under the Software License included
 // with this distribution. See LICENSE.md for the full terms.
@@ -49,8 +50,12 @@ if ($form->is_cancelled()) {
 if ($data = $form->get_data()) {
     $data->originlang = $editdata->originlang;
     legal_service::save($data, (int) $USER->id);
-    redirect($returnurl, get_string('legaldocumentsaved', 'local_storefront'), null,
-        \core\output\notification::NOTIFY_SUCCESS);
+    redirect(
+        $returnurl,
+        get_string('legaldocumentsaved', 'local_storefront'),
+        null,
+        \core\output\notification::NOTIFY_SUCCESS
+    );
 }
 $PAGE->requires->css(new moodle_url('/local/storefront/styles/legal_editor.css'));
 $PAGE->requires->js_call_amd('local_storefront/legal_editor', 'init', [[
@@ -65,14 +70,19 @@ echo admin_navigation::render('legal');
 echo html_writer::start_div('local-storefront-content-narrow');
 echo ui::page_header($title);
 if ($id) {
-    echo html_writer::div(ui::badge(get_string('legaldocument', 'local_storefront'),
-        'primary', ui::ICON_LEGAL)
+    echo html_writer::div(ui::badge(get_string('legaldocument', 'local_storefront'), 'primary', ui::ICON_LEGAL)
         . ui::actionbar([
-            ui::icon_action(new moodle_url('/local/storefront/legal_settings.php', ['id' => $id]),
-                get_string('legalsettings', 'local_storefront'), 'fa-cog'),
+            ui::icon_action(
+                new moodle_url('/local/storefront/legal_settings.php', ['id' => $id]),
+                get_string('legalsettings', 'local_storefront'),
+                'fa-cog'
+            ),
             ui::icon_action($returnurl, get_string('legaldocuments', 'local_storefront'), ui::ICON_LEGAL),
-            ui::icon_action(new moodle_url('/local/storefront/legal.php', ['document' => $editdata->identifier]),
-                get_string('viewlegaldocument', 'local_storefront'), 'fa-globe'),
+            ui::icon_action(
+                new moodle_url('/local/storefront/legal.php', ['document' => $editdata->identifier]),
+                get_string('viewlegaldocument', 'local_storefront'),
+                'fa-globe'
+            ),
         ]), 'local-storefront-entity-toolbar d-flex align-items-center justify-content-between '
             . 'local-storefront-gap-3 mb-4');
 }
