@@ -25,7 +25,7 @@ final class service_provider implements \core_payment\local\callback\service_pro
     public const AREA_COURSE_ORDER = 'courseorder';
 
     /**
-     * Return the cost, currency and account for the authenticated buyer's order.
+     * Resolve the order's payment details for the buyer or the Stripe webhook.
      *
      * @param string $paymentarea Core payment service area.
      * @param int $itemid Service-specific item ID.
@@ -33,8 +33,9 @@ final class service_provider implements \core_payment\local\callback\service_pro
      */
     public static function get_payable(string $paymentarea, int $itemid): \core_payment\local\entities\payable {
         global $USER;
-        $order = self::order($paymentarea, $itemid);
-        if (!isloggedin() || isguestuser() || (int)$USER->id !== (int)$order->userid) {
+        $webhook = self::is_stripe_webhook_request();
+        $order = self::order($paymentarea, $itemid, $webhook);
+        if (!$webhook && (!isloggedin() || isguestuser() || (int)$USER->id !== (int)$order->userid)) {
             throw new \moodle_exception('moodlepaymentinvalid', 'local_storefront');
         }
         return new \core_payment\local\entities\payable(
@@ -42,6 +43,20 @@ final class service_provider implements \core_payment\local\callback\service_pro
             (string) $order->currency,
             (int) $order->provideraccountid
         );
+    }
+
+    /**
+     * Let the Stripe gateway resolve its account before it verifies the webhook signature.
+     *
+     * @return bool Whether this is the gateway's sessionless webhook entry point.
+     */
+    private static function is_stripe_webhook_request(): bool {
+        global $CFG;
+        if (!NO_MOODLE_COOKIES || ($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST' || empty($_SERVER['HTTP_STRIPE_SIGNATURE'])) {
+            return false;
+        }
+        $script = realpath($_SERVER['SCRIPT_FILENAME'] ?? '');
+        return $script !== false && $script === realpath($CFG->dirroot . '/payment/gateway/stripe/webhook.php');
     }
 
     /**
@@ -75,7 +90,7 @@ final class service_provider implements \core_payment\local\callback\service_pro
     }
 
     /**
-     * Load the order belonging to the authenticated buyer and payment area.
+     * Load a Moodle payment order in a state accepted by the caller.
      *
      * @param string $paymentarea Core payment service area.
      * @param int $itemid Service-specific item ID.
