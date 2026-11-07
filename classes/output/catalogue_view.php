@@ -31,19 +31,25 @@ final class catalogue_view {
         $cover = $image ? html_writer::link($url, html_writer::empty_tag('img', [
             'src' => $image->out(false), 'alt' => '', 'loading' => 'lazy',
             'class' => 'local-storefront-product-card-image',
-        ]), ['aria-label' => format_string($product->name)]) : '';
+        ]), ['aria-label' => html_to_text(format_string($product->name), 0, false)]) : '';
         if (!$image) {
-            $cover = html_writer::span(ui::icon('i/course') . get_string('producttypecourse', 'local_storefront'),
-                'local-storefront-card-kind');
+            $cover = html_writer::span(
+                ui::icon('i/course') . get_string('producttypecourse', 'local_storefront'),
+                'local-storefront-card-kind'
+            );
         }
         $cover .= html_writer::div(html_writer::link($url, ui::icon('fa-arrow-right'), [
             'class' => 'btn btn-primary local-storefront-product-cta is-compact',
-            'aria-label' => get_string('viewproduct', 'local_storefront') . ': ' . format_string($product->name),
+            'aria-label' => get_string('viewproduct', 'local_storefront') . ': '
+                . html_to_text(format_string($product->name), 0, false),
             'title' => get_string('viewproduct', 'local_storefront'),
         ]), 'local-storefront-card-action');
         $cover = html_writer::div($cover, 'local-storefront-card-cover' . ($image ? '' : ' without-image'));
-        $content = html_writer::tag('h3', html_writer::link($url, format_string($product->name)),
-            ['class' => 'card-title local-storefront-card-title']);
+        $content = html_writer::tag(
+            'h3',
+            html_writer::link($url, format_string($product->name)),
+            ['class' => 'card-title local-storefront-card-title']
+        );
         $badges = '';
         foreach (array_merge($product->categories, $product->tags) as $term) {
             $colour = \local_storefront\local\color_value::normalise($term->badgecolor);
@@ -73,8 +79,11 @@ final class catalogue_view {
             . html_writer::span(get_string('oneoffpurchase', 'local_storefront'), 'small text-muted'),
             'local-storefront-product-card-footer'
         );
-        return html_writer::tag('article', $cover . html_writer::div($content, 'card-body'),
-            ['class' => 'card h-100 local-storefront-product-card']);
+        return html_writer::tag(
+            'article',
+            $cover . html_writer::div($content, 'card-body'),
+            ['class' => 'card h-100 local-storefront-product-card']
+        );
     }
     /**
      * Render the selected offers and their available cart actions.

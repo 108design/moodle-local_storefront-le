@@ -416,3 +416,17 @@ $string['updateguard_operation'] = 'This combination of installation actions is 
 $string['updateguard_failed'] = 'The update could not be verified. No installation was started.';
 $string['updateguard_back'] = 'Return to plugin overview';
 // End shared independent signed update protection.
+
+$string['uicataloguedisplay'] = 'Display';
+
+$string['searchbarfilters'] = 'Filter';
+
+$string['searchbardisplay'] = 'Display';
+
+$string['searchbarreset'] = 'Reset';
+
+$string['searchbarremove'] = 'Remove {$a}';
+
+$string['searchbarerror'] = 'Results could not be updated. Your previous results are still shown.';
+
+$string['searchbarloading'] = 'Updating results …';

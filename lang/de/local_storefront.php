@@ -457,3 +457,17 @@ $string['updateguard_operation'] = 'Diese Kombination von Installationsaktionen 
 $string['updateguard_failed'] = 'Das Update konnte nicht geprüft werden. Es wurde keine Installation gestartet.';
 $string['updateguard_back'] = 'Zur Pluginübersicht';
 // End shared independent signed update protection.
+
+$string['uicataloguedisplay'] = 'Darstellung';
+
+$string['searchbarfilters'] = 'Filter';
+
+$string['searchbardisplay'] = 'Anzeige';
+
+$string['searchbarreset'] = 'Zurücksetzen';
+
+$string['searchbarremove'] = '{$a} entfernen';
+
+$string['searchbarerror'] = 'Die Ergebnisse konnten nicht aktualisiert werden. Die bisherigen Ergebnisse bleiben sichtbar.';
+
+$string['searchbarloading'] = 'Ergebnisse werden aktualisiert …';

@@ -15,16 +15,21 @@ page::setup('index', 'storefront');
 $filters = catalogue_filter::from_request();
 $products = catalogue::products($filters);
 page::header('storefront');
-echo html_writer::start_tag('form', ['method' => 'get', 'class' => 'row align-items-end mb-4']);
-$field = static function (string $label, string $id, string $control, string $width = 'col-12 col-md-3'): void {
-    echo html_writer::div(
-        html_writer::tag('label', $label, [ 'for' => $id, 'class' => 'd-block mb-1' ])
-        . $control,
-        $width . ' mb-3'
+$groups = [
+    'search' => ['label' => get_string('search'), 'fields' => []],
+    'filter' => ['label' => get_string('filter'), 'fields' => []],
+    'display' => ['label' => get_string('uicataloguedisplay', 'local_storefront'), 'fields' => []],
+];
+$field = static function (string $label, string $id, string $control, string $group = 'filter') use (&$groups): void {
+    $groups[$group]['fields'][] = \local_storefront\output\search_bar::field(
+        \local_storefront\output\search_bar::labelled_control($control, $label, $id),
+        $id,
+        '',
+        $label
     );
 };
 $field(get_string('search'), 'storefront-search', html_writer::empty_tag('input', [
-    'id' => 'storefront-search', 'name' => 'q', 'value' => $filters['q'], 'class' => 'form-control']));
+    'id' => 'storefront-search', 'name' => 'q', 'value' => $filters['q'], 'class' => 'form-control']), 'search');
 $choices = ['' => get_string('all')];
 foreach (category_service::all(true) as $term) {
     $choices[$term->identifier] = format_string($term->name);
@@ -48,7 +53,7 @@ foreach (tag_service::all(true) as $term) {
         'mb-1'
     );
 }
-echo html_writer::div(
+$groups['filter']['fields'][] = html_writer::div(
     html_writer::tag(
         'fieldset',
         html_writer::tag(
@@ -67,7 +72,7 @@ echo html_writer::div(
                 . html_writer::div($tags, 'border rounded p-2')
             )
     ),
-    'col-12 col-md-3 mb-3'
+    'local-plugin-search-bar-field'
 );
 $field(get_string('grouping', 'local_storefront'), 'cataloguegroup', html_writer::select(
     [
@@ -78,7 +83,7 @@ $field(get_string('grouping', 'local_storefront'), 'cataloguegroup', html_writer
     $filters['group'],
     null,
     ['id' => 'cataloguegroup', 'class' => 'form-control form-select custom-select']
-));
+), 'display');
 $field(get_string('sorting', 'local_storefront'), 'cataloguesort', html_writer::select(
     [
     '' => get_string('sortorder', 'local_storefront'), 'name' => get_string('name', 'local_storefront')],
@@ -86,16 +91,14 @@ $field(get_string('sorting', 'local_storefront'), 'cataloguesort', html_writer::
     $filters['sort'],
     null,
     ['id' => 'cataloguesort', 'class' => 'form-control form-select custom-select']
-));
-echo html_writer::div(
-    html_writer::tag(
-        'button',
-        get_string('search'),
-        [ 'type' => 'submit', 'class' => 'btn btn-secondary' ]
-    ),
-    'col-12 col-md-3 mb-3'
+), 'display');
+$actions = html_writer::tag('button', get_string('search'), ['type' => 'submit', 'class' => 'btn btn-secondary']);
+echo \local_storefront\output\search_bar::render(
+    $groups,
+    ['method' => 'get', 'action' => $PAGE->url->out(false), 'role' => 'search',
+    'class' => 'local-storefront-catalogue-filters'],
+    $actions
 );
-echo html_writer::end_tag('form');
 foreach (catalogue_order::sections($products, $filters) as $section) {
     if ($section['name'] !== '') {
         echo $OUTPUT->heading(format_string($section['name']), 3);
