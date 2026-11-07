@@ -25,7 +25,7 @@ export const init = config => {
     const helpEntry = navigation?.querySelector('.local-storefront-help-navbar');
     if (helpEntry) {
         const anchor = navigation.querySelector('.local-storefront-cart-nav')
-            || navigation.querySelector(':scope > .divider') || navigation.querySelector('.usermenu-container');
+            || navigation.querySelector(':scope > .divider, :scope > .usermenu-container');
         if (anchor && anchor.parentElement === navigation) navigation.insertBefore(helpEntry, anchor);
     }
 
