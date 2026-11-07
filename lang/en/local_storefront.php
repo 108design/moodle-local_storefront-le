@@ -290,7 +290,9 @@ $string['adminhelp_taxonomy'] = 'Categories and Tags';
 $string['adminhelp_delivery'] = 'Course Delivery';
 $string['adminhelp_operations'] = 'Orders and Recovery';
 $string['adminhelp_settings'] = 'Shop Settings';
-$string['adminhelp_shopping_article'] = ('<p>Choose a course product and one offer. Adding another offer for the same '
+$string['adminhelp_shopping_article'] = ('<p>The catalogue updates as you type or change a filter. '
+    . 'Without JavaScript, use Search to apply your selection.</p>'
+    . '<p>Choose a course product and one offer. Adding another offer for the same '
     . 'product replaces the choice in your cart. A product can include several '
     . 'courses.</p><p>Sign in before checkout. Payment uses the gateways configured '
     . 'by the site operator. Keep the order reference if you need help. You can '
@@ -418,6 +420,10 @@ $string['updateguard_back'] = 'Return to plugin overview';
 // End shared independent signed update protection.
 
 $string['uicataloguedisplay'] = 'Display';
+$string['cataloguetagsselected'] = '{$a} selected';
+$string['groupnone'] = 'No grouping';
+$string['productsearchplaceholder'] = 'Search catalogue …';
+$string['sortrecommended'] = 'Recommended';
 
 $string['searchbarfilters'] = 'Filter';
 

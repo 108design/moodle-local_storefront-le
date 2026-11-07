@@ -319,7 +319,9 @@ $string['adminhelp_taxonomy'] = 'Kategorien und Tags';
 $string['adminhelp_delivery'] = 'Kursauslieferung';
 $string['adminhelp_operations'] = 'Bestellungen und Wiederaufnahme';
 $string['adminhelp_settings'] = 'Shop-Einstellungen';
-$string['adminhelp_shopping_article'] = ('<p>Wähle ein Kursprodukt und ein Angebot. Ein anderes Angebot für dasselbe '
+$string['adminhelp_shopping_article'] = ('<p>Der Katalog aktualisiert sich bei der Eingabe und bei Filteränderungen. '
+    . 'Ohne JavaScript übernimmst Du Deine Auswahl mit Suchen.</p>'
+    . '<p>Wähle ein Kursprodukt und ein Angebot. Ein anderes Angebot für dasselbe '
     . 'Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse '
     . 'enthalten.</p><p>Melde Dich vor der Bestellung an. Die Zahlung erfolgt über '
     . 'die vom Betreiber eingerichteten Gateways. Bewahre die Bestellkennung für '
@@ -459,6 +461,10 @@ $string['updateguard_back'] = 'Zur Pluginübersicht';
 // End shared independent signed update protection.
 
 $string['uicataloguedisplay'] = 'Darstellung';
+$string['cataloguetagsselected'] = '{$a} ausgewählt';
+$string['groupnone'] = 'Keine Gruppierung';
+$string['productsearchplaceholder'] = 'Katalog durchsuchen …';
+$string['sortrecommended'] = 'Empfohlen';
 
 $string['searchbarfilters'] = 'Filter';
 

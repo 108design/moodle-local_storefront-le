@@ -569,3 +569,25 @@ a.local-storefront-category-badge:focus {
 }
 
 /* END shared search bar */
+
+
+/* The LE catalogue has two facets. Keep each group filled at desktop widths. */
+.local-storefront-catalogue-filters {
+    background: var(--bs-secondary-bg, #e9ecef);
+}
+
+.local-storefront-catalogue-filters input[type="search"]::placeholder {
+    font-style: italic;
+}
+
+@container (min-width: 46rem) {
+    .local-storefront-catalogue-filters .local-plugin-search-bar-groups {
+        grid-template-columns: minmax(10rem, 1.25fr) minmax(0, 2fr) minmax(0, 2fr);
+    }
+    .local-storefront-catalogue-filters .local-plugin-search-bar-search {
+        grid-column: auto;
+    }
+    .local-storefront-catalogue-filters .local-plugin-search-bar-filter .local-plugin-search-bar-fields {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
