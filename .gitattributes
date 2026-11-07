@@ -1,6 +1,9 @@
 # Generated for the exact signed normal installation profile.
 * -export-ignore -export-subst
 "/.gitattributes" export-ignore -export-subst
+"/.github" export-ignore -export-subst
+"/.github/workflows" export-ignore -export-subst
+"/.github/workflows/moodle-ci.yml" export-ignore -export-subst
 "/LICENSE.md" -export-ignore -export-subst
 "/README.md" -export-ignore -export-subst
 "/amd" -export-ignore -export-subst
@@ -91,6 +94,9 @@
 "/db/install.xml" -export-ignore -export-subst
 "/db/tasks.php" -export-ignore -export-subst
 "/db/upgrade.php" -export-ignore -export-subst
+"/docs" export-ignore -export-subst
+"/docs/branding" export-ignore -export-subst
+"/docs/branding/logo.svg" export-ignore -export-subst
 "/index.php" -export-ignore -export-subst
 "/lang" -export-ignore -export-subst
 "/lang/de" -export-ignore -export-subst
