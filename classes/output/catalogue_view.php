@@ -28,36 +28,34 @@ final class catalogue_view {
     public static function card(\stdClass $product): string {
         $url = new moodle_url('/local/storefront/product.php', ['product' => $product->identifier]);
         $image = \local_storefront\local\product_image::url((int)$product->id);
-        $content = $image ? html_writer::link(
-            $url,
-            html_writer::empty_tag(
-                'img',
-                [
-                'src' => $image->out(false),
-                'alt' => '',
-                'class' => 'local-storefront-product-card-image',
-                ]
-            )
-        ) : '';
-        $content .= html_writer::tag(
-            'h3',
-            html_writer::link($url, format_string($product->name)),
-            [ 'class' => 'card-title' ]
-        );
-        $content .= \local_storefront\local\product_content::format($product, 'shortdescription');
+        $cover = $image ? html_writer::link($url, html_writer::empty_tag('img', [
+            'src' => $image->out(false), 'alt' => '', 'loading' => 'lazy',
+            'class' => 'local-storefront-product-card-image',
+        ]), ['aria-label' => format_string($product->name)]) : '';
+        if (!$image) {
+            $cover = html_writer::span(ui::icon('i/course') . get_string('producttypecourse', 'local_storefront'),
+                'local-storefront-card-kind');
+        }
+        $cover .= html_writer::div(html_writer::link($url, ui::icon('fa-arrow-right'), [
+            'class' => 'btn btn-primary local-storefront-product-cta is-compact',
+            'aria-label' => get_string('viewproduct', 'local_storefront') . ': ' . format_string($product->name),
+            'title' => get_string('viewproduct', 'local_storefront'),
+        ]), 'local-storefront-card-action');
+        $cover = html_writer::div($cover, 'local-storefront-card-cover' . ($image ? '' : ' without-image'));
+        $content = html_writer::tag('h3', html_writer::link($url, format_string($product->name)),
+            ['class' => 'card-title local-storefront-card-title']);
         $badges = '';
         foreach (array_merge($product->categories, $product->tags) as $term) {
             $colour = \local_storefront\local\color_value::normalise($term->badgecolor);
-            $badges .= html_writer::span(
-                format_string($term->name),
-                'badge',
-                [
+            $badges .= html_writer::span(format_string($term->name), 'badge', [
                 'style' => 'background:' . $colour . ';color:'
-                . \local_storefront\local\color_value::contrasting_text_colour($colour),
-                ]
-            );
+                    . \local_storefront\local\color_value::contrasting_text_colour($colour),
+            ]);
         }
-        $content .= html_writer::div($badges, 'local-storefront-taxonomy');
+        if ($badges !== '') {
+            $content .= html_writer::div($badges, 'local-storefront-taxonomy mb-3');
+        }
+        $content .= \local_storefront\local\product_content::format($product, 'shortdescription');
         $price = '';
         $currencies = array_unique(array_column($product->offers, 'currency'));
         if (count($currencies) === 1) {
@@ -71,11 +69,12 @@ final class catalogue_view {
             $price = get_string('coursefulfilmentunavailable', 'local_storefront');
         }
         $content .= html_writer::div(
-            html_writer::span($price, 'font-weight-bold fw-semibold')
-            . html_writer::link($url, get_string('viewproduct', 'local_storefront'), ['class' => 'btn btn-primary']),
+            html_writer::span($price, 'local-storefront-card-price font-weight-bold fw-semibold')
+            . html_writer::span(get_string('oneoffpurchase', 'local_storefront'), 'small text-muted'),
             'local-storefront-product-card-footer'
         );
-        return html_writer::div(html_writer::div($content, 'card-body'), 'card h-100 local-storefront-product-card');
+        return html_writer::tag('article', $cover . html_writer::div($content, 'card-body'),
+            ['class' => 'card h-100 local-storefront-product-card']);
     }
     /**
      * Render the selected offers and their available cart actions.

@@ -21,6 +21,14 @@ export const init = config => {
     const panel = document.getElementById('local-storefront-context-help');
     if (!panel || panel.dataset.initialised) return;
     panel.dataset.initialised = '1';
+    const navigation = document.querySelector('#usernavigation');
+    const helpEntry = navigation?.querySelector('.local-storefront-help-navbar');
+    if (helpEntry) {
+        const anchor = navigation.querySelector('.local-storefront-cart-nav')
+            || navigation.querySelector(':scope > .divider') || navigation.querySelector('.usermenu-container');
+        if (anchor && anchor.parentElement === navigation) navigation.insertBefore(helpEntry, anchor);
+    }
+
     document.body.append(panel);
     const heading = panel.querySelector('h2');
     const content = panel.querySelector('.local-storefront-help-content');

@@ -47,12 +47,35 @@
 .local-storefront-product-card {
     min-width: 0;
     overflow: hidden;
+    border-radius: .65rem;
 }
 
 .local-storefront-product-card > .card-body {
     display: flex;
     flex-direction: column;
+    padding: 1.25rem;
 }
+
+/* The full product's cover/action/body composition with course-only content. */
+.local-storefront-card-cover { position: relative; overflow: hidden; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.local-storefront-card-cover.without-image { min-height: 5rem; background: var(--bs-tertiary-bg, #f1f3f5); }
+.local-storefront-card-cover .local-storefront-product-card-image { display: block; width: 100%; margin: 0; border-radius: 0; }
+.local-storefront-card-action { position: absolute; top: .75rem; inset-inline-end: .75rem; }
+.local-storefront-card-kind { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; padding: 1.5rem 4.5rem 1.5rem 1.25rem; }
+.btn.local-storefront-product-cta { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; }
+.local-storefront-product-cta.is-compact { min-width: 2.75rem; min-height: 2.75rem; border-radius: .6rem; box-shadow: 0 2px 8px rgb(0 0 0 / 18%); }
+.local-storefront-product-cta .icon { margin: 0; }
+.local-storefront-card-title { font-size: 1.35rem; margin-bottom: .75rem; }
+.local-storefront-card-title a { text-decoration: none; }
+.local-storefront-card-title a:is(:hover, :focus-visible) { text-decoration: underline; text-underline-offset: .15em; }
+.local-storefront-card-price { font-size: 1.125rem; }
+.local-storefront-product-card-footer { border-top: 1px solid var(--bs-border-color, #dee2e6); margin-top: auto; padding-top: 1rem; }
+.local-storefront-product-detail-content > h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+.local-storefront-pricing-card { border-radius: .65rem; }
+.local-storefront-pricing-card .card-body { display: flex; flex-direction: column; gap: .5rem; padding: 1.5rem; }
+.local-storefront-pricing-card .local-storefront-post-form { margin-top: auto; }
+.local-storefront-pricing-card .local-storefront-post-form > button { width: 100%; }
+.local-storefront-pricing-amount { font-size: 1.75rem; font-weight: 600; }
 
 .local-storefront-product-card .local-storefront-product-card-image {
     border-radius: var(--bs-card-inner-border-radius, calc(.25rem - 1px));

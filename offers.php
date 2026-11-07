@@ -35,6 +35,7 @@ echo \local_storefront\output\ui::toolbar([
         'btn btn-primary'
     )]);
 $table = new html_table();
+$table->attributes['class'] = 'generaltable table table-hover w-100 mb-4';
 $table->head = [
         get_string('offername', 'local_storefront'),
          get_string('amount', 'local_storefront'),

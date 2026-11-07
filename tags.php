@@ -29,7 +29,7 @@ echo \local_storefront\output\ui::toolbar([
         't/sort'
     )]);
 $table = new html_table();
-$table->attributes['class'] = 'generaltable';
+$table->attributes['class'] = 'generaltable table table-hover w-100 mb-4';
 $table->head = [
         get_string('name', 'local_storefront'),
          get_string('visible', 'local_storefront'),

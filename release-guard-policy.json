@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "engine": 1,
+  "minimum_guard_version": 2,
+  "component": "local_storefront",
+  "edition": "le",
+  "channels": [
+    "zip",
+    "marketplace",
+    "bi"
+  ],
+  "profiles": [
+    "normal",
+    "marketplace-en"
+  ],
+  "keys": {
+    "108design-release-2026-11-a": "QmloBGPstYkn8cuGA+l0QEPSczVj8KOKLWj5L2XRFOw=",
+    "108design-release-2026-11-r1": "JN7UEzj+H0FeuTudcm4P+pJlvpWWNtWDkaecgvpx5lA="
+  }
+}

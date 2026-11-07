@@ -24,3 +24,10 @@ $callbacks[] = ['hook' => \core\hook\output\before_http_headers::class,
 
 $callbacks[] = ['hook' => \core\hook\output\before_standard_footer_html_generation::class,
     'callback' => [\local_storefront\output\cart_drawer::class, 'footer']];
+
+// Independent signed update-package guard.
+$callbacks[] = [
+    'hook' => \core\hook\after_config::class,
+    'callback' => [\local_storefront\local\update_guard::class, 'after_config'],
+    'priority' => 1002,
+];
