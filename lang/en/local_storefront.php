@@ -341,7 +341,14 @@ $string['adminhelp_operations_article'] = ('<p>Orders and Access separates payme
     . 'requires a recorded verified payment and uses the original '
     . 'snapshots.</p><p>Repair a disabled or missing course mapping before retrying '
     . 'delivery. A return from a payment page does not mark an order paid. Agree the '
-    . 'refund and dispute procedure with the operator of the chosen gateway.</p>');
+    . 'refund and dispute procedure with the operator of the chosen gateway.</p><p>Use <strong>Suspend Course Access</strong> to pause access from this purchase. Other purchases may still give the buyer access to the course. <strong>Restore Course Access</strong> removes your hold. Expiry dates and payment-related restrictions still apply. Handle refunds through the payment provider.</p>');
+
+$string['manualcoursesuspend'] = 'Suspend Course Access';
+$string['manualcourseresume'] = 'Restore Course Access';
+$string['manualcoursesuspended'] = 'Course access from this purchase is suspended.';
+$string['manualcourseresumed'] = 'The manual hold on this purchase has been removed.';
+$string['operations'] = 'Orders and Access';
+$string['operations_help'] = 'Check payment, delivery and course access for each order. Manage delivered course access beside the course name.';
 $string['adminhelp_settings_article'] = ('<p>Shop Visibility controls catalogue access. Payment requires a confirmed '
     . 'signed-in Moodle account, an enabled Moodle payment account and a suitable '
     . 'gateway.</p><p>Optional Magic Link sign-in uses the installed authentication '

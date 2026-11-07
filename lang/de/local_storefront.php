@@ -380,7 +380,14 @@ $string['adminhelp_operations_article'] = ('<p>Bestellungen und Zugänge trennt 
     . 'ursprünglichen Kursangaben.</p><p>Repariere eine deaktivierte oder fehlende '
     . 'Kurszuordnung vor dem Wiederholen. Die Rückkehr von einer Bezahlseite setzt '
     . 'keine Bestellung auf bezahlt. Vereinbare Erstattungs- und Streitfallverfahren '
-    . 'passend zum eingesetzten Gateway.</p>');
+    . 'passend zum eingesetzten Gateway.</p><p>Mit <strong>Kurszugang sperren</strong> pausierst Du den Zugang aus diesem Kauf. Andere Käufe können den Kurs weiterhin zugänglich machen. <strong>Kurszugang wieder freigeben</strong> hebt Deine Sperre auf. Laufzeit und Sperren aus dem Zahlungsstatus gelten weiter. Erstattungen bearbeitest Du beim Zahlungsanbieter.</p>');
+
+$string['manualcoursesuspend'] = 'Kurszugang sperren';
+$string['manualcourseresume'] = 'Kurszugang wieder freigeben';
+$string['manualcoursesuspended'] = 'Der Kurszugang aus diesem Kauf ist gesperrt.';
+$string['manualcourseresumed'] = 'Die manuelle Sperre für diesen Kauf ist aufgehoben.';
+$string['operations'] = 'Bestellungen und Zugänge';
+$string['operations_help'] = 'Prüfe je Bestellung Zahlung, Auslieferung und Kurszugang. Einen ausgelieferten Kurszugang kannst Du direkt am Kurs verwalten.';
 $string['adminhelp_settings_article'] = ('<p>Shop-Sichtbarkeit begrenzt den Katalogzugriff. Vor einer Zahlung braucht '
     . 'der Käufer ein bestätigtes angemeldetes Moodle-Konto. Außerdem werden ein '
     . 'aktiviertes Moodle-Zahlungskonto und ein passendes Gateway '

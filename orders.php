@@ -10,7 +10,7 @@
 // Central page::setup() enforces the store audience or the requested administration capability.
 // phpcs:ignore moodle.Files.RequireLogin.Missing
 require_once(__DIR__ . '/../../config.php');
-use local_storefront\local\{page, order_service, order_view};
+use local_storefront\local\{admin_help, course_access_admin, page, order_service, order_view};
 page::setup('orders', 'ordersaccess', 'local/storefront:manageorders');
 $retry = optional_param('retry', 0, PARAM_INT);
 if ($retry) {
@@ -24,7 +24,14 @@ if ($retry) {
 $status = optional_param('status', '', PARAM_ALPHA);
 $conditions = $status !== '' ? ['status' => $status] : [];
 $pagenum = max(0, optional_param('page', 0, PARAM_INT));
-page::header('ordersaccess', true);
+$returnurl = new moodle_url($PAGE->url, ['status' => $status, 'page' => $pagenum]);
+$PAGE->set_url($returnurl);
+$purchaseid = optional_param('coursepurchase', 0, PARAM_INT);
+if ($purchaseid) {
+    course_access_admin::apply($purchaseid, $returnurl);
+}
+page::header('storefront', true);
+echo \local_storefront\output\ui::page_header(get_string('ordersaccess', 'local_storefront') . ' ' . admin_help::icon('operations'));
 echo html_writer::start_tag('form', ['method' => 'get', 'class' => 'local-storefront-filterbar mb-4']);
 echo html_writer::start_div('local-storefront-filter-field');
 echo html_writer::tag(

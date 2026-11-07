@@ -24,6 +24,7 @@ final class order_view {
      */
     public static function render(array $orders, bool $admin = false): string {
         global $DB, $USER;
+        $canmanageaccess = $admin && course_access_admin::available();
         $html = '';
         foreach ($orders as $order) {
             $buyer = $DB->get_record(
@@ -76,7 +77,7 @@ final class order_view {
                         $course = $DB->get_record('course', ['id' => $purchase->courseid]);
                         $end = $purchase->timeend ? userdate($purchase->timeend)
                             : get_string('unlimitedaccess', 'local_storefront');
-                        $purchasestatus = $purchase->status;
+                        $purchasestatus = empty($purchase->manualsuspended) ? $purchase->status : 'suspended';
                         if ($purchasestatus === 'active' && $purchase->timeend > 0 && $purchase->timeend <= time()) {
                             $purchasestatus = 'expired';
                         }
@@ -90,6 +91,9 @@ final class order_view {
                                 get_string('courseaccessunavailable', 'local_storefront'),
                                 'small text-muted'
                             );
+                        }
+                        if ($canmanageaccess && $course && $purchasestatus !== 'expired') {
+                            $details .= course_access_admin::button($purchase);
                         }
                         $access[] = \html_writer::div(
                             (
