@@ -10,6 +10,7 @@
 // Copyright (C) 2026 Andreas Giesen. Use and modification under LICENSE.md.
 defined('MOODLE_INTERNAL') || die();
 
+$string['pluginname'] = 'Storefront';
 $string['status'] = 'Status';
 $string['checkoutnotconfigured'] = 'Checkout is being configured. Products can be browsed, but payments are not available yet.';
 $string['producttype'] = 'Delivery type';
@@ -161,7 +162,6 @@ $string['orderingintro'] = ('Move entries in the global order or in a selected c
     . 'order.');
 $string['conversionintro'] = ('Convert {$a} to a tag. Product assignments move to the matching tag; the '
     . 'category is removed. Existing unrelated assignments remain.');
-$string['pluginname'] = 'Storefront';
 $string['storefront'] = 'Storefront';
 $string['product'] = 'Course Product';
 $string['name'] = 'Name';

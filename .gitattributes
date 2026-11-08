@@ -100,6 +100,11 @@
 "/docs" export-ignore -export-subst
 "/docs/branding" export-ignore -export-subst
 "/docs/branding/logo.svg" export-ignore -export-subst
+"/docs/screenshots" export-ignore -export-subst
+"/docs/screenshots/storefront-admin-products.jpg" export-ignore -export-subst
+"/docs/screenshots/storefront-cart-panel.jpg" export-ignore -export-subst
+"/docs/screenshots/storefront-catalogue-card-actions.jpg" export-ignore -export-subst
+"/docs/screenshots/storefront-product-offers.jpg" export-ignore -export-subst
 "/index.php" -export-ignore -export-subst
 "/lang" -export-ignore -export-subst
 "/lang/de" -export-ignore -export-subst
