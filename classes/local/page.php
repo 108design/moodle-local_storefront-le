@@ -143,6 +143,7 @@ final class page {
      * @param string $class Class.
      * @param string $icon Native icon name.
      * @param bool $compact Whether to use the compact presentation.
+     * @param string|null $accessiblename More specific button name, when the visible label is repeated.
      * @return string
      */
     public static function post(
@@ -151,7 +152,8 @@ final class page {
         array $params = [ ],
         string $class = 'btn btn-secondary',
         string $icon = '',
-        bool $compact = false
+        bool $compact = false,
+        ?string $accessiblename = null
     ): string {
         $url = new \moodle_url('/local/storefront/' . $route . '.php');
         return \html_writer::tag(
@@ -168,7 +170,7 @@ final class page {
                 'type' => 'submit',
                 'class' => $compact ? 'local-storefront-icon-button' : $class,
                 'title' => $label,
-                'aria-label' => $label,
+                'aria-label' => $accessiblename ?? $label,
                 ]
             ),
             [

@@ -42,7 +42,11 @@ final class admin_help {
         self::$prepared = true;
         $PAGE->add_body_class('local-storefront-admin-help-page');
         $PAGE->requires->css(new \moodle_url('/local/storefront/styles/admin_help.css'));
-        $module = (int)$CFG->version < 2025041400 ? 'admin_help_legacy' : 'admin_help';
+        $module = match (true) {
+            (int)$CFG->version < 2025041400 => 'admin_help_legacy',
+            (int)$CFG->version < 2026100500 => 'admin_help',
+            default => 'admin_help_53',
+        };
         $PAGE->requires->js_call_amd('local_storefront/admin_help_form', 'init');
         $topics = self::topics();
         $requested = optional_param('storefronthelp', '', PARAM_ALPHA);

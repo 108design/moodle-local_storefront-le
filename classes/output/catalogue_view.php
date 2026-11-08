@@ -27,23 +27,22 @@ final class catalogue_view {
      */
     public static function card(\stdClass $product): string {
         $url = new moodle_url('/local/storefront/product.php', ['product' => $product->identifier]);
+        $name = html_to_text(format_string($product->name), 0, false);
         $image = \local_storefront\local\product_image::url((int)$product->id);
         $cover = $image ? html_writer::link($url, html_writer::empty_tag('img', [
             'src' => $image->out(false), 'alt' => '', 'loading' => 'lazy',
             'class' => 'local-storefront-product-card-image',
-        ]), ['aria-label' => html_to_text(format_string($product->name), 0, false)]) : '';
+        ]), ['aria-label' => $name]) : '';
         if (!$image) {
             $cover = html_writer::span(
                 ui::icon('i/course') . get_string('producttypecourse', 'local_storefront'),
                 'local-storefront-card-kind'
             );
         }
-        $cover .= html_writer::div(html_writer::link($url, ui::icon('fa-arrow-right'), [
-            'class' => 'btn btn-primary local-storefront-product-cta is-compact',
-            'aria-label' => get_string('viewproduct', 'local_storefront') . ': '
-                . html_to_text(format_string($product->name), 0, false),
-            'title' => get_string('viewproduct', 'local_storefront'),
-        ]), 'local-storefront-card-action');
+        $action = self::card_action($url, $name, $product->offers);
+        if ($action !== '') {
+            $cover .= html_writer::div($action, 'local-storefront-card-action');
+        }
         $cover = html_writer::div($cover, 'local-storefront-card-cover' . ($image ? '' : ' without-image'));
         $content = html_writer::tag(
             'h3',
@@ -85,6 +84,40 @@ final class catalogue_view {
             ['class' => 'card h-100 local-storefront-product-card']
         );
     }
+
+    /**
+     * Add a single offer directly, or let the visitor choose on the product page.
+     *
+     * @param moodle_url $url Product details URL without a fragment.
+     * @param string $name Plain product name for the accessible action label.
+     * @param \stdClass[] $offers Visible purchase offers for this product.
+     * @return string
+     */
+    private static function card_action(moodle_url $url, string $name, array $offers): string {
+        $class = 'btn btn-primary local-storefront-product-cta is-compact';
+        if (count($offers) === 1) {
+            $label = get_string('addtocart', 'local_storefront');
+            return page::post(
+                'cart_action',
+                $label,
+                ['action' => 'add', 'offerid' => reset($offers)->id],
+                $class,
+                'fa-shopping-cart',
+                accessiblename: $label . ': ' . $name
+            );
+        }
+        if ($offers) {
+            $label = get_string('chooseoffer', 'local_storefront');
+            $offersurl = clone $url;
+            $offersurl->set_anchor('storefront-offers');
+            return html_writer::link($offersurl, ui::icon('fa-shopping-cart') . s($label), [
+                'class' => $class,
+                'aria-label' => $label . ': ' . $name,
+            ]);
+        }
+        return '';
+    }
+
     /**
      * Render the selected offers and their available cart actions.
      *

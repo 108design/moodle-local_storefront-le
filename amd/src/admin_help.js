@@ -14,7 +14,7 @@
 import {publish, subscribe} from 'core/pubsub';
 import DrawerEvents from 'core/drawer_events';
 import Drawers from 'theme_boost/drawers';
-import Popover from 'theme_boost/bootstrap/popover';
+import {Popover} from 'theme_boost/popover';
 
 /** Nonmodal contextual help; use native exclusive drawer coordination when available. */
 export const init = config => {

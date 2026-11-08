@@ -54,7 +54,7 @@ echo html_writer::tag('p', get_string('durationnote', 'local_storefront'), ['cla
 echo html_writer::end_div() . html_writer::end_div() . html_writer::end_div();
 $offers = catalogue::offers((int)$product->id);
 if ($offers) {
-    echo $OUTPUT->heading(get_string('offers', 'local_storefront'), 3);
+    echo html_writer::tag('h3', get_string('offers', 'local_storefront'), ['id' => 'storefront-offers']);
     echo html_writer::start_div('local-storefront-pricing-grid');
 }
 foreach ($offers as $offer) {

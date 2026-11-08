@@ -243,6 +243,7 @@ $string['cart'] = 'Warenkorb';
 $string['cartempty'] = 'Dein Warenkorb ist leer.';
 $string['clearcart'] = 'Warenkorb leeren';
 $string['addtocart'] = 'In den Warenkorb';
+$string['chooseoffer'] = 'Angebot wählen';
 $string['checkout'] = 'Zur Kasse';
 $string['mypurchases'] = 'Meine Käufe';
 $string['ordersaccess'] = 'Bestellungen und Zugänge';
@@ -321,7 +322,8 @@ $string['adminhelp_operations'] = 'Bestellungen und Wiederaufnahme';
 $string['adminhelp_settings'] = 'Shop-Einstellungen';
 $string['adminhelp_shopping_article'] = ('<p>Der Katalog aktualisiert sich bei der Eingabe und bei Filteränderungen. '
     . 'Ohne JavaScript übernimmst Du Deine Auswahl mit Suchen.</p>'
-    . '<p>Wähle ein Kursprodukt und ein Angebot. Ein anderes Angebot für dasselbe '
+    . '<p>Bild und Titel führen zu den Produktdetails. Ein einzelnes Angebot legst Du direkt in den Warenkorb. '
+    . 'Bei mehreren Preisen führt Angebot wählen zur Auswahl. Ein anderes Angebot für dasselbe '
     . 'Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse '
     . 'enthalten.</p><p>Melde Dich vor der Bestellung an. Die Zahlung erfolgt über '
     . 'die vom Betreiber eingerichteten Gateways. Bewahre die Bestellkennung für '

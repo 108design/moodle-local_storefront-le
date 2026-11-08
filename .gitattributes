@@ -10,6 +10,8 @@
 "/amd/build" -export-ignore -export-subst
 "/amd/build/admin_help.min.js" -export-ignore -export-subst
 "/amd/build/admin_help.min.js.map" -export-ignore -export-subst
+"/amd/build/admin_help_53.min.js" -export-ignore -export-subst
+"/amd/build/admin_help_53.min.js.map" -export-ignore -export-subst
 "/amd/build/admin_help_form.min.js" -export-ignore -export-subst
 "/amd/build/admin_help_form.min.js.map" -export-ignore -export-subst
 "/amd/build/admin_help_legacy.min.js" -export-ignore -export-subst
@@ -23,6 +25,7 @@
 "/amd/build/search_bar.min.js.map" -export-ignore -export-subst
 "/amd/src" -export-ignore -export-subst
 "/amd/src/admin_help.js" -export-ignore -export-subst
+"/amd/src/admin_help_53.js" -export-ignore -export-subst
 "/amd/src/admin_help_form.js" -export-ignore -export-subst
 "/amd/src/admin_help_legacy.js" -export-ignore -export-subst
 "/amd/src/cart_drawer.js" -export-ignore -export-subst

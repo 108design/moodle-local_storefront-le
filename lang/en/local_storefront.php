@@ -217,6 +217,7 @@ $string['cart'] = 'Cart';
 $string['cartempty'] = 'Your cart is empty.';
 $string['clearcart'] = 'Clear Cart';
 $string['addtocart'] = 'Add to Cart';
+$string['chooseoffer'] = 'Choose Offer';
 $string['checkout'] = 'Checkout';
 $string['mypurchases'] = 'My Purchases';
 $string['ordersaccess'] = 'Orders and Access';
@@ -292,7 +293,8 @@ $string['adminhelp_operations'] = 'Orders and Recovery';
 $string['adminhelp_settings'] = 'Shop Settings';
 $string['adminhelp_shopping_article'] = ('<p>The catalogue updates as you type or change a filter. '
     . 'Without JavaScript, use Search to apply your selection.</p>'
-    . '<p>Choose a course product and one offer. Adding another offer for the same '
+    . '<p>Select a product image or title for details. Use Add to Cart for a single offer, '
+    . 'or Choose Offer to compare prices. Adding another offer for the same '
     . 'product replaces the choice in your cart. A product can include several '
     . 'courses.</p><p>Sign in before checkout. Payment uses the gateways configured '
     . 'by the site operator. Keep the order reference if you need help. You can '
