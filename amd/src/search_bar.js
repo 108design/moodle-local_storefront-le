@@ -1,3 +1,6 @@
+// This file is part of Moodle - https://moodle.org/
+// @copyright 2026 Andreas Giesen <andreas@108design.com>
+// @license 108design source-available software license; see LICENSE.md
 // Copyright (C) 2026 Andreas Giesen. See the consuming plugin's LICENSE.md.
 // Shared progressive enhancement. A consumer may supply a local filter adapter instead of the GET adapter.
 const remoteControllers = new Set();

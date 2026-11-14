@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Global audience gate for customer-facing Storefront content and routes.
  *

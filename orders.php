@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Inspect verified orders and retry incomplete course delivery.
  *

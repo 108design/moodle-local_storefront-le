@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Course catalogue and authoritative purchase-time offer resolution.
  *

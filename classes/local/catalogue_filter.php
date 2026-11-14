@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Canonical catalogue-filter vocabulary for course products.
  *

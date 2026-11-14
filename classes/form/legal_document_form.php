@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Document rules are shared; title, format and content belong to one language.
  *

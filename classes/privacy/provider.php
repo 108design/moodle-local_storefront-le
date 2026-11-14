@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * User-owned purchase data; anonymised order and legal evidence retain their relationships.
  *

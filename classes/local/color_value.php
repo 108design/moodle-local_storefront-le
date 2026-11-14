@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Safe editable colour values shared by Storefront presentation surfaces.
  *

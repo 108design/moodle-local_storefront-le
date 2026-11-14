@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Order-ready mail with immutable rendered content, recipient scoping and a retry ledger.
  *

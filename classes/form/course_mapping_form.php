@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Storefront-side convenience form for the Moodle enrolment instance.
  *

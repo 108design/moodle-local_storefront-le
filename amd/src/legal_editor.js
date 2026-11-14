@@ -1,3 +1,6 @@
+// This file is part of Moodle - https://moodle.org/
+// @copyright 2026 Andreas Giesen <andreas@108design.com>
+// @license 108design source-available software license; see LICENSE.md
 // Copyright 2026 Andreas Giesen. See LICENSE.md.
 import Config from 'core/config';
 

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Shared publisher and replacement verification for 108design plugins.
  *

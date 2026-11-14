@@ -1,3 +1,4 @@
+// This file is part of Moodle - https://moodle.org/
 /**
  * Enhance the LE catalogue's native search and tag disclosure.
  *

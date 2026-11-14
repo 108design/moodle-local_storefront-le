@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Resolve the enabled Moodle payment account and supported currencies.
  *

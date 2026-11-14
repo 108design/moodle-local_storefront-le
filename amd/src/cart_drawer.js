@@ -1,3 +1,4 @@
+// This file is part of Moodle - https://moodle.org/
 /**
  * @package local_storefront
  * @copyright 2026 Andreas Giesen <andreas@108design.com>

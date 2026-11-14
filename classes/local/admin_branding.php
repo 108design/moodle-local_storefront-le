@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Decorative product identity on explicitly selected administration surfaces only.
  *

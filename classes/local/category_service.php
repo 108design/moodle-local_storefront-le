@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * CRUD and product assignment service for freely defined thematic categories.
  *

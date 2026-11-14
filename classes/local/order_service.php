@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Immutable course orders, verified Moodle payments, and retryable position delivery.
  *

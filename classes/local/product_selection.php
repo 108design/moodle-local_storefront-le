@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Session selection contains offer IDs only; prices and delivery are always resolved again.
  *

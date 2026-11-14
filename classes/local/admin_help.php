@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Contextual settings help, with native drawer and keyboard support.
  *
