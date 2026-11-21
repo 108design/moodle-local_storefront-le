@@ -17,6 +17,7 @@
 "/amd/build/admin_help_legacy.min.js" -export-ignore -export-subst
 "/amd/build/admin_help_legacy.min.js.map" -export-ignore -export-subst
 "/amd/build/cart_drawer.min.js" -export-ignore -export-subst
+"/amd/build/cart_drawer.min.js.map" -export-ignore -export-subst
 "/amd/build/catalogue_controls.min.js" -export-ignore -export-subst
 "/amd/build/catalogue_controls.min.js.map" -export-ignore -export-subst
 "/amd/build/legal_editor.min.js" -export-ignore -export-subst
@@ -39,6 +40,8 @@
 "/category_to_tag.php" -export-ignore -export-subst
 "/checkout.php" -export-ignore -export-subst
 "/classes" -export-ignore -export-subst
+"/classes/external" -export-ignore -export-subst
+"/classes/external/preview_legal.php" -export-ignore -export-subst
 "/classes/form" -export-ignore -export-subst
 "/classes/form/course_mapping_form.php" -export-ignore -export-subst
 "/classes/form/editor.php" -export-ignore -export-subst
@@ -60,6 +63,7 @@
 "/classes/local/customer_help.php" -export-ignore -export-subst
 "/classes/local/legal_service.php" -export-ignore -export-subst
 "/classes/local/moodle_payment_config.php" -export-ignore -export-subst
+"/classes/local/order_lock.php" -export-ignore -export-subst
 "/classes/local/order_service.php" -export-ignore -export-subst
 "/classes/local/order_view.php" -export-ignore -export-subst
 "/classes/local/page.php" -export-ignore -export-subst
@@ -74,6 +78,7 @@
 "/classes/local/tag_service.php" -export-ignore -export-subst
 "/classes/local/taxonomy.php" -export-ignore -export-subst
 "/classes/local/update_guard.php" -export-ignore -export-subst
+"/classes/local/update_notice.php" -export-ignore -export-subst
 "/classes/output" -export-ignore -export-subst
 "/classes/output/cart_drawer.php" -export-ignore -export-subst
 "/classes/output/catalogue_view.php" -export-ignore -export-subst
@@ -95,6 +100,7 @@
 "/db/hooks.php" -export-ignore -export-subst
 "/db/install.php" -export-ignore -export-subst
 "/db/install.xml" -export-ignore -export-subst
+"/db/services.php" -export-ignore -export-subst
 "/db/tasks.php" -export-ignore -export-subst
 "/db/upgrade.php" -export-ignore -export-subst
 "/docs" export-ignore -export-subst
@@ -115,7 +121,6 @@
 "/legal_delete.php" -export-ignore -export-subst
 "/legal_documents.php" -export-ignore -export-subst
 "/legal_edit.php" -export-ignore -export-subst
-"/legal_preview.php" -export-ignore -export-subst
 "/legal_settings.php" -export-ignore -export-subst
 "/lib.php" -export-ignore -export-subst
 "/moodle_payment.php" -export-ignore -export-subst
@@ -132,6 +137,7 @@
 "/products.php" -export-ignore -export-subst
 "/release-guard-policy.json" -export-ignore -export-subst
 "/release-manifest.json" -export-ignore -export-subst
+"/release-metadata.php" -export-ignore -export-subst
 "/release-signature.txt" -export-ignore -export-subst
 "/selection.php" -export-ignore -export-subst
 "/settings.php" -export-ignore -export-subst
@@ -151,4 +157,5 @@
 "/tests/public_access_test.php" -export-ignore -export-subst
 "/tests/taxonomy_test.php" -export-ignore -export-subst
 "/update-guard.php" -export-ignore -export-subst
+"/update-notice.php" -export-ignore -export-subst
 "/version.php" -export-ignore -export-subst
