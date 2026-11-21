@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Regression tests for public access.
  *
@@ -16,6 +17,50 @@ use local_storefront\local\{store_access, product_service, product_content, prod
  * Anonymous audience, native files, and local migration protections.
  */
 final class public_access_test extends \advanced_testcase {
+    /** Export only the buyer's line state and erase its direct Core payment reference. */
+    public function test_privacy_line_state_export_and_payment_reference_erasure(): void {
+        global $DB;
+        $this->resetAfterTest();
+        $buyer = $this->getDataGenerator()->create_user();
+        $other = $this->getDataGenerator()->create_user();
+        $orders = []; $states = [];
+        foreach ([$buyer, $other] as $person) {
+            $id = $DB->insert_record('local_storefront_order', (object)[
+                'orderkey' => 'privacy-state-' . $person->id, 'userid' => $person->id, 'email' => $person->email,
+                'channel' => 'moodle', 'providerpaymentid' => 'moodle:' . $person->id,
+                'total' => 7.50, 'timecreated' => time(), 'timemodified' => time(),
+            ]);
+            $lineid = $DB->insert_record('local_storefront_orderline', (object)[
+                'orderid' => $id, 'offerid' => 0, 'productname' => 'Privacy course',
+                'offeringjson' => '{}', 'snapshothash' => hash('sha256', '{}'), 'amount' => 7.50,
+            ]);
+            $states[$person->id] = $DB->insert_record('local_storefront_line_state', (object)[
+                'orderlineid' => $lineid, 'paymentstatus' => 'paid', 'fulfilmentstatus' => 'fulfilled',
+                'accessstatus' => 'active', 'reviewreason' => 'privacy-test', 'timecreated' => time(), 'timemodified' => time(),
+            ]);
+            $orders[$person->id] = $id;
+        }
+        $context = \context_system::instance();
+        $approved = new \core_privacy\local\request\approved_contextlist($buyer, 'local_storefront', [$context->id]);
+        \core_privacy\local\request\writer::reset();
+        \local_storefront\privacy\provider::export_user_data($approved);
+        $data = \core_privacy\local\request\writer::with_context($context)->get_data([
+            get_string('pluginname', 'local_storefront'),
+        ]);
+        $this->assertCount(1, $data->orders);
+        $this->assertEquals($orders[$buyer->id], $data->orders[0]->id);
+        $this->assertCount(1, $data->orders[0]->line_states);
+        $this->assertEquals($states[$buyer->id], $data->orders[0]->line_states[0]->id);
+        $this->assertSame('privacy-test', $data->orders[0]->line_states[0]->reviewreason);
+        \local_storefront\privacy\provider::delete_data_for_user($approved);
+        $erased = $DB->get_record('local_storefront_order', ['id' => $orders[$buyer->id]], '*', MUST_EXIST);
+        $this->assertNull($erased->userid);
+        $this->assertNull($erased->providerpaymentid);
+        $this->assertTrue($DB->record_exists('local_storefront_line_state', ['id' => $states[$buyer->id]]));
+        $this->assertSame('moodle:' . $other->id,
+            $DB->get_field('local_storefront_order', 'providerpaymentid', ['id' => $orders[$other->id]]));
+    }
+
     /**
      * Verify that mapping cannot treat a requested system role as an existing course role.
      *

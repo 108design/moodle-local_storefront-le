@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Native course product editing; existing orders never depend on mutable editorial fields.
  *

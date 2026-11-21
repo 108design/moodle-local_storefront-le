@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * User-owned purchase data; anonymised order and legal evidence retain their relationships.
  *
@@ -40,6 +41,24 @@ final class provider implements
             'payload' => 'privacy:mail'],
             'privacy:mail'
         );
+        $collection->add_database_table('local_storefront_line_state', [
+            'orderlineid' => 'privacy:linestate',
+            'paymentstatus' => 'privacy:linestate',
+            'fulfilmentstatus' => 'privacy:linestate',
+            'accessstatus' => 'privacy:linestate',
+            'accessreason' => 'privacy:linestate',
+            'accesssuspendat' => 'privacy:linestate',
+            'currentperiodstart' => 'privacy:linestate',
+            'currentperiodend' => 'privacy:linestate',
+            'cancelatperiodend' => 'privacy:linestate',
+            'timecancelled' => 'privacy:linestate',
+            'lastproviderstate' => 'privacy:linestate',
+            'timelastproviderevent' => 'privacy:linestate',
+            'reviewreason' => 'privacy:linestate',
+            'pendingeffects' => 'privacy:linestate',
+            'timecreated' => 'privacy:linestate',
+            'timemodified' => 'privacy:linestate',
+        ], 'privacy:linestate');
         $collection->add_subsystem_link('core_payment', [], 'privacy:payment');
         $collection->add_database_table(
             'local_storefront_legalrev',
@@ -111,6 +130,12 @@ final class provider implements
         foreach ($DB->get_records('local_storefront_order', ['userid' => $userid]) as $order) {
             unset($order->claimtokenhash, $order->recoverytokenhash);
             $order->positions = array_values($DB->get_records('local_storefront_orderline', ['orderid' => $order->id]));
+            $order->line_states = array_values($DB->get_records_sql(
+                'SELECT state.* FROM {local_storefront_line_state} state
+                   JOIN {local_storefront_orderline} line ON line.id = state.orderlineid
+                  WHERE line.orderid = :orderid ORDER BY state.id',
+                ['orderid' => $order->id]
+            ));
             $order->legal = array_values($DB->get_records('local_storefront_orderlegal', ['orderid' => $order->id]));
             $orders[] = $order;
         }
@@ -193,17 +218,26 @@ final class provider implements
      */
     private static function anonymise(int $userid): void {
         global $DB;
-        $tx = $DB->start_delegated_transaction();
-        foreach ($DB->get_records('local_storefront_order', ['userid' => $userid]) as $order) {
-            foreach ($DB->get_records('local_storefront_comqueue', ['orderid' => $order->id]) as $message) {
-                $DB->update_record('local_storefront_comqueue', (object)['id' => $message->id, 'payload' => null,
-                    'recipientemail' => null,
-                'recipienthash' => hash('sha256', 'deleted:' . $message->id),
-                'status' => 'cancelled']);
-            }
-            $DB->update_record('local_storefront_order', (object)['id' => $order->id, 'userid' => null, 'email' => null,
-                'claimtokenhash' => null, 'recoverytokenhash' => null]);
+        foreach ($DB->get_records('local_storefront_order', ['userid' => $userid], 'id', 'id') as $selected) {
+            \local_storefront\local\order_lock::with_order((int)$selected->id, static function() use ($DB, $selected, $userid): void {
+                // Re-read under the same lock used by payment callbacks and retries.
+                $order = $DB->get_record('local_storefront_order', ['id' => $selected->id, 'userid' => $userid]);
+                if (!$order) {
+                    return;
+                }
+                $tx = $DB->start_delegated_transaction();
+                foreach ($DB->get_records('local_storefront_comqueue', ['orderid' => $order->id]) as $message) {
+                    $DB->update_record('local_storefront_comqueue', (object)['id' => $message->id, 'payload' => null,
+                        'recipientemail' => null, 'recipientuserid' => null,
+                        'recipienthash' => hash('sha256', 'deleted:' . $message->id), 'status' => 'cancelled']);
+                }
+                $DB->update_record('local_storefront_order', (object)['id' => $order->id, 'userid' => null, 'email' => null,
+                    'claimtokenhash' => null, 'recoverytokenhash' => null, 'providerpaymentid' => null]);
+                // Commit before releasing the order lock, so the next callback sees erased ownership.
+                $tx->allow_commit();
+            });
         }
+        $tx = $DB->start_delegated_transaction();
         $DB->set_field('local_storefront_legalrev', 'createdby', 0, ['createdby' => $userid]);
         $DB->set_field('local_storefront_comrule', 'modifiedby', null, ['modifiedby' => $userid]);
         foreach ($DB->get_records('local_storefront_comqueue', ['recipientuserid' => $userid]) as $row) {

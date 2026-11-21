@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Native hook registrations for Storefront.
  *
@@ -25,9 +26,15 @@ $callbacks[] = ['hook' => \core\hook\output\before_http_headers::class,
 $callbacks[] = ['hook' => \core\hook\output\before_standard_footer_html_generation::class,
     'callback' => [\local_storefront\output\cart_drawer::class, 'footer']];
 
-// Independent signed update-package guard.
+// Native installation and updates are handled by Moodle Core.
+
+// Optional package information; Core owns preview, confirmation and installation.
 $callbacks[] = [
     'hook' => \core\hook\after_config::class,
-    'callback' => [\local_storefront\local\update_guard::class, 'after_config'],
-    'priority' => 1002,
+    'callback' => [\local_storefront\local\update_notice::class, 'after_config'],
+    'priority' => 1003,
+];
+$callbacks[] = [
+    'hook' => \core\hook\output\before_standard_top_of_body_html_generation::class,
+    'callback' => [\local_storefront\local\update_notice::class, 'before_body'],
 ];

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Decorative product identity on explicitly selected administration surfaces only.
  *
@@ -39,7 +40,6 @@ final class admin_branding {
          '/local/storefront/legal_edit.php' => 'local/storefront:managelegal',
          '/local/storefront/legal_settings.php' => 'local/storefront:managelegal',
          '/local/storefront/legal_delete.php' => 'local/storefront:managelegal',
-         '/local/storefront/legal_preview.php' => 'local/storefront:managelegal',
          '/local/storefront/configuration.php' => 'moodle/site:config',
     ];
     /**

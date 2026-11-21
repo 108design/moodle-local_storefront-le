@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Contextual settings help, with native drawer and keyboard support.
  *
@@ -41,7 +42,9 @@ final class admin_help {
         }
         self::$prepared = true;
         $PAGE->add_body_class('local-storefront-admin-help-page');
-        $PAGE->requires->css(new \moodle_url('/local/storefront/styles/admin_help.css'));
+        $PAGE->requires->css(new \moodle_url('/local/storefront/styles/admin_help.css', [
+            'rev' => get_config('local_storefront', 'version'),
+        ]));
         $module = match (true) {
             (int)$CFG->version < 2025041400 => 'admin_help_legacy',
             (int)$CFG->version < 2026100500 => 'admin_help',

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Immutable course orders, verified Moodle payments, and retryable position delivery.
  *
@@ -211,6 +212,13 @@ final class order_service {
      * @return void
      */
     public static function retry(int $orderid): void {
+        order_lock::with_order($orderid, static function() use ($orderid): void {
+            self::retry_locked($orderid);
+        });
+    }
+
+    /** Retry while ownership cannot be anonymised by a concurrent request. */
+    private static function retry_locked(int $orderid): void {
         global $DB;
         $order = $DB->get_record('local_storefront_order', ['id' => $orderid, 'channel' => 'moodle'], '*', MUST_EXIST);
         if (empty($order->providerpaymentid) || !in_array($order->status, ['paid', 'partial', 'completed'], true)) {

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Narrow optional boundary to the separately installable Storefront enrolment plugin.
  *

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Course cart presentation shared by the native header and the side panel.
  *

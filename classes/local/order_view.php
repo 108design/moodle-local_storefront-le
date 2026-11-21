@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Course order view preserves separate payment, position delivery and actual access facts.
  *

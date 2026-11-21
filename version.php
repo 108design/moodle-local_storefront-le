@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Version and dependency metadata for Storefront.
  *
@@ -16,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_storefront';
-$plugin->version = 2026010110;
+$plugin->version = 2026010114;
 $plugin->requires = 2024100700; // Moodle 4.5.
 $plugin->maturity = MATURITY_BETA;
-$plugin->release = '0.10.1-beta';
+$plugin->release = '0.10.5-beta';

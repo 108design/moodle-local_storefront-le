@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Moodle Payment API consumer for authenticated one-off Storefront product bundles.
  *

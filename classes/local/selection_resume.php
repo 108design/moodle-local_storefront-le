@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Short-lived, single-use continuation for a public product selection across login devices.
  *

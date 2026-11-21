@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Bounded editorial mutations; never grants rights or changes delivery.
  *

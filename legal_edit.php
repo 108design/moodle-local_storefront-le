@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Native legal edit entry point for Storefront.
  *
@@ -59,7 +60,6 @@ if ($data = $form->get_data()) {
 }
 $PAGE->requires->css(new moodle_url('/local/storefront/styles/legal_editor.css'));
 $PAGE->requires->js_call_amd('local_storefront/legal_editor', 'init', [[
-    'url' => (new moodle_url('/local/storefront/legal_preview.php'))->out(false),
     'edit' => get_string('legaleditmode', 'local_storefront'),
     'preview' => get_string('legalpreviewmode', 'local_storefront'),
     'loading' => get_string('loading', 'moodle'),

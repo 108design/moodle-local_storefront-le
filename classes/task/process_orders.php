@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Retry verified course delivery and dispatch queued transactional mail.
  *

@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * One ordering contract for the native store and presentation consumers.
  *

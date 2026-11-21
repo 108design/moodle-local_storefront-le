@@ -1,5 +1,6 @@
-// Copyright 2026 Andreas Giesen. See LICENSE.md.
-import Config from 'core/config';
+// This file is part of Moodle - https://moodle.org/
+/* This file is part of a 108design source-available software product. Use and modification are permitted only under the Software License included with this distribution. See LICENSE.md for the full terms. @package local_storefront @copyright 2026 Andreas Giesen <andreas@108design.com> @license 108design source-available software license; see LICENSE.md */
+import Ajax from 'core/ajax';
 
 /** Markdown source and its unsaved preview occupy the same viewport. */
 export const init = options => {
@@ -49,10 +50,8 @@ export const init = options => {
     let sourceScroll = 0;
     let previewScroll = 0;
     let hasPreview = false;
-    let controller;
     const showEdit = () => {
         generation++;
-        controller?.abort();
         previewScroll = preview.scrollTop;
         preview.hidden = true;
         editor.hidden = false;
@@ -66,8 +65,6 @@ export const init = options => {
     };
     const showPreview = async() => {
         const request = ++generation;
-        controller?.abort();
-        controller = new AbortController();
         sourceScroll = source.scrollTop;
         const sourceProgress = sourceScroll / Math.max(1, source.scrollHeight - source.clientHeight);
         preview.style.height = source.getBoundingClientRect().height + 'px';
@@ -82,14 +79,10 @@ export const init = options => {
         edit.tabIndex = -1;
         view.tabIndex = 0;
         try {
-            const response = await fetch(options.url, {
-                method: 'POST', credentials: 'same-origin', signal: controller.signal,
-                body: new URLSearchParams({sesskey: Config.sesskey, content: source.value}),
-            });
-            const result = await response.json();
-            if (!response.ok || typeof result.html !== 'string') {
-                throw new Error('Preview unavailable');
-            }
+            const result = await Ajax.call([{
+                methodname: 'local_storefront_preview_legal',
+                args: {content: source.value},
+            }])[0];
             if (request !== generation) {
                 return;
             }

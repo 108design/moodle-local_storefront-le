@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * Serialises every state transition and side effect for one or more immutable order lines.
  *
