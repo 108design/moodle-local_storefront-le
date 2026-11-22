@@ -351,3 +351,107 @@ $string['updateinfo_choice'] = 'Kontrolliere vor dem Fortfahren die Paketquelle 
 $string['cachedef_selection_resume'] = 'Gespeicherte Bestellauswahl';
 $string['deliveryconfigurationunavailable'] = 'Der Kurszugang ist nicht eingerichtet. Bitte kontaktiere die Website-Administration.';
 $string['privacy:linestate'] = 'Zahlungs-, Bereitstellungs- und Kurszugangsstatus gekaufter Positionen.';
+
+$string['privacyordererased'] = 'Diese Bestellung wurde anonymisiert und kann nicht erneut verarbeitet werden.';
+
+$string['privacy:metadata:local_storefront_order'] = 'Bestellung mit Bezug zur kaufenden Person.';
+
+$string['privacy:metadata:local_storefront_order:id'] = 'Gespeicherter Wert id für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:orderkey'] = 'Gespeicherter Wert orderkey für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:userid'] = 'Gespeicherter Wert userid für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:email'] = 'Gespeicherter Wert email für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:customerlang'] = 'Gespeicherter Wert customerlang für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:status'] = 'Gespeicherter Wert status für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:channel'] = 'Gespeicherter Wert channel für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:paymentenvironment'] = 'Gespeicherter Wert paymentenvironment für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:currency'] = 'Gespeicherter Wert currency für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:total'] = 'Gespeicherter Wert total für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:providercheckoutid'] = 'Gespeicherter Wert providercheckoutid für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:providerpaymentid'] = 'Gespeicherter Wert providerpaymentid für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:providersubscriptionid'] = 'Gespeicherter Wert providersubscriptionid für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:provideraccountid'] = 'Gespeicherter Wert provideraccountid für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:accessstatus'] = 'Gespeicherter Wert accessstatus für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:accessreason'] = 'Gespeicherter Wert accessreason für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:accesssuspendat'] = 'Gespeicherter Wert accesssuspendat für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:claimtokenhash'] = 'Gespeicherter Wert claimtokenhash für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:recoverytokenhash'] = 'Gespeicherter Wert recoverytokenhash für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:activationemailsent'] = 'Gespeicherter Wert activationemailsent für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:timecreated'] = 'Gespeicherter Wert timecreated für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:timemodified'] = 'Gespeicherter Wert timemodified für Bestellung.';
+
+$string['privacy:metadata:local_storefront_order:timecompleted'] = 'Gespeicherter Wert timecompleted für Bestellung.';
+
+$string['privacy:metadata:local_storefront_orderline'] = 'Unveränderlicher Stand des gekauften Angebots mit Bezug zur kaufenden Person.';
+
+$string['privacy:metadata:local_storefront_orderline:id'] = 'Gespeicherter Wert id für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:orderid'] = 'Gespeicherter Wert orderid für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:offerid'] = 'Gespeicherter Wert offerid für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:productname'] = 'Gespeicherter Wert productname für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:offeringjson'] = 'Gespeicherter Wert offeringjson für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:snapshotversion'] = 'Gespeicherter Wert snapshotversion für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:snapshothash'] = 'Gespeicherter Wert snapshothash für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_orderline:amount'] = 'Gespeicherter Wert amount für Unveränderlicher Stand des gekauften Angebots.';
+
+$string['privacy:metadata:local_storefront_line_state'] = 'Zahlungs- und Lieferstatus mit Bezug zur kaufenden Person.';
+
+$string['privacy:metadata:local_storefront_line_state:id'] = 'Gespeicherter Wert id für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:orderlineid'] = 'Gespeicherter Wert orderlineid für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:paymentstatus'] = 'Gespeicherter Wert paymentstatus für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:fulfilmentstatus'] = 'Gespeicherter Wert fulfilmentstatus für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:accessstatus'] = 'Gespeicherter Wert accessstatus für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:accessreason'] = 'Gespeicherter Wert accessreason für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:accesssuspendat'] = 'Gespeicherter Wert accesssuspendat für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:currentperiodstart'] = 'Gespeicherter Wert currentperiodstart für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:currentperiodend'] = 'Gespeicherter Wert currentperiodend für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:cancelatperiodend'] = 'Gespeicherter Wert cancelatperiodend für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:timecancelled'] = 'Gespeicherter Wert timecancelled für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:lastproviderstate'] = 'Gespeicherter Wert lastproviderstate für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:timelastproviderevent'] = 'Gespeicherter Wert timelastproviderevent für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:reviewreason'] = 'Gespeicherter Wert reviewreason für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:pendingeffects'] = 'Gespeicherter Wert pendingeffects für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:timecreated'] = 'Gespeicherter Wert timecreated für Zahlungs- und Lieferstatus.';
+
+$string['privacy:metadata:local_storefront_line_state:timemodified'] = 'Gespeicherter Wert timemodified für Zahlungs- und Lieferstatus.';

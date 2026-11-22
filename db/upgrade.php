@@ -35,5 +35,10 @@ function xmldb_local_storefront_upgrade($oldversion) {
         }
         upgrade_plugin_savepoint(true, 2026010114, 'local', 'storefront');
     }
+    if ($oldversion < 2026010115) {
+        require_once(__DIR__ . '/privacy_cleanup.php');
+        xmldb_local_storefront_cleanup_provider_references();
+        upgrade_plugin_savepoint(true, 2026010115, 'local', 'storefront');
+    }
     return true;
 }

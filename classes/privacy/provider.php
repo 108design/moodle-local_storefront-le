@@ -29,8 +29,30 @@ final class provider implements
      */
     public static function get_metadata(collection $collection): collection {
         $collection->add_database_table('local_storefront_order', [
-            'userid' => 'privacy:userid', 'email' => 'privacy:email', 'customerlang' => 'privacy:language',
-            'providerpaymentid' => 'privacy:payment', 'total' => 'privacy:purchase'], 'privacy:orders');
+            'id' => 'privacy:metadata:local_storefront_order:id',
+            'orderkey' => 'privacy:metadata:local_storefront_order:orderkey',
+            'userid' => 'privacy:metadata:local_storefront_order:userid',
+            'email' => 'privacy:metadata:local_storefront_order:email',
+            'customerlang' => 'privacy:metadata:local_storefront_order:customerlang',
+            'status' => 'privacy:metadata:local_storefront_order:status',
+            'channel' => 'privacy:metadata:local_storefront_order:channel',
+            'paymentenvironment' => 'privacy:metadata:local_storefront_order:paymentenvironment',
+            'currency' => 'privacy:metadata:local_storefront_order:currency',
+            'total' => 'privacy:metadata:local_storefront_order:total',
+            'providercheckoutid' => 'privacy:metadata:local_storefront_order:providercheckoutid',
+            'providerpaymentid' => 'privacy:metadata:local_storefront_order:providerpaymentid',
+            'providersubscriptionid' => 'privacy:metadata:local_storefront_order:providersubscriptionid',
+            'provideraccountid' => 'privacy:metadata:local_storefront_order:provideraccountid',
+            'accessstatus' => 'privacy:metadata:local_storefront_order:accessstatus',
+            'accessreason' => 'privacy:metadata:local_storefront_order:accessreason',
+            'accesssuspendat' => 'privacy:metadata:local_storefront_order:accesssuspendat',
+            'claimtokenhash' => 'privacy:metadata:local_storefront_order:claimtokenhash',
+            'recoverytokenhash' => 'privacy:metadata:local_storefront_order:recoverytokenhash',
+            'activationemailsent' => 'privacy:metadata:local_storefront_order:activationemailsent',
+            'timecreated' => 'privacy:metadata:local_storefront_order:timecreated',
+            'timemodified' => 'privacy:metadata:local_storefront_order:timemodified',
+            'timecompleted' => 'privacy:metadata:local_storefront_order:timecompleted',
+        ], 'privacy:metadata:local_storefront_order');
         $collection->add_database_table('local_storefront_orderlegal', [
             'revisionid' => 'privacy:legal', 'timeaccepted' => 'privacy:legal'], 'privacy:legal');
         $collection->add_database_table(
@@ -42,23 +64,24 @@ final class provider implements
             'privacy:mail'
         );
         $collection->add_database_table('local_storefront_line_state', [
-            'orderlineid' => 'privacy:linestate',
-            'paymentstatus' => 'privacy:linestate',
-            'fulfilmentstatus' => 'privacy:linestate',
-            'accessstatus' => 'privacy:linestate',
-            'accessreason' => 'privacy:linestate',
-            'accesssuspendat' => 'privacy:linestate',
-            'currentperiodstart' => 'privacy:linestate',
-            'currentperiodend' => 'privacy:linestate',
-            'cancelatperiodend' => 'privacy:linestate',
-            'timecancelled' => 'privacy:linestate',
-            'lastproviderstate' => 'privacy:linestate',
-            'timelastproviderevent' => 'privacy:linestate',
-            'reviewreason' => 'privacy:linestate',
-            'pendingeffects' => 'privacy:linestate',
-            'timecreated' => 'privacy:linestate',
-            'timemodified' => 'privacy:linestate',
-        ], 'privacy:linestate');
+            'id' => 'privacy:metadata:local_storefront_line_state:id',
+            'orderlineid' => 'privacy:metadata:local_storefront_line_state:orderlineid',
+            'paymentstatus' => 'privacy:metadata:local_storefront_line_state:paymentstatus',
+            'fulfilmentstatus' => 'privacy:metadata:local_storefront_line_state:fulfilmentstatus',
+            'accessstatus' => 'privacy:metadata:local_storefront_line_state:accessstatus',
+            'accessreason' => 'privacy:metadata:local_storefront_line_state:accessreason',
+            'accesssuspendat' => 'privacy:metadata:local_storefront_line_state:accesssuspendat',
+            'currentperiodstart' => 'privacy:metadata:local_storefront_line_state:currentperiodstart',
+            'currentperiodend' => 'privacy:metadata:local_storefront_line_state:currentperiodend',
+            'cancelatperiodend' => 'privacy:metadata:local_storefront_line_state:cancelatperiodend',
+            'timecancelled' => 'privacy:metadata:local_storefront_line_state:timecancelled',
+            'lastproviderstate' => 'privacy:metadata:local_storefront_line_state:lastproviderstate',
+            'timelastproviderevent' => 'privacy:metadata:local_storefront_line_state:timelastproviderevent',
+            'reviewreason' => 'privacy:metadata:local_storefront_line_state:reviewreason',
+            'pendingeffects' => 'privacy:metadata:local_storefront_line_state:pendingeffects',
+            'timecreated' => 'privacy:metadata:local_storefront_line_state:timecreated',
+            'timemodified' => 'privacy:metadata:local_storefront_line_state:timemodified',
+        ], 'privacy:metadata:local_storefront_line_state');
         $collection->add_subsystem_link('core_payment', [], 'privacy:payment');
         $collection->add_database_table(
             'local_storefront_legalrev',
@@ -66,6 +89,16 @@ final class provider implements
             'privacy:legal'
         );
         $collection->add_database_table('local_storefront_comrule', ['modifiedby' => 'privacy:userid'], 'privacy:mail');
+        $collection->add_database_table('local_storefront_orderline', [
+            'id' => 'privacy:metadata:local_storefront_orderline:id',
+            'orderid' => 'privacy:metadata:local_storefront_orderline:orderid',
+            'offerid' => 'privacy:metadata:local_storefront_orderline:offerid',
+            'productname' => 'privacy:metadata:local_storefront_orderline:productname',
+            'offeringjson' => 'privacy:metadata:local_storefront_orderline:offeringjson',
+            'snapshotversion' => 'privacy:metadata:local_storefront_orderline:snapshotversion',
+            'snapshothash' => 'privacy:metadata:local_storefront_orderline:snapshothash',
+            'amount' => 'privacy:metadata:local_storefront_orderline:amount',
+        ], 'privacy:metadata:local_storefront_orderline');
         return $collection;
     }
     /**
@@ -232,7 +265,9 @@ final class provider implements
                         'recipienthash' => hash('sha256', 'deleted:' . $message->id), 'status' => 'cancelled']);
                 }
                 $DB->update_record('local_storefront_order', (object)['id' => $order->id, 'userid' => null, 'email' => null,
-                    'claimtokenhash' => null, 'recoverytokenhash' => null, 'providerpaymentid' => null]);
+                    'claimtokenhash' => null, 'recoverytokenhash' => null, 'providercheckoutid' => null,
+                    'providerpaymentid' => null, 'providersubscriptionid' => null]);
+                \local_storefront\local\order_privacy::clear_references((int)$order->id);
                 // Commit before releasing the order lock, so the next callback sees erased ownership.
                 $tx->allow_commit();
             });

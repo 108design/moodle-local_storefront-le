@@ -351,3 +351,107 @@ $string['updateinfo_choice'] = 'Review the package source and Moodle\'s validati
 $string['cachedef_selection_resume'] = 'Saved checkout selection';
 $string['deliveryconfigurationunavailable'] = 'Course delivery is not configured. Please contact the site administrator.';
 $string['privacy:linestate'] = 'Payment, delivery and course access status for purchased items.';
+
+$string['privacyordererased'] = 'This order has been anonymised and cannot be processed again.';
+
+$string['privacy:metadata:local_storefront_order'] = 'Purchase order associated with the buyer.';
+
+$string['privacy:metadata:local_storefront_order:id'] = 'id recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:orderkey'] = 'orderkey recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:userid'] = 'userid recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:email'] = 'email recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:customerlang'] = 'customerlang recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:status'] = 'status recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:channel'] = 'channel recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:paymentenvironment'] = 'paymentenvironment recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:currency'] = 'currency recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:total'] = 'total recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:providercheckoutid'] = 'providercheckoutid recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:providerpaymentid'] = 'providerpaymentid recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:providersubscriptionid'] = 'providersubscriptionid recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:provideraccountid'] = 'provideraccountid recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:accessstatus'] = 'accessstatus recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:accessreason'] = 'accessreason recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:accesssuspendat'] = 'accesssuspendat recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:claimtokenhash'] = 'claimtokenhash recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:recoverytokenhash'] = 'recoverytokenhash recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:activationemailsent'] = 'activationemailsent recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:timecreated'] = 'timecreated recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:timemodified'] = 'timemodified recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_order:timecompleted'] = 'timecompleted recorded in the purchase order.';
+
+$string['privacy:metadata:local_storefront_orderline'] = 'Purchased offer snapshot associated with the buyer.';
+
+$string['privacy:metadata:local_storefront_orderline:id'] = 'id recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:orderid'] = 'orderid recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:offerid'] = 'offerid recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:productname'] = 'productname recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:offeringjson'] = 'offeringjson recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:snapshotversion'] = 'snapshotversion recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:snapshothash'] = 'snapshothash recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_orderline:amount'] = 'amount recorded in the purchased offer snapshot.';
+
+$string['privacy:metadata:local_storefront_line_state'] = 'Payment and delivery state associated with the buyer.';
+
+$string['privacy:metadata:local_storefront_line_state:id'] = 'id recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:orderlineid'] = 'orderlineid recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:paymentstatus'] = 'paymentstatus recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:fulfilmentstatus'] = 'fulfilmentstatus recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:accessstatus'] = 'accessstatus recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:accessreason'] = 'accessreason recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:accesssuspendat'] = 'accesssuspendat recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:currentperiodstart'] = 'currentperiodstart recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:currentperiodend'] = 'currentperiodend recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:cancelatperiodend'] = 'cancelatperiodend recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:timecancelled'] = 'timecancelled recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:lastproviderstate'] = 'lastproviderstate recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:timelastproviderevent'] = 'timelastproviderevent recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:reviewreason'] = 'reviewreason recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:pendingeffects'] = 'pendingeffects recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:timecreated'] = 'timecreated recorded in the payment and delivery state.';
+
+$string['privacy:metadata:local_storefront_line_state:timemodified'] = 'timemodified recorded in the payment and delivery state.';
