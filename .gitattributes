@@ -64,6 +64,7 @@
 "/classes/local/legal_service.php" -export-ignore -export-subst
 "/classes/local/moodle_payment_config.php" -export-ignore -export-subst
 "/classes/local/order_lock.php" -export-ignore -export-subst
+"/classes/local/order_privacy.php" -export-ignore -export-subst
 "/classes/local/order_service.php" -export-ignore -export-subst
 "/classes/local/order_view.php" -export-ignore -export-subst
 "/classes/local/page.php" -export-ignore -export-subst
@@ -100,6 +101,7 @@
 "/db/hooks.php" -export-ignore -export-subst
 "/db/install.php" -export-ignore -export-subst
 "/db/install.xml" -export-ignore -export-subst
+"/db/privacy_cleanup.php" -export-ignore -export-subst
 "/db/services.php" -export-ignore -export-subst
 "/db/tasks.php" -export-ignore -export-subst
 "/db/upgrade.php" -export-ignore -export-subst
