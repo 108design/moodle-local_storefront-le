@@ -398,7 +398,13 @@ final class public_access_test extends \advanced_testcase {
         require_once($CFG->libdir . '/upgradelib.php');
         require_once($CFG->dirroot . '/local/storefront/db/upgrade.php');
         set_config('distribution', 'course', 'local_storefront');
+        // Match the database source version to the argument passed to the native upgrade.
+        set_config('version', 2026010100, 'local_storefront');
         $this->assertTrue(\xmldb_local_storefront_upgrade(2026010100));
+        $this->assertSame(
+            (int) \core_plugin_manager::instance()->get_plugin_info('local_storefront')->versiondisk,
+            (int) get_config('local_storefront', 'version')
+        );
         foreach ([['full', 2026010100], ['course', 2026100100]] as [$marker, $version]) {
             set_config('distribution', $marker, 'local_storefront');
             try {
