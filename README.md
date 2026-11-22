@@ -2,7 +2,7 @@
   <img src="docs/branding/logo.svg" alt="Storefront logo" width="125" height="125">
 </p>
 
-# Storefront LE
+# Storefront LE - Limited Beta Preview
 
 Sell access to Moodle courses through a searchable catalogue and shopping cart. A product can include several courses, and courses can belong to several products. Each offer is a one-time purchase for the signed-in Moodle account.
 
