@@ -395,6 +395,7 @@ final class public_access_test extends \advanced_testcase {
     public function test_local_upgrade_guard_rejects_unknown_or_larger_state_without_rewriting_marker(): void {
         global $CFG;
         $this->resetAfterTest();
+        require_once($CFG->libdir . '/upgradelib.php');
         require_once($CFG->dirroot . '/local/storefront/db/upgrade.php');
         set_config('distribution', 'course', 'local_storefront');
         $this->assertTrue(\xmldb_local_storefront_upgrade(2026010100));
