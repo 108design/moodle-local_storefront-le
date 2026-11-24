@@ -21,20 +21,20 @@ $string['moodlecourses'] = 'Enthaltene Moodle-Kurse';
 $string['coursebundlerequired'] = 'Ein Kursprodukt muss mindestens einen sichtbaren Moodle-Kurs enthalten.';
 $string['moodleenrolmentmethods'] = 'Moodle-Einschreibemethoden';
 $string['coursemappinglocked'] = 'Bereits ausgelieferte Kurszuordnungen können nicht entfernt werden. Weitere Kurse dürfen ergänzt; Status, Rolle und künftige Zugangsdauer dürfen angepasst werden.';
-$string['coursemappingnopermission'] = 'Du darfst die Einschreibemethoden dieses Kurses nicht konfigurieren.';
-$string['coursemissing'] = 'Wähle einen verfügbaren Moodle-Kurs.';
-$string['courseroleinvalid'] = 'Wähle eine Rolle, die über diese Einschreibemethode im Kurs zugewiesen werden darf.';
+$string['coursemappingnopermission'] = 'Sie dürfen die Einschreibemethoden dieses Kurses nicht konfigurieren.';
+$string['coursemissing'] = 'Wählen Sie einen verfügbaren Moodle-Kurs.';
+$string['courseroleinvalid'] = 'Wählen Sie eine Rolle, die über diese Einschreibemethode im Kurs zugewiesen werden darf.';
 $string['coursemappingsaved'] = 'Die Kursauslieferung wurde gespeichert.';
 $string['coursepluginenabled'] = 'Kursauslieferung aktiv';
 $string['courseplugindisabled'] = 'Kursauslieferung deaktiviert';
-$string['coursepluginenablehelp'] = 'Aktiviere Storefront-Kurskauf unter Website-Administration → Plugins → Einschreibung, bevor du das Produkt veröffentlichst.';
-$string['coursepluginmissing'] = 'Installiere zuerst das begleitende Einschreibe-Plugin Storefront-Kurskauf, um Kursprodukte zu verknüpfen.';
+$string['coursepluginenablehelp'] = 'Aktivieren Sie Storefront-Kurskauf unter Website-Administration → Plugins → Einschreibung, bevor Sie das Produkt veröffentlichen.';
+$string['coursepluginmissing'] = 'Installieren Sie zuerst das begleitende Einschreibe-Plugin Storefront-Kurskauf, um Kursprodukte zu verknüpfen.';
 $string['actions'] = 'Aktionen';
 $string['moodlepaymenttitle'] = 'Zahlungsmethode';
 $string['moodlepaymentcomplete'] = 'Die Zahlung ist bestätigt und alle Produktbestandteile wurden freigeschaltet.';
 $string['moodlepaymentnogateway'] = 'Das ausgewählte Moodle-Zahlungskonto bietet für diese Währung kein aktives Gateway.';
 $string['paywithmoodlegateway'] = 'Jetzt bezahlen';
-$string['moodlepaymentchoosegateway'] = 'Wähle eine der für dieses Moodle-Zahlungskonto verfügbaren Zahlungsmethoden.';
+$string['moodlepaymentchoosegateway'] = 'Wählen Sie eine der für dieses Moodle-Zahlungskonto verfügbaren Zahlungsmethoden.';
 $string['moodlepaymentdescription'] = 'Storefront-Bestellung {$a}';
 $string['moodlepaymentinvalid'] = 'Diese Moodle-Zahlungsbestellung ist nicht verfügbar oder gehört zu einem anderen Konto.';
 $string['legaldocuments'] = 'Rechtstexte';
@@ -47,7 +47,7 @@ $string['deletelegaldocumentconfirm'] = 'Soll der Rechtstext „{$a}“ wirklich
 $string['legaldocumenttitle'] = 'Bezeichnung';
 $string['legaldocumentcontent'] = 'Inhalt';
 $string['legalidentifier'] = 'Gemeinsame Kennung';
-$string['legalidentifier_help'] = 'Diese Kennung gilt für alle Sprachfassungen des Rechtstexts, zum Beispiel terms oder privacy. Du bearbeitest sie unter „Gemeinsame Einstellungen“. Eine Änderung gilt für den gesamten Rechtstext und kann bestehende Links mit der bisherigen Kennung ungültig machen.';
+$string['legalidentifier_help'] = 'Diese Kennung gilt für alle Sprachfassungen des Rechtstexts, zum Beispiel terms oder privacy. Sie bearbeiten sie unter „Gemeinsame Einstellungen“. Eine Änderung gilt für den gesamten Rechtstext und kann bestehende Links mit der bisherigen Kennung ungültig machen.';
 $string['showincheckout'] = 'Im Checkout anzeigen';
 $string['requireconfirmation'] = 'Pflichtbestätigung';
 $string['legalconfirmationmissing'] = 'Mindestens ein verpflichtender Rechtstext wurde nicht in der angezeigten Fassung bestätigt.';
@@ -61,18 +61,18 @@ $string['viewlegaldocument'] = 'Rechtstext ansehen';
 $string['nolegaldocuments'] = 'Es sind noch keine Rechtstexte angelegt.';
 $string['legaldocumentsaved'] = 'Der Rechtstext wurde als neue Fassung gespeichert.';
 $string['legaldocumentdeleted'] = 'Der Rechtstext wurde gelöscht.';
-$string['legaldocumentinuse'] = 'Dieser Rechtstext ist bereits mit einer Bestellung verknüpft und kann nicht gelöscht werden. Blende ihn stattdessen aus.';
+$string['legaldocumentinuse'] = 'Dieser Rechtstext ist bereits mit einer Bestellung verknüpft und kann nicht gelöscht werden. Blenden Sie ihn stattdessen aus.';
 $string['otherproducts'] = 'Weitere Produkte';
 $string['remove'] = 'Entfernen';
 $string['legallanguage'] = 'Sprache';
 $string['legallanguages'] = 'Sprachfassungen';
 $string['legallanguageunassigned'] = 'Sprache noch nicht zugeordnet';
-$string['legallanguage_help'] = 'Die Sprache gilt für diese Fassung. Ordne übernommenen Texten ihre tatsächliche Sprache zu. Weitere Sprachfassungen legst Du beim selben Rechtstext an.';
+$string['legallanguage_help'] = 'Die Sprache gilt für diese Fassung. Ordnen Sie übernommenen Texten ihre tatsächliche Sprache zu. Weitere Sprachfassungen legen Sie beim selben Rechtstext an.';
 $string['legalinputformat'] = 'Eingabeformat';
 $string['legaleditorformat'] = 'Visueller Editor';
-$string['legalinputformat_help'] = 'Wähle den visuellen Editor oder Markdown. Markdown bleibt als Rohtext gespeichert. Bearbeiten und Vorschau nutzen denselben Bereich. Beim Formatwechsel wird der Inhalt nicht automatisch konvertiert; füge den Text im gewählten Format ein.';
+$string['legalinputformat_help'] = 'Wählen Sie den visuellen Editor oder Markdown. Markdown bleibt als Rohtext gespeichert. Bearbeiten und Vorschau nutzen denselben Bereich. Beim Formatwechsel wird der Inhalt nicht automatisch konvertiert; fügen Sie den Text im gewählten Format ein.';
 $string['legalpublished'] = 'Sprachfassung veröffentlichen';
-$string['legalpublished_help'] = 'Beim Speichern wird diese Fassung für Leser und Checkout verfügbar. Ohne Häkchen speicherst Du einen Entwurf; eine bisher veröffentlichte Fassung bleibt dabei verfügbar. Bereits veröffentlichte Revisionen bleiben über ihre festen Links erreichbar.';
+$string['legalpublished_help'] = 'Beim Speichern wird diese Fassung für Leser und Checkout verfügbar. Ohne Häkchen speichern Sie einen Entwurf; eine bisher veröffentlichte Fassung bleibt dabei verfügbar. Bereits veröffentlichte Revisionen bleiben über ihre festen Links erreichbar.';
 $string['legalisdefault'] = 'Als Standardsprache verwenden';
 $string['legalisdefault_help'] = 'Diese Fassung wird angezeigt, wenn die gewünschte Sprache fehlt. Ein sichtbarer Rechtstext benötigt eine veröffentlichte Standardfassung.';
 $string['legalvisible'] = 'Rechtstext sichtbar';
@@ -83,36 +83,36 @@ $string['legalsortorder'] = 'Reihenfolge der Rechtstexte';
 $string['legalsortorder_help'] = 'Kleinere Werte erscheinen im Checkout zuerst. Die Reihenfolge gilt für alle Sprachfassungen dieses Rechtstexts.';
 $string['legaleditmode'] = 'Bearbeiten';
 $string['legalpreviewmode'] = 'Vorschau';
-$string['legalpreviewfailed'] = 'Die Vorschau konnte nicht geladen werden. Dein Rohtext ist erhalten. Wechsle zu Bearbeiten und versuche es erneut.';
+$string['legalpreviewfailed'] = 'Die Vorschau konnte nicht geladen werden. Ihr Rohtext ist erhalten. Wechseln Sie zu Bearbeiten und versuchen Sie es erneut.';
 $string['legalautomaticlanguage'] = 'Automatisch nach Moodle-Sprache';
 $string['legaladdlanguage'] = 'Sprachfassung hinzufügen oder öffnen';
 $string['legaldefaultlabel'] = 'Standard';
-$string['legaleditingintro'] = 'Hier bearbeitest Du Bezeichnung, Inhalt und Veröffentlichung dieser Sprachfassung. Kennung und weitere dokumentweite Angaben findest Du unter „Gemeinsame Einstellungen“.';
+$string['legaleditingintro'] = 'Hier bearbeiten Sie Bezeichnung, Inhalt und Veröffentlichung dieser Sprachfassung. Kennung und weitere dokumentweite Angaben finden Sie unter „Gemeinsame Einstellungen“.';
 $string['legaldefaultrequired'] = 'Ein sichtbarer Rechtstext benötigt eine veröffentlichte Standardfassung.';
-$string['legaleditconflict'] = 'Der Rechtstext wurde inzwischen geändert. Öffne die aktuelle Fassung und übertrage Deine Änderungen.';
+$string['legaleditconflict'] = 'Der Rechtstext wurde inzwischen geändert. Öffnen Sie die aktuelle Fassung und übertragen Sie Ihre Änderungen.';
 $string['legaltranslationunavailable'] = 'Für diesen Rechtstext ist keine veröffentlichte Standardfassung verfügbar.';
-$string['legalcheckoutchanged'] = 'Die angezeigten Rechtstexte haben sich geändert. Öffne den Checkout erneut und prüfe die aktuellen Fassungen.';
-$string['legalrevisionnotice'] = 'Du liest die fest verlinkte Revision {$a}. Über das Sprachmenü erreichst Du die aktuellen Sprachfassungen.';
+$string['legalcheckoutchanged'] = 'Die angezeigten Rechtstexte haben sich geändert. Öffnen Sie den Checkout erneut und prüfen Sie die aktuellen Fassungen.';
+$string['legalrevisionnotice'] = 'Sie lesen die fest verlinkte Revision {$a}. Über das Sprachmenü erreichen Sie die aktuellen Sprachfassungen.';
 $string['legallanguagefallback'] = 'In der gewünschten Sprache liegt keine Fassung vor. Angezeigt wird: {$a}.';
 $string['legaldraft'] = 'Entwurf';
 $string['legalidentifierexists'] = 'Diese Rechtstextkennung wird bereits verwendet.';
 $string['legalsettings'] = 'Gemeinsame Einstellungen';
 $string['legalsettingssaved'] = 'Die gemeinsamen Einstellungen wurden gespeichert.';
-$string['legalsettingsintro'] = 'Kennung, Standardsprache, Sichtbarkeit, Reihenfolge und Checkout-Regeln gelten für alle Sprachfassungen dieses Rechtstexts. Sprachbezogene Bezeichnungen und Inhalte bearbeitest Du über die Sprachlinks.';
+$string['legalsettingsintro'] = 'Kennung, Standardsprache, Sichtbarkeit, Reihenfolge und Checkout-Regeln gelten für alle Sprachfassungen dieses Rechtstexts. Sprachbezogene Bezeichnungen und Inhalte bearbeiten Sie über die Sprachlinks.';
 $string['legaldefaultlanguage'] = 'Standardsprache';
-$string['legaldefaultlanguage_help'] = 'Wähle die Fassung, die bei einer fehlenden Übersetzung angezeigt wird. Ein sichtbarer Rechtstext benötigt eine veröffentlichte Standardfassung.';
-$string['legalcreatingintro'] = 'Lege die erste Sprachfassung und die gemeinsamen Einstellungen des Rechtstexts an. Weitere Sprachen fügst Du danach hinzu. Die erste Fassung wird als Standardsprache verwendet.';
+$string['legaldefaultlanguage_help'] = 'Wählen Sie die Fassung, die bei einer fehlenden Übersetzung angezeigt wird. Ein sichtbarer Rechtstext benötigt eine veröffentlichte Standardfassung.';
+$string['legalcreatingintro'] = 'Legen Sie die erste Sprachfassung und die gemeinsamen Einstellungen des Rechtstexts an. Weitere Sprachen fügen Sie danach hinzu. Die erste Fassung wird als Standardsprache verwendet.';
 $string['legaldocumenttitle_help'] = 'Diese Bezeichnung gehört zur gewählten Sprachfassung. Jede Sprache kann eine eigene Bezeichnung haben.';
 $string['legaldocumentcontent_help'] = 'Inhalt der gewählten Sprachfassung im ausgewählten Eingabeformat. Mit Markdown wechseln Bearbeiten und Vorschau im selben Bereich.';
 $string['courseduration'] = 'Dauer des Kurszugangs';
 $string['courseduration_help'] = 'Ohne Aktivierung hat der Zugang kein geplantes Enddatum. Ein befristeter Zeitraum beginnt bei der Auslieferung des Kurszugangs. Änderungen gelten für zukünftige Bestellungen; gespeicherte Bestellungen behalten ihre ursprüngliche Dauer.';
-$string['adminhelp_legal_customer_article'] = '<p>Der Checkout verlinkt die Rechtstexte für Deine Bestellung. Lies sie vor der Bestätigung. Du kannst eine andere veröffentlichte Dokumentensprache wählen, ohne die Sprache der Moodle-Oberfläche zu ändern.</p><p>Meine Käufe verlinkt die mit Deiner Bestellung gespeicherten Fassungen und erforderlichen Bestätigungen. Spätere Textänderungen ersetzen diese Bestellnachweise nicht.</p>';
+$string['adminhelp_legal_customer_article'] = '<p>Der Checkout verlinkt die Rechtstexte für Ihre Bestellung. Lesen Sie sie vor der Bestätigung. Sie können eine andere veröffentlichte Dokumentensprache wählen, ohne die Sprache der Moodle-Oberfläche zu ändern.</p><p>Meine Käufe verlinkt die mit Ihrer Bestellung gespeicherten Fassungen und erforderlichen Bestätigungen. Spätere Textänderungen ersetzen diese Bestellnachweise nicht.</p>';
 $string['choosetags'] = 'Tags auswählen';
 $string['productimage'] = 'Produktbild';
 $string['productimage_help'] = 'Ein Bild für Katalogkarte und Produktdetails. Bilder und eingebettete Beschreibungsdateien folgen der Shop-Sichtbarkeit und Veröffentlichung des Produkts.';
 $string['producttypecourse'] = 'Kurszugang';
 $string['producttype_help'] = 'Kurszugang stellt die für dieses Produkt zugeordneten Kurse bereit.';
-$string['moodlecourses_help'] = 'Wähle alle Kurse, die das Produkt bereitstellt. Für jeden betroffenen Kurs werden die nativen Rechte zur Einschreibungskonfiguration benötigt. Bereits von Käufen referenzierte Zuordnungen lassen sich nicht entfernen.';
+$string['moodlecourses_help'] = 'Wählen Sie alle Kurse, die das Produkt bereitstellt. Für jeden betroffenen Kurs werden die nativen Rechte zur Einschreibungskonfiguration benötigt. Bereits von Käufen referenzierte Zuordnungen lassen sich nicht entfernen.';
 $string['coursemappingnote'] = 'Alle gewählten Kurse gehören zu einem Produkt und einer Bestellposition. Kurszugang wird nach verifizierter Moodle-Zahlung für das angemeldete Käuferkonto bereitgestellt. Gespeicherte Bestellungen behalten ihre ursprüngliche Rolle und Dauer.';
 $string['grouping'] = 'Gruppieren nach';
 $string['sorting'] = 'Sortieren nach';
@@ -124,8 +124,8 @@ $string['move_up'] = 'Nach oben';
 $string['move_down'] = 'Nach unten';
 $string['move_last'] = 'Ans Ende';
 $string['converttotag'] = 'In Tag umwandeln';
-$string['orderingintro'] = 'Verschiebe Einträge global oder innerhalb einer gewählten Kategorie beziehungsweise eines Tags. Ausgeblendete Produkte bleiben Teil der Reihenfolge. Die Gruppenreihenfolge lässt sich auf die globale Reihenfolge zurücksetzen.';
-$string['conversionintro'] = 'Wandle {$a} in einen Tag um. Produktzuordnungen gehen auf den passenden Tag über; die Kategorie wird entfernt. Andere Zuordnungen bleiben erhalten.';
+$string['orderingintro'] = 'Verschieben Sie Einträge global oder innerhalb einer gewählten Kategorie beziehungsweise eines Tags. Ausgeblendete Produkte bleiben Teil der Reihenfolge. Die Gruppenreihenfolge lässt sich auf die globale Reihenfolge zurücksetzen.';
+$string['conversionintro'] = 'Wandeln Sie {$a} in einen Tag um. Produktzuordnungen gehen auf den passenden Tag über; die Kategorie wird entfernt. Andere Zuordnungen bleiben erhalten.';
 $string['pluginname'] = 'Storefront';
 $string['storefront'] = 'Storefront';
 $string['product'] = 'Kursprodukt';
@@ -148,28 +148,28 @@ $string['addoffer'] = 'Angebot anlegen';
 $string['editoffer'] = 'Angebot bearbeiten';
 $string['amount'] = 'Preis';
 $string['currency'] = 'Währung';
-$string['amount_help'] = 'Einmalpreis für dieses Kursprodukt. Verwende einen positiven Betrag mit Dezimalpunkt. Die Kurszuordnung bestimmt die Zugangsdauer für alle Preisoptionen.';
-$string['currency_help'] = 'Verwende eine dreistellige Währung, die ein aktiviertes Gateway des gewählten Moodle-Zahlungskontos unterstützt. Alle Produkte einer Bestellung müssen dieselbe Währung verwenden.';
-$string['invalidoffer'] = 'Gib einen gültigen positiven Preis, eine Währung und eine Kennung ein.';
+$string['amount_help'] = 'Einmalpreis für dieses Kursprodukt. Verwenden Sie einen positiven Betrag mit Dezimalpunkt. Die Kurszuordnung bestimmt die Zugangsdauer für alle Preisoptionen.';
+$string['currency_help'] = 'Verwenden Sie eine dreistellige Währung, die ein aktiviertes Gateway des gewählten Moodle-Zahlungskontos unterstützt. Alle Produkte einer Bestellung müssen dieselbe Währung verwenden.';
+$string['invalidoffer'] = 'Geben Sie einen gültigen positiven Preis, eine Währung und eine Kennung ein.';
 $string['categories'] = 'Kategorien';
 $string['tags'] = 'Tags';
 $string['addtaxonomy'] = 'Eintrag anlegen';
 $string['badgecolor'] = 'Farbe';
-$string['badgecolor_help'] = 'Verwende einen sechsstelligen HEX-Wert oder eine unterstützte OKLCH-Farbe. Ein ungültiger Wert verwendet den neutralen Standard.';
+$string['badgecolor_help'] = 'Verwenden Sie einen sechsstelligen HEX-Wert oder eine unterstützte OKLCH-Farbe. Ein ungültiger Wert verwendet den neutralen Standard.';
 $string['delivery'] = 'Kursauslieferung';
 $string['settings'] = 'Einstellungen';
 $string['storevisibility'] = 'Shop-Sichtbarkeit';
-$string['storevisibility_help'] = 'Wähle, wer den Katalog ansehen darf. Vor der Zahlung müssen Käufer angemeldet sein. Eigene Bestellungen und Kurszugänge bleiben auf das zugehörige Konto beschränkt.';
+$string['storevisibility_help'] = 'Wählen Sie, wer den Katalog ansehen darf. Vor der Zahlung müssen Käufer/innen angemeldet sein. Eigene Bestellungen und Kurszugänge bleiben auf das zugehörige Konto beschränkt.';
 $string['audiencepublic'] = 'Öffentlich';
-$string['audienceauthenticated'] = 'Angemeldete Nutzer';
+$string['audienceauthenticated'] = 'Angemeldete Nutzer/innen';
 $string['audienceeditors'] = 'Shop-Verwaltung';
 $string['paymentaccount'] = 'Moodle-Zahlungskonto';
-$string['paymentaccount_help'] = 'Wähle ein aktiviertes Konto aus den Moodle-Zahlungskonten. Richte sein Gateway ein und prüfe dessen Sandbox vor der Annahme von Zahlungen.';
+$string['paymentaccount_help'] = 'Wählen Sie ein aktiviertes Konto aus den Moodle-Zahlungskonten. Richten Sie sein Gateway ein und prüfen Sie dessen Sandbox vor der Annahme von Zahlungen.';
 $string['magiclinkenabled'] = 'Magic-Link-Anmeldung anbieten';
-$string['magiclinkenabled_help'] = 'Zeigt den optionalen Einstieg, wenn auth_magiclink installiert und aktiviert ist. Dessen Regeln für Kontoanlage, Administratoren und MFA gelten weiter. Nach der Anmeldung wird die Auswahl im Warenkorb wieder aufgenommen.';
+$string['magiclinkenabled_help'] = 'Zeigt den optionalen Einstieg, wenn auth_magiclink installiert und aktiviert ist. Dessen Regeln für Kontoanlage, Administrator/innen und MFA gelten weiter. Nach der Anmeldung wird die Auswahl im Warenkorb wieder aufgenommen.';
 $string['magiclinklogin'] = 'Mit E-Mail-Link anmelden';
 $string['cart'] = 'Warenkorb';
-$string['cartempty'] = 'Dein Warenkorb ist leer.';
+$string['cartempty'] = 'Ihr Warenkorb ist leer.';
 $string['clearcart'] = 'Warenkorb leeren';
 $string['addtocart'] = 'In den Warenkorb';
 $string['chooseoffer'] = 'Angebot wählen';
@@ -187,15 +187,15 @@ $string['durationnote'] = 'Befristeter Zugang beginnt mit der tatsächlichen Kur
 $string['accountpurchase'] = 'Dieser Kauf stellt Kurszugänge für {$a} bereit.';
 $string['acceptdocument'] = 'Ich akzeptiere {$a}.';
 $string['createpayment'] = 'Weiter zur Zahlung';
-$string['selectionchanged'] = 'Deine Auswahl oder ihr Preis hat sich geändert. Prüfe Warenkorb und Bestellübersicht erneut.';
-$string['selectionexpired'] = 'Dieser Auswahllink ist abgelaufen oder wurde bereits verwendet. Wähle Deine Kurse erneut im Katalog.';
-$string['selectionunavailable'] = 'Ein ausgewähltes Angebot ist derzeit nicht verfügbar. Entferne es vor der Bestellung.';
-$string['coursefulfilmentunavailable'] = 'Der Kurszugang ist derzeit nicht verfügbar. Bitte wende Dich an die Shop-Verwaltung.';
-$string['noproducts'] = 'Keine Kurse passen zu Deiner Auswahl.';
-$string['checkoutmixedcurrency'] = 'Verwende für alle Produkte einer Bestellung dieselbe Währung.';
+$string['selectionchanged'] = 'Ihre Auswahl oder ihr Preis hat sich geändert. Prüfen Sie Warenkorb und Bestellübersicht erneut.';
+$string['selectionexpired'] = 'Dieser Auswahllink ist abgelaufen oder wurde bereits verwendet. Wählen Sie Ihre Kurse erneut im Katalog.';
+$string['selectionunavailable'] = 'Ein ausgewähltes Angebot ist derzeit nicht verfügbar. Entfernen Sie es vor der Bestellung.';
+$string['coursefulfilmentunavailable'] = 'Der Kurszugang ist derzeit nicht verfügbar. Bitte wenden Sie sich an die Shop-Verwaltung.';
+$string['noproducts'] = 'Keine Kurse passen zu Ihrer Auswahl.';
+$string['checkoutmixedcurrency'] = 'Verwenden Sie für alle Produkte einer Bestellung dieselbe Währung.';
 $string['resumepayment'] = 'Zahlung fortsetzen';
 $string['retrydelivery'] = 'Kursauslieferung wiederholen';
-$string['deliverypending'] = 'Die Zahlung ist erfasst. Die Kursauslieferung wartet oder benötigt einen weiteren Versuch. Du kannst sie hier wiederholen; wende Dich an die Shop-Verwaltung, falls der Zugang weiter fehlt.';
+$string['deliverypending'] = 'Die Zahlung ist erfasst. Die Kursauslieferung wartet oder benötigt einen weiteren Versuch. Sie können sie hier wiederholen; wenden Sie sich an die Shop-Verwaltung, falls der Zugang weiter fehlt.';
 $string['state_pending'] = 'Offen';
 $string['state_paid'] = 'Bezahlt';
 $string['state_partial'] = 'Auslieferung unvollständig';
@@ -209,11 +209,11 @@ $string['state_sent'] = 'Versendet';
 $string['state_cancelled'] = 'Abgebrochen';
 $string['revision'] = 'Fassung';
 $string['acceptedat'] = 'Bestätigt';
-$string['legaldocumentlimit'] = 'Du kannst bis zu zwei Rechtstexte anlegen. Ergänze eine Sprachfassung oder Revision eines bestehenden Dokuments.';
-$string['distributionmismatch'] = 'Diese Installation kann dieses Paket nicht verwenden. Stelle vor dem Fortsetzen das zur installierten Ausgabe passende Paket wieder her.';
+$string['legaldocumentlimit'] = 'Sie können bis zu zwei Rechtstexte anlegen. Ergänzen Sie eine Sprachfassung oder Revision eines bestehenden Dokuments.';
+$string['distributionmismatch'] = 'Diese Installation kann dieses Paket nicht verwenden. Stellen Sie vor dem Fortsetzen das zur installierten Ausgabe passende Paket wieder her.';
 $string['communication'] = 'Kommunikation';
-$string['orderreadysubject'] = 'Dein Kurszugang ist bereit';
-$string['orderreadybody'] = '<p>Deine Bestellung {order_reference} ist bereit.</p><p><a href="{manage_url}">Käufe und Kurszugänge ansehen</a></p>';
+$string['orderreadysubject'] = 'Ihr Kurszugang ist bereit';
+$string['orderreadybody'] = '<p>Ihre Bestellung {order_reference} ist bereit.</p><p><a href="{manage_url}">Käufe und Kurszugänge ansehen</a></p>';
 $string['processorders'] = 'Kursauslieferung und Transaktionsmails wiederholen';
 $string['language'] = 'Sprache';
 $string['subject'] = 'Betreff';
@@ -221,10 +221,10 @@ $string['body'] = 'Nachricht (HTML)';
 $string['adminemails'] = 'Interne Kopien';
 $string['delayminutes'] = 'Verzögerung (Minuten)';
 $string['communicationintro'] = 'Diese Nachricht wird nach vollständiger Auslieferung aller Positionen vorgemerkt. Fehlgeschlagener Versand bleibt wiederholbar. Betreff und Inhalt werden mit jeder vorgemerkten Nachricht gespeichert.';
-$string['mailplaceholders'] = 'Verwende {order_reference} für die Bestellkennung und {manage_url} für Meine Käufe. Der Inhalt wird beim Vormerken gespeichert; spätere Änderungen gelten für neue Nachrichten.';
+$string['mailplaceholders'] = 'Verwenden Sie {order_reference} für die Bestellkennung und {manage_url} für Meine Käufe. Der Inhalt wird beim Vormerken gespeichert; spätere Änderungen gelten für neue Nachrichten.';
 $string['retrymail'] = 'Mail erneut vormerken';
 $string['mailstatus'] = 'Mailstatus';
-$string['attempts'] = 'Versuche';
+$string['attempts'] = 'Versuchen Sie';
 $string['adminhelp'] = 'Storefront-Hilfe';
 $string['adminhelptopics'] = 'Hilfethemen';
 $string['adminhelpmore'] = 'Mehr dazu im Hilfepanel';
@@ -237,26 +237,25 @@ $string['adminhelp_taxonomy'] = 'Kategorien und Tags';
 $string['adminhelp_delivery'] = 'Kursauslieferung';
 $string['adminhelp_operations'] = 'Bestellungen und Wiederaufnahme';
 $string['adminhelp_settings'] = 'Shop-Einstellungen';
-$string['adminhelp_shopping_article'] = '<p>Der Katalog aktualisiert sich bei der Eingabe und bei Filteränderungen. Ohne JavaScript übernimmst Du Deine Auswahl mit Suchen.</p><p>Bild und Titel führen zu den Produktdetails. Ein einzelnes Angebot legst Du direkt in den Warenkorb. Bei mehreren Preisen führt Angebot wählen zur Auswahl. Ein anderes Angebot für dasselbe Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse enthalten.</p><p>Melde Dich vor der Bestellung an. Die Zahlung erfolgt über die vom Betreiber eingerichteten Gateways. Bewahre die Bestellkennung für Rückfragen auf. Offene Zahlungen findest Du unter Meine Käufe.</p><p>Das Warenkorb-Icon neben dem Nutzermenü öffnet die Seitenleiste mit Deiner Auswahl und den Gesamtbeträgen. Dort kannst Du Positionen entfernen oder zum vollständigen Warenkorb und zur Kasse wechseln. Ohne JavaScript öffnet das Icon die Warenkorbseite.</p>';
-$string['adminhelp_purchases_article'] = '<p>Meine Käufe zeigt Deine eigenen Bestellungen mit getrenntem Zahlungs- und Auslieferungsstatus. Auf eine erfasste Zahlung kann noch eine ausstehende Kursauslieferung folgen. Kursauslieferung wiederholen verwendet die erfasste Zahlung und bucht nicht erneut ab.</p><p>Jeder Kurskauf behält seinen ursprünglichen Zeitraum. Andere aktive Käufe können Deinen Zugang nach dem Ende eines Kaufs erhalten. Wende Dich bei Erstattungen oder Streitfällen an die Shop-Verwaltung.</p>';
-$string['adminhelp_legal_article'] = '<p>Bis zu zwei frei benennbare Dokumente können Sprachfassungen und Revisionen enthalten. Ein bearbeiteter Entwurf lässt die veröffentlichte Fassung bestehen, bis Du den neuen Stand veröffentlichst.</p><p>Die Dokumenteinstellungen legen Sichtbarkeit, Standardsprache und erforderliche Bestätigung an der Kasse fest. Die Bestellung hält die angezeigte Fassung und eine geforderte Bestätigung fest. Frühere Nachweise bleiben erhalten. Leser können die Dokumentsprache unabhängig von der Moodle-Oberfläche wählen.</p>';
-$string['adminhelp_products_article'] = '<p>Lege ein Kursprodukt an und speichere es. Unter Kursauslieferung wählst Du seine Kurse, unter Angebote die Preise. Aktiviere ein Angebot und mache das Produkt sichtbar, wenn Kurse und Zahlungskonto bereit sind.</p><p>Die Kennung bleibt nach dem ersten Speichern fest. Ausblenden verhindert neue Käufe; frühere Bestellungen behalten ihre gespeicherten Produkt- und Kursangaben.</p>';
-$string['adminhelp_offers_article'] = '<p>Jedes Angebot hat einen Einmalpreis in einer Währung. Richte ein Moodle-Zahlungskonto mit einem aktivierten Gateway ein, das diese Währung unterstützt. Mehrere Währungen lassen sich nicht in einer Bestellung bezahlen.</p><p>Rolle und Zugangsdauer kommen aus der Kurszuordnung. Preisoptionen legen keine eigenen Zugangszeiträume fest. Angebotsänderungen gelten für neue Bestellungen.</p>';
-$string['adminhelp_taxonomy_article'] = '<p>Kategorien gliedern den Katalog; Tags beschreiben überlappende Themen. Beides ordnest Du im Produkteditor zu. Besucher können Suche, Kategorie und Tags verbinden. Bei mehreren ausgewählten Tags genügt die Zuordnung zu einem davon.</p><p>Kleinere Sortierwerte erscheinen zuerst. Ausgeblendete Kategorien und Tags bleiben zugeordnet, erscheinen aber nicht in den Kundenfiltern.</p>';
-$string['adminhelp_delivery_article'] = '<p>Aktiviere Storefront Enrolment in Moodle. Kursauslieferung ordnet dem Produkt einen oder mehrere Kurse mit Rolle und Dauer zu. Die Bearbeitung erfordert die nativen Rechte zur Einschreibungskonfiguration in jedem betroffenen Kurs.</p><p>Bestellungen behalten die gespeicherte Rolle und Dauer. Befristeter Zugang beginnt bei der tatsächlichen Auslieferung. Wiederholen erhält bereits ausgelieferte Positionen. Ein weiterer aktiver Kauf schützt den von ihm gewährten Zugang. Eine Kurswiederherstellung übernimmt einen deaktivierten Produkthinweis und verlangt bewusste Neuzuordnung.</p>';
-$string['adminhelp_operations_article'] = '<p>Bestellungen und Zugänge trennt Zahlung, Positionsauslieferung und Kurszugang. Käufer können offene Zahlungen fortsetzen. Kursauslieferung wiederholen benötigt einen gespeicherten Zahlungsnachweis und verwendet die ursprünglichen Kursangaben.</p><p>Repariere eine deaktivierte oder fehlende Kurszuordnung vor dem Wiederholen. Die Rückkehr von einer Bezahlseite setzt keine Bestellung auf bezahlt. Vereinbare Erstattungs- und Streitfallverfahren passend zum eingesetzten Gateway.</p><p>Mit <strong>Kurszugang sperren</strong> pausierst Du den Zugang aus diesem Kauf. Andere Käufe können den Kurs weiterhin zugänglich machen. <strong>Kurszugang wieder freigeben</strong> hebt Deine Sperre auf. Laufzeit und Sperren aus dem Zahlungsstatus gelten weiter. Erstattungen bearbeitest Du beim Zahlungsanbieter.</p>';
-
+$string['adminhelp_shopping_article'] = '<p>Der Katalog aktualisiert sich bei der Eingabe und bei Filteränderungen. Ohne JavaScript übernehmen Sie Ihre Auswahl mit Suchen.</p><p>Bild und Titel führen zu den Produktdetails. Ein einzelnes Angebot legen Sie direkt in den Warenkorb. Bei mehreren Preisen führt Angebot wählen zur Auswahl. Ein anderes Angebot für dasselbe Produkt ersetzt die Auswahl im Warenkorb. Ein Produkt kann mehrere Kurse enthalten.</p><p>Melden Sie sich vor der Bestellung an. Die Zahlung erfolgt über die vom Betreiber eingerichteten Gateways. Bewahren Sie die Bestellkennung für Rückfragen auf. Offene Zahlungen finden Sie unter Meine Käufe.</p><p>Das Warenkorb-Icon neben dem Nutzermenü öffnet die Seitenleiste mit Ihrer Auswahl und den Gesamtbeträgen. Dort können Sie Positionen entfernen oder zum vollständigen Warenkorb und zur Kasse wechseln. Ohne JavaScript öffnet das Icon die Warenkorbseite.</p>';
+$string['adminhelp_purchases_article'] = '<p>Meine Käufe zeigt Ihre eigenen Bestellungen mit getrenntem Zahlungs- und Auslieferungsstatus. Auf eine erfasste Zahlung kann noch eine ausstehende Kursauslieferung folgen. Kursauslieferung wiederholen verwendet die erfasste Zahlung und bucht nicht erneut ab.</p><p>Jeder Kurskauf behält seinen ursprünglichen Zeitraum. Andere aktive Käufe können Ihren Zugang nach dem Ende eines Kaufs erhalten. Wenden Sie sich bei Erstattungen oder Streitfällen an die Shop-Verwaltung.</p>';
+$string['adminhelp_legal_article'] = '<p>Bis zu zwei frei benennbare Dokumente können Sprachfassungen und Revisionen enthalten. Ein bearbeiteter Entwurf lässt die veröffentlichte Fassung bestehen, bis Sie den neuen Stand veröffentlichen.</p><p>Die Dokumenteinstellungen legen Sichtbarkeit, Standardsprache und erforderliche Bestätigung an der Kasse fest. Die Bestellung hält die angezeigte Fassung und eine geforderte Bestätigung fest. Frühere Nachweise bleiben erhalten. Leser können die Dokumentsprache unabhängig von der Moodle-Oberfläche wählen.</p>';
+$string['adminhelp_products_article'] = '<p>Legen Sie ein Kursprodukt an und speichern Sie es. Unter Kursauslieferung wählen Sie seine Kurse, unter Angebote die Preise. Aktivieren Sie ein Angebot und machen Sie das Produkt sichtbar, wenn Kurse und Zahlungskonto bereit sind.</p><p>Die Kennung bleibt nach dem ersten Speichern fest. Ausblenden verhindert neue Käufe; frühere Bestellungen behalten ihre gespeicherten Produkt- und Kursangaben.</p>';
+$string['adminhelp_offers_article'] = '<p>Jedes Angebot hat einen Einmalpreis in einer Währung. Richten Sie ein Moodle-Zahlungskonto mit einem aktivierten Gateway ein, das diese Währung unterstützt. Mehrere Währungen lassen sich nicht in einer Bestellung bezahlen.</p><p>Rolle und Zugangsdauer kommen aus der Kurszuordnung. Preisoptionen legen keine eigenen Zugangszeiträume fest. Angebotsänderungen gelten für neue Bestellungen.</p>';
+$string['adminhelp_taxonomy_article'] = '<p>Kategorien gliedern den Katalog; Tags beschreiben überlappende Themen. Beides ordnen Sie im Produkteditor zu. Besucher/innen können Suche, Kategorie und Tags verbinden. Bei mehreren ausgewählten Tags genügt die Zuordnung zu einem davon.</p><p>Kleinere Sortierwerte erscheinen zuerst. Ausgeblendete Kategorien und Tags bleiben zugeordnet, erscheinen aber nicht in den Kundenfiltern.</p>';
+$string['adminhelp_delivery_article'] = '<p>Aktivieren Sie Storefront Enrolment in Moodle. Kursauslieferung ordnet dem Produkt einen oder mehrere Kurse mit Rolle und Dauer zu. Die Bearbeitung erfordert die nativen Rechte zur Einschreibungskonfiguration in jedem betroffenen Kurs.</p><p>Bestellungen behalten die gespeicherte Rolle und Dauer. Befristeter Zugang beginnt bei der tatsächlichen Auslieferung. Wiederholen erhält bereits ausgelieferte Positionen. Ein weiterer aktiver Kauf schützt den von ihm gewährten Zugang. Eine Kurswiederherstellung übernimmt einen deaktivierten Produkthinweis und verlangt bewusste Neuzuordnung.</p>';
+$string['adminhelp_operations_article'] = '<p>Bestellungen und Zugänge trennt Zahlung, Positionsauslieferung und Kurszugang. Käufer/innen können offene Zahlungen fortsetzen. Kursauslieferung wiederholen benötigt einen gespeicherten Zahlungsnachweis und verwendet die ursprünglichen Kursangaben.</p><p>Reparieren Sie eine deaktivierte oder fehlende Kurszuordnung vor dem Wiederholen. Die Rückkehr von einer Bezahlseite setzt keine Bestellung auf bezahlt. Vereinbaren Sie Erstattungs- und Streitfallverfahren passend zum eingesetzten Gateway.</p><p>Mit <strong>Kurszugang sperren</strong> pausieren Sie den Zugang aus diesem Kauf. Andere Käufe können den Kurs weiterhin zugänglich machen. <strong>Kurszugang wieder freigeben</strong> hebt Ihre Sperre auf. Laufzeit und Sperren aus dem Zahlungsstatus gelten weiter. Erstattungen bearbeiten Sie beim Zahlungsanbieter.</p>';
 $string['manualcoursesuspend'] = 'Kurszugang sperren';
 $string['manualcourseresume'] = 'Kurszugang wieder freigeben';
 $string['manualcoursesuspended'] = 'Der Kurszugang aus diesem Kauf ist gesperrt.';
 $string['manualcourseresumed'] = 'Die manuelle Sperre für diesen Kauf ist aufgehoben.';
 $string['operations'] = 'Bestellungen und Zugänge';
-$string['operations_help'] = 'Prüfe je Bestellung Zahlung, Auslieferung und Kurszugang. Einen ausgelieferten Kurszugang kannst Du direkt am Kurs verwalten.';
-$string['adminhelp_settings_article'] = '<p>Shop-Sichtbarkeit begrenzt den Katalogzugriff. Vor einer Zahlung braucht der Käufer ein bestätigtes angemeldetes Moodle-Konto. Außerdem werden ein aktiviertes Moodle-Zahlungskonto und ein passendes Gateway benötigt.</p><p>Die optionale Magic-Link-Anmeldung verwendet die Regeln des installierten Authentifizierungsproviders für Kontoanlage und MFA. Auswahllinks führen zum Warenkorb und enden nach einer Stunde oder ihrer Verwendung. Anmelden erzeugt weder Zahlung noch Einschreibung.</p>';
+$string['operations_help'] = 'Prüfen Sie je Bestellung Zahlung, Auslieferung und Kurszugang. Einen ausgelieferten Kurszugang können Sie direkt am Kurs verwalten.';
+$string['adminhelp_settings_article'] = '<p>Shop-Sichtbarkeit begrenzt den Katalogzugriff. Vor einer Zahlung braucht die kaufende Person ein bestätigtes angemeldetes Moodle-Konto. Außerdem werden ein aktiviertes Moodle-Zahlungskonto und ein passendes Gateway benötigt.</p><p>Die optionale Magic-Link-Anmeldung verwendet die Regeln des installierten Authentifizierungsproviders für Kontoanlage und MFA. Auswahllinks führen zum Warenkorb und enden nach einer Stunde oder ihrer Verwendung. Anmelden erzeugt weder Zahlung noch Einschreibung.</p>';
 $string['shopping'] = 'Auswählen und bezahlen';
-$string['shopping_help'] = 'Wähle Kurse im Katalog, prüfe Deinen Warenkorb und melde Dich vor der Zahlung an.';
+$string['shopping_help'] = 'Wählen Sie Kurse im Katalog, prüfen Sie Ihren Warenkorb und melden Sie sich vor der Zahlung an.';
 $string['delayminutes_help'] = 'Verzögere die Nachricht zum Kurszugang um 0 bis 1440 Minuten. Die Kundennachricht bleibt erforderlich.';
-$string['adminemails_help'] = 'Optionale interne Kopien der Nachricht zum Kurszugang. Trenne gültige Adressen durch Kommas, Semikolons oder Leerzeichen.';
+$string['adminemails_help'] = 'Optionale interne Kopien der Nachricht zum Kurszugang. Trennen Sie gültige Adressen durch Kommas, Semikolons oder Leerzeichen.';
 $string['privacy:userid'] = 'Kennung des Moodle-Kontos';
 $string['privacy:email'] = 'E-Mail-Adresse für Bestellung oder Versand';
 $string['privacy:language'] = 'Sprache der Bestellung';
@@ -266,19 +265,16 @@ $string['privacy:orders'] = 'Kursbestellverlauf';
 $string['privacy:legal'] = 'Angezeigte Rechtstextfassung und Bestätigungszeit';
 $string['privacy:mail'] = 'Vorgemerkte Transaktionsnachricht und Versandstatus';
 $string['purchases'] = 'Meine Käufe';
-$string['purchases_help'] = 'Unter Meine Käufe findest Du den Zahlungs- und Kursauslieferungsstatus.';
+$string['purchases_help'] = 'Unter Meine Käufe finden Sie den Zahlungs- und Kursauslieferungsstatus.';
 $string['legal'] = 'Rechtstexte';
-$string['legal_help'] = 'Verwalte veröffentlichte Sprachfassungen und Checkout-Bestätigungen für bis zu zwei Rechtstexte.';
+$string['legal_help'] = 'Verwalten Sie veröffentlichte Sprachfassungen und Checkout-Bestätigungen für bis zu zwei Rechtstexte.';
 $string['storefront:viewcatalogue'] = 'Kursprodukte ansehen';
 $string['storefront:viewownorders'] = 'Eigene Käufe ansehen';
 $string['storefront:managecatalogue'] = 'Kursprodukte verwalten';
 $string['storefront:manageorders'] = 'Bestellungen und Mails verwalten';
 $string['storefront:managelegal'] = 'Rechtstexte verwalten';
-
 $string['courseaccessunavailable'] = 'Kurszugang derzeit nicht verfügbar';
-
 $string['state_expired'] = 'Abgelaufen';
-
 $string['viewproduct'] = 'Produkt ansehen';
 $string['pricefrom'] = 'Ab {$a}';
 $string['ordertotal'] = 'Gesamtbetrag';
@@ -289,169 +285,100 @@ $string['checkoutlegal'] = 'Rechtstexte';
 $string['productcontent'] = 'Produktinhalt';
 $string['productpresentation'] = 'Bild und Kategorien';
 $string['publication'] = 'Veröffentlichung und Reihenfolge';
-
 $string['viewcartcount'] = 'Warenkorb ansehen ({$a})';
 $string['viewcart'] = 'Warenkorb ansehen';
 $string['logincheckout'] = 'Zur Kasse anmelden';
-$string['cartupdatefailed'] = 'Der Warenkorb konnte nicht aktualisiert werden. Bitte versuche es erneut.';
-
+$string['cartupdatefailed'] = 'Der Warenkorb konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.';
 $string['ordernumber'] = 'Bestellung';
-
 $string['orderheading'] = 'Bestellung #{$a}';
-
-$string['moodlepaymentnoaccounts'] = 'Lege unter Website-Administration → Zahlungen → Zahlungskonten ein aktives Moodle-Zahlungskonto an und wähle es anschließend hier aus.';
-
-$string['paymentaccountrequired'] = 'Wähle ein aktives Moodle-Zahlungskonto aus.';
-
-// Shared independent signed update protection.
+$string['moodlepaymentnoaccounts'] = 'Legen Sie unter Website-Administration → Zahlungen → Zahlungskonten ein aktives Moodle-Zahlungskonto an und wählen Sie es anschließend hier aus.';
+$string['paymentaccountrequired'] = 'Wählen Sie ein aktives Moodle-Zahlungskonto aus.';
 $string['updateguard_heading'] = 'Update angehalten';
 $string['updateguard_component'] = 'Das Paket für {$a} wurde abgewiesen.';
-$string['updateguard_hint'] = 'Verwende ein freigegebenes Paket für die installierte Ausgabe. Du kannst den Vorgang erneut prüfen.';
+$string['updateguard_hint'] = 'Verwenden Sie ein freigegebenes Paket für die installierte Ausgabe. Sie können den Vorgang erneut prüfen.';
 $string['updateguard_unchanged'] = 'Dieser Vorgang hat keine Plugin-Dateien ersetzt.';
 $string['updateguard_help'] = 'Das installierte Plugin prüft vor dem Ersetzen die Herausgebersignatur, den Paketinhalt, den erlaubten Updatekanal und die Kompatibilität. Eine gültige Signatur erlaubt keinen Wechsel auf eine andere Ausgabe. Wird ein Paket abgewiesen, stoppt die gesamte Sammelaktion.';
 $string['updateguard_signature'] = 'Die Herausgebersignatur oder der Paketinhalt konnte nicht bestätigt werden.';
 $string['updateguard_policy'] = 'Das Paket passt nicht zur installierten Ausgabe oder zum erlaubten Paketprofil.';
 $string['updateguard_channel'] = 'Updates über diesen Kanal sind für dieses Plugin nicht freigegeben.';
 $string['updateguard_metadata'] = 'Die Versions- oder Abhängigkeitsangaben sind nicht konsistent.';
-$string['updateguard_dependency'] = 'Eine benötigte Plugin-Version fehlt. Aktualisiere die Abhängigkeit gemeinsam mit diesem Plugin oder vorher.';
-$string['updateguard_approval'] = 'Die Pakete oder der installierte Stand haben sich seit der Vorschau geändert. Prüfe den Vorgang erneut.';
-$string['updateguard_busy'] = 'Eine andere Installation läuft. Versuche es nach deren Abschluss erneut.';
-$string['updateguard_installed'] = 'Der installierte Updateschutz ist unvollständig. Stelle die Dateien der zuletzt installierten freigegebenen Version wieder her.';
-$string['updateguard_operation'] = 'Diese Kombination von Installationsaktionen wird nicht unterstützt. Starte einen einzelnen Updatevorgang erneut.';
+$string['updateguard_dependency'] = 'Eine benötigte Plugin-Version fehlt. Aktualisieren Sie die Abhängigkeit gemeinsam mit diesem Plugin oder vorher.';
+$string['updateguard_approval'] = 'Die Pakete oder der installierte Stand haben sich seit der Vorschau geändert. Prüfen Sie den Vorgang erneut.';
+$string['updateguard_busy'] = 'Eine andere Installation läuft. Versuchen Sie es nach deren Abschluss erneut.';
+$string['updateguard_installed'] = 'Der installierte Updateschutz ist unvollständig. Stellen Sie die Dateien der zuletzt installierten freigegebenen Version wieder her.';
+$string['updateguard_operation'] = 'Diese Kombination von Installationsaktionen wird nicht unterstützt. Starten Sie einen einzelnen Updatevorgang erneut.';
 $string['updateguard_failed'] = 'Das Update konnte nicht geprüft werden. Es wurde keine Installation gestartet.';
 $string['updateguard_back'] = 'Zur Pluginübersicht';
-// End shared independent signed update protection.
-
 $string['uicataloguedisplay'] = 'Darstellung';
 $string['cataloguetagsselected'] = '{$a} ausgewählt';
 $string['groupnone'] = 'Keine Gruppierung';
 $string['productsearchplaceholder'] = 'Katalog durchsuchen …';
 $string['sortrecommended'] = 'Empfohlen';
-
 $string['searchbarfilters'] = 'Filter';
-
 $string['searchbardisplay'] = 'Anzeige';
-
 $string['searchbarreset'] = 'Zurücksetzen';
-
 $string['searchbarremove'] = '{$a} entfernen';
-
 $string['searchbarerror'] = 'Die Ergebnisse konnten nicht aktualisiert werden. Die bisherigen Ergebnisse bleiben sichtbar.';
-
 $string['searchbarloading'] = 'Ergebnisse werden aktualisiert …';
-
-// Optional information before native package confirmation.
 $string['updateinfo_heading'] = 'Paketinformationen: {$a}';
 $string['updateinfo_verified'] = 'Der eingebettete Herausgebernachweis passt zur installierten Ausgabe.';
 $string['updateinfo_missing'] = 'Dieses Paket enthält keinen eingebetteten Herausgebernachweis.';
 $string['updateinfo_line'] = 'Dieses Paket gehört zu einer anderen Ausgabe als das installierte Plugin.';
 $string['updateinfo_mismatch'] = 'Der eingebettete Herausgebernachweis konnte mit den Angaben des installierten Plugins nicht bestätigt werden.';
 $string['updateinfo_unavailable'] = 'Die Herausgeberinformationen für das ausgewählte Paket konnten nicht gelesen werden.';
-$string['updateinfo_choice'] = 'Kontrolliere vor dem Fortfahren die Paketquelle und Moodles Prüfergebnisse. Mit „{$a}“ unten kannst Du abbrechen.';
+$string['updateinfo_choice'] = 'Kontrollieren Sie vor dem Fortfahren die Paketquelle und Moodles Prüfergebnisse. Mit „{$a}“ unten können Sie abbrechen.';
 $string['cachedef_selection_resume'] = 'Gespeicherte Bestellauswahl';
-$string['deliveryconfigurationunavailable'] = 'Der Kurszugang ist nicht eingerichtet. Bitte kontaktiere die Website-Administration.';
+$string['deliveryconfigurationunavailable'] = 'Der Kurszugang ist nicht eingerichtet. Bitte kontaktieren Sie die Website-Administration.';
 $string['privacy:linestate'] = 'Zahlungs-, Bereitstellungs- und Kurszugangsstatus gekaufter Positionen.';
-
 $string['privacyordererased'] = 'Diese Bestellung wurde anonymisiert und kann nicht erneut verarbeitet werden.';
-
 $string['privacy:metadata:local_storefront_order'] = 'Bestellung mit Bezug zur kaufenden Person.';
-
 $string['privacy:metadata:local_storefront_order:id'] = 'Gespeicherter Wert id für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:orderkey'] = 'Gespeicherter Wert orderkey für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:userid'] = 'Gespeicherter Wert userid für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:email'] = 'Gespeicherter Wert email für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:customerlang'] = 'Gespeicherter Wert customerlang für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:status'] = 'Gespeicherter Wert status für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:channel'] = 'Gespeicherter Wert channel für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:paymentenvironment'] = 'Gespeicherter Wert paymentenvironment für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:currency'] = 'Gespeicherter Wert currency für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:total'] = 'Gespeicherter Wert total für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:providercheckoutid'] = 'Gespeicherter Wert providercheckoutid für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:providerpaymentid'] = 'Gespeicherter Wert providerpaymentid für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:providersubscriptionid'] = 'Gespeicherter Wert providersubscriptionid für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:provideraccountid'] = 'Gespeicherter Wert provideraccountid für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:accessstatus'] = 'Gespeicherter Wert accessstatus für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:accessreason'] = 'Gespeicherter Wert accessreason für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:accesssuspendat'] = 'Gespeicherter Wert accesssuspendat für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:claimtokenhash'] = 'Gespeicherter Wert claimtokenhash für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:recoverytokenhash'] = 'Gespeicherter Wert recoverytokenhash für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:activationemailsent'] = 'Gespeicherter Wert activationemailsent für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:timecreated'] = 'Gespeicherter Wert timecreated für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:timemodified'] = 'Gespeicherter Wert timemodified für Bestellung.';
-
 $string['privacy:metadata:local_storefront_order:timecompleted'] = 'Gespeicherter Wert timecompleted für Bestellung.';
-
 $string['privacy:metadata:local_storefront_orderline'] = 'Unveränderlicher Stand des gekauften Angebots mit Bezug zur kaufenden Person.';
-
 $string['privacy:metadata:local_storefront_orderline:id'] = 'Gespeicherter Wert id für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:orderid'] = 'Gespeicherter Wert orderid für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:offerid'] = 'Gespeicherter Wert offerid für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:productname'] = 'Gespeicherter Wert productname für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:offeringjson'] = 'Gespeicherter Wert offeringjson für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:snapshotversion'] = 'Gespeicherter Wert snapshotversion für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:snapshothash'] = 'Gespeicherter Wert snapshothash für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_orderline:amount'] = 'Gespeicherter Wert amount für Unveränderlicher Stand des gekauften Angebots.';
-
 $string['privacy:metadata:local_storefront_line_state'] = 'Zahlungs- und Lieferstatus mit Bezug zur kaufenden Person.';
-
 $string['privacy:metadata:local_storefront_line_state:id'] = 'Gespeicherter Wert id für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:orderlineid'] = 'Gespeicherter Wert orderlineid für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:paymentstatus'] = 'Gespeicherter Wert paymentstatus für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:fulfilmentstatus'] = 'Gespeicherter Wert fulfilmentstatus für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:accessstatus'] = 'Gespeicherter Wert accessstatus für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:accessreason'] = 'Gespeicherter Wert accessreason für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:accesssuspendat'] = 'Gespeicherter Wert accesssuspendat für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:currentperiodstart'] = 'Gespeicherter Wert currentperiodstart für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:currentperiodend'] = 'Gespeicherter Wert currentperiodend für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:cancelatperiodend'] = 'Gespeicherter Wert cancelatperiodend für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:timecancelled'] = 'Gespeicherter Wert timecancelled für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:lastproviderstate'] = 'Gespeicherter Wert lastproviderstate für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:timelastproviderevent'] = 'Gespeicherter Wert timelastproviderevent für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:reviewreason'] = 'Gespeicherter Wert reviewreason für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:pendingeffects'] = 'Gespeicherter Wert pendingeffects für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:timecreated'] = 'Gespeicherter Wert timecreated für Zahlungs- und Lieferstatus.';
-
 $string['privacy:metadata:local_storefront_line_state:timemodified'] = 'Gespeicherter Wert timemodified für Zahlungs- und Lieferstatus.';
