@@ -401,9 +401,11 @@ final class public_access_test extends \advanced_testcase {
         // Match the database source version to the argument passed to the native upgrade.
         set_config('version', 2026010100, 'local_storefront');
         $this->assertTrue(\xmldb_local_storefront_upgrade(2026010100));
-        $this->assertSame(
-            (int) \core_plugin_manager::instance()->get_plugin_info('local_storefront')->versiondisk,
-            (int) get_config('local_storefront', 'version')
+        // The callback records schema savepoints; Moodle's upgrade manager records the final release build.
+        $this->assertSame(2026010115, (int) get_config('local_storefront', 'version'));
+        $this->assertGreaterThanOrEqual(
+            2026010115,
+            (int) \core_plugin_manager::instance()->get_plugin_info('local_storefront')->versiondisk
         );
         foreach ([['full', 2026010100], ['course', 2026100100]] as [$marker, $version]) {
             set_config('distribution', $marker, 'local_storefront');
@@ -414,6 +416,7 @@ final class public_access_test extends \advanced_testcase {
                 $this->assertEquals('distributionmismatch', $e->errorcode);
             }
             $this->assertEquals($marker, get_config('local_storefront', 'distribution'));
+            $this->assertSame(2026010115, (int) get_config('local_storefront', 'version'));
         }
         unset_config('distribution', 'local_storefront');
         $this->expectException(\moodle_exception::class);
