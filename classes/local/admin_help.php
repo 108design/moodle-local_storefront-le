@@ -121,7 +121,9 @@ final class admin_help {
             return '';
         }
         $title = get_string('adminhelp', 'local_storefront');
-        $close = \html_writer::tag('button', \html_writer::span('&#215;', '', ['aria-hidden' => 'true']), [
+        $close = \html_writer::tag('button', '<svg class="design108-panel-close-icon" viewBox="0 0 16 16"'
+            . ' width="16" height="16" aria-hidden="true" focusable="false"'
+            . ' fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>', [
             'type' => 'button', 'class' => 'btn btn-secondary btn-sm local-storefront-help-close',
             'aria-label' => get_string('closebuttontitle', 'moodle'), 'data-storefront-help-close' => '1',
         ]);
