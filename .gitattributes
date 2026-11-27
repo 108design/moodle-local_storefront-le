@@ -117,6 +117,8 @@
 "/lang" -export-ignore -export-subst
 "/lang/de" -export-ignore -export-subst
 "/lang/de/local_storefront.php" -export-ignore -export-subst
+"/lang/de_du" -export-ignore -export-subst
+"/lang/de_du/local_storefront.php" -export-ignore -export-subst
 "/lang/en" -export-ignore -export-subst
 "/lang/en/local_storefront.php" -export-ignore -export-subst
 "/legal.php" -export-ignore -export-subst
